@@ -41,6 +41,25 @@ const lastActivityBlock = [...policies, ...lifecycle, ...receipts]
   .sort((a, b) => (a < b ? -1 : 1))
   .at(-1);
 
+if (process.argv.includes("--json")) {
+  console.log(JSON.stringify({
+    contract: "AllowanceRegistry",
+    address: deployment.address,
+    chain: deployment.chain,
+    chainId: deployment.chainId,
+    explorer: deployment.explorer,
+    codeBytes,
+    deployBlock: deployment.blockNumber,
+    latestBlock: Number(latestBlock),
+    policiesCreated: policies.length,
+    lifecycleUpdates: lifecycle.length,
+    receiptsRecorded: receipts.length,
+    lastActivityBlock: lastActivityBlock == null ? null : Number(lastActivityBlock),
+    checkedAt: new Date().toISOString()
+  }, null, 2));
+  process.exit(codeBytes > 0 ? 0 : 1);
+}
+
 console.log("AllowanceRegistry — live status");
 console.log(`  address:        ${deployment.address}`);
 console.log(`  chain:          ${deployment.chain} (${deployment.chainId})`);
