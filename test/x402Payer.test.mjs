@@ -188,4 +188,37 @@ const pay = createX402Payer({ account });
   assert.equal(explicit.name, "Custom", "server-provided extra.name wins over the fallback");
 }
 
+// --- payer output round-trips through the facilitator parser ------------------
+
+{
+  const { parseX402PaymentHeader } = await import("../src/x402Facilitator.mjs");
+  const { verifyTypedData } = await import("viem");
+  const { usdcDomain, EIP3009_TRANSFER_TYPES, USDC_ADDRESS } = await import("../src/x402Payer.mjs");
+
+  const header = await pay(requirements);
+  const parsed = parseX402PaymentHeader(header);
+
+  assert.equal(parsed.scheme, "exact");
+  assert.equal(parsed.network, "base");
+  assert.equal(parsed.x402Version, 1);
+
+  const auth = parsed.payload.authorization;
+  const valid = await verifyTypedData({
+    address: account.address,
+    domain: usdcDomain({ chainId: 8453, verifyingContract: USDC_ADDRESS.base, network: "base" }),
+    types: EIP3009_TRANSFER_TYPES,
+    primaryType: "TransferWithAuthorization",
+    message: {
+      from: auth.from,
+      to: auth.to,
+      value: BigInt(auth.value),
+      validAfter: BigInt(auth.validAfter),
+      validBefore: BigInt(auth.validBefore),
+      nonce: auth.nonce
+    },
+    signature: parsed.payload.signature
+  });
+  assert.equal(valid, true, "facilitator-parsed payload recovers to the payer — client/server interop holds");
+}
+
 console.log("x402Payer tests passed");
