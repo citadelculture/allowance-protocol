@@ -248,6 +248,8 @@ export {
   USDC_ADDRESS
 } from "./x402Payer.mjs";
 
+export { postTweet, oauth1Header, percentEncode, credsFromEnv } from "./xClient.mjs";
+
 export {
   createAllowGatewayHandler,
   gatewayHealth,
