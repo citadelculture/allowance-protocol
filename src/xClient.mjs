@@ -93,6 +93,35 @@ export async function postTweet({ text, creds, fetchImpl, oauth } = {}) {
   };
 }
 
+// Fetch the authenticated account (id, name, username) via GET /2/users/me.
+// Read-only; useful for verifying credentials and filling evidence records
+// without guessing the handle.
+export async function getMe({ creds, fetchImpl, oauth } = {}) {
+  const fetch = fetchImpl || globalThis.fetch;
+  if (typeof fetch !== "function") throw new Error("getMe requires a fetch implementation");
+  assertCreds(creds);
+
+  const url = "https://api.twitter.com/2/users/me";
+  const { header } = oauth1Header({ method: "GET", url, params: {}, creds, oauth });
+  const res = await fetch(url, { headers: { authorization: header } });
+
+  let body = null;
+  try {
+    body = await res.json();
+  } catch {
+    body = null;
+  }
+
+  return {
+    ok: res.ok,
+    status: res.status,
+    id: body?.data?.id || null,
+    username: body?.data?.username || null,
+    name: body?.data?.name || null,
+    body
+  };
+}
+
 export function credsFromEnv(env = process.env) {
   return {
     apiKey: env.X_API_KEY || "",

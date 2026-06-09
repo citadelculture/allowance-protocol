@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { oauth1Header, percentEncode, postTweet, credsFromEnv } from "../src/xClient.mjs";
+import { getMe, oauth1Header, percentEncode, postTweet, credsFromEnv } from "../src/xClient.mjs";
 
 // --- percent-encoding edge cases (RFC 3986) --------------------------------
 assert.equal(percentEncode("Ladies + Gentlemen"), "Ladies%20%2B%20Gentlemen");
@@ -74,5 +74,29 @@ await assert.rejects(
   /Missing X OAuth 1\.0a credentials/
 );
 assert.deepEqual(Object.keys(credsFromEnv({})), ["apiKey", "apiSecret", "accessToken", "accessTokenSecret"]);
+
+// --- getMe signs a GET and decodes the account -------------------------------
+{
+  const creds = {
+    apiKey: "k", apiSecret: "s", accessToken: "t", accessTokenSecret: "ts"
+  };
+  let seen = null;
+  const fetchImpl = async (url, init) => {
+    seen = { url, init };
+    return new Response(JSON.stringify({ data: { id: "42", username: "allowance_prtcl", name: "Allowance" } }), {
+      status: 200,
+      headers: { "content-type": "application/json" }
+    });
+  };
+  const me = await getMe({ creds, fetchImpl });
+  assert.equal(seen.url, "https://api.twitter.com/2/users/me");
+  assert.ok(seen.init.headers.authorization.startsWith("OAuth "));
+  assert.equal(seen.init.method ?? "GET", "GET");
+  assert.equal(me.ok, true);
+  assert.equal(me.username, "allowance_prtcl");
+  assert.equal(me.id, "42");
+
+  await assert.rejects(() => getMe({ creds: {}, fetchImpl }), /Missing X OAuth 1\.0a credentials/);
+}
 
 console.log("xClient tests passed");

@@ -249,7 +249,7 @@ export {
   USDC_DOMAIN_NAME
 } from "./x402Payer.mjs";
 
-export { postTweet, oauth1Header, percentEncode, credsFromEnv } from "./xClient.mjs";
+export { postTweet, getMe, oauth1Header, percentEncode, credsFromEnv } from "./xClient.mjs";
 
 export {
   ALLOWANCE_REGISTRY_DEPLOYMENTS,
