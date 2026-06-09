@@ -24,11 +24,12 @@ step is one command.
 2. **Basescan source verification** — one paste: follow
    `work/verification/INSTRUCTIONS.md` (recompiled bytecode already matches
    the chain byte-for-byte).
-3. **First onchain policy** — send the prepared `createPolicy` calldata from
-   the deployer/controller wallet: see
-   `work/registry/first-policy-intent.report.json` (expected policyId
-   `0xf0215a33…16c6`). Then the first `recordReceipt` makes the registry
-   non-empty and `npm run registry-status` shows real usage.
+3. **First onchain policy — DONE** (owner-directed live execution,
+   2026-06-09). Policy `0xf0215a33…16c6` and receipt `0x82b0f266…ab5d` are
+   live; both matched their offline predictions. Enforcement verified by
+   simulation (replay/over-cap/unknown-merchant all revert). See
+   `ops/registry_live_usage.json`. Remaining: create real policies from a
+   fresh (non-exposed) controller wallet for production agents.
 4. **npm publish** (optional) — needs an npm token, `private: false`, and a
    final package name.
 

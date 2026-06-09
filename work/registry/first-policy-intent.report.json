@@ -4,7 +4,7 @@
   "policyPath": "allow-policy.example.json",
   "valid": true,
   "status": "ready_for_external_approval",
-  "generatedAt": "2026-06-09T20:53:34.329Z",
+  "generatedAt": "2026-06-09T21:55:46.432Z",
   "mode": "dry_run",
   "contract": {
     "name": "AllowanceRegistry",

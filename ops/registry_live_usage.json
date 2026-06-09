@@ -1,0 +1,44 @@
+{
+  "registry": "0x047B375f044B76efBdCE655Ab6b7EE142129c266",
+  "chainId": 8453,
+  "ownerAuthorizationRef": "docs/EXTERNAL_ACTION_APPROVAL.md#owner-authorization-amendment-2026-06-09",
+  "transactions": [
+    {
+      "action": "createPolicy",
+      "txHash": "0xfbad04b4b1a1d80a1fb01caba75a81f3c4cc215275cfeb616089d5718b03cc98",
+      "blockNumber": 47126416,
+      "gasUsed": 209153,
+      "policyId": "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
+      "controller": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+      "agent": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+      "settlementToken": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      "epochCapUnits": "25000000",
+      "perTxCapUnits": "1500000",
+      "epochSeconds": 86400,
+      "intentRef": "ops/first_policy_intent.json",
+      "explorer": "https://basescan.org/tx/0xfbad04b4b1a1d80a1fb01caba75a81f3c4cc215275cfeb616089d5718b03cc98"
+    },
+    {
+      "action": "recordReceipt",
+      "txHash": "0x954d44c342322c3e6004c4a1d650748299d75e7c65a56b427199f82a33b7d9ee",
+      "blockNumber": 47126424,
+      "gasUsed": 84227,
+      "receiptId": "0x82b0f266606ffc7ac1856eb2192e5f6c68219a04d51af680c75953baa503ab5d",
+      "policyId": "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
+      "amountUnits": "18000",
+      "sourceReceipt": "allow_385f7c41 (allowFetch JSONL, mcp_search, $0.018)",
+      "intentRef": "work/registry/first-receipt-intent.report.json",
+      "explorer": "https://basescan.org/tx/0x954d44c342322c3e6004c4a1d650748299d75e7c65a56b427199f82a33b7d9ee"
+    }
+  ],
+  "enforcementProof": {
+    "ref": "work/registry/enforcement-proof.json",
+    "method": "eth_call simulations against the live contract",
+    "results": "replay reverted, over-cap reverted, unknown merchant reverted, fresh in-policy receipt allowed",
+    "allPass": true
+  },
+  "notes": [
+    "Both predicted ids (expectedPolicyId, expectedReceiptId) matched the emitted onchain values exactly.",
+    "Self-test wallet: controller and agent are the deployer. The unresolved 2026-06-09 credential exposure still applies to this wallet — see GO_LIVE item 0."
+  ]
+}

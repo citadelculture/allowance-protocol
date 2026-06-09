@@ -116,6 +116,8 @@
     "verification-input": "node scripts/verification-input.mjs",
     "registry-status": "node scripts/registry-status.mjs",
     "receipt-anchor-intent": "node scripts/receipt-anchor-intent.mjs",
+    "send-registry-intent": "node scripts/send-registry-intent.mjs",
+    "registry-enforcement-proof": "node scripts/registry-enforcement-proof.mjs",
     "deploy-registry": "node scripts/compile-registry.mjs && node scripts/deploy-registry.mjs",
     "x-post": "node scripts/x-post.mjs",
     "x-launch-retry": "node scripts/x-launch-retry.mjs",

@@ -53,6 +53,8 @@ npm run receipt-anchor-intent -- <receipts.jsonl> <policyId>      # recordReceip
 
 The contract custodies no funds — it records controller-signed policies and policy-bounded receipts only. It is a prototype and has not had an independent audit.
 
+**It is live with real usage, not just deployed.** Policy #1 ([createPolicy tx](https://basescan.org/tx/0xfbad04b4b1a1d80a1fb01caba75a81f3c4cc215275cfeb616089d5718b03cc98)) enforces a $1.50 per-tx cap, $25/day epoch cap, and a 3-merchant allowlist; the first allowed agent payment is anchored onchain ([recordReceipt tx](https://basescan.org/tx/0x954d44c342322c3e6004c4a1d650748299d75e7c65a56b427199f82a33b7d9ee)). Live enforcement is verified by simulation: replayed nonces, over-cap amounts, and unknown merchants all revert (`npm run registry-enforcement-proof`), and both onchain ids matched their offline predictions exactly (`ops/registry_live_usage.json`).
+
 ## 30-second demo
 
 ```bash

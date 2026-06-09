@@ -1,0 +1,115 @@
+{
+  "logPath": "ops/allow-fetch-example-receipts.local.jsonl",
+  "recordsScanned": 2,
+  "anchoredReceiptId": "allow_385f7c41",
+  "valid": true,
+  "status": "ready_for_external_approval",
+  "generatedAt": "2026-06-09T21:56:32.469Z",
+  "mode": "dry_run",
+  "contract": {
+    "name": "AllowanceRegistry",
+    "abi": [
+      {
+        "type": "function",
+        "name": "recordReceipt",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "name": "policyId",
+            "type": "bytes32"
+          },
+          {
+            "name": "merchantId",
+            "type": "bytes32"
+          },
+          {
+            "name": "amount",
+            "type": "uint128"
+          },
+          {
+            "name": "intentHash",
+            "type": "bytes32"
+          },
+          {
+            "name": "intentNonce",
+            "type": "bytes32"
+          },
+          {
+            "name": "metadataHash",
+            "type": "bytes32"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "receiptId",
+            "type": "bytes32"
+          }
+        ]
+      }
+    ],
+    "address": "0x047b375f044b76efbdce655ab6b7ee142129c266",
+    "chainId": 8453,
+    "network": "Base",
+    "environment": "mainnet",
+    "recorder": "0xfb7f313f9c7b129a6744bc8866518f5040337bdf"
+  },
+  "sourceReceipt": {
+    "id": "allow_385f7c41",
+    "policyId": "allow_policy_demo_alpha",
+    "merchantId": "mcp_search",
+    "amountUsd": 0.018,
+    "decision": "allow",
+    "intentNonce": "allow-3d9f07e2-f584-455e-8ab1-a1ce88ae9786",
+    "intentHash": "b0539a13",
+    "metadataHash": "811c9dc5",
+    "evidence": {
+      "environment": "local",
+      "merchantApproved": false,
+      "rail": "unknown",
+      "network": "",
+      "settlement": "",
+      "label": ""
+    }
+  },
+  "registry": {
+    "functionName": "recordReceipt",
+    "args": {
+      "policyId": "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
+      "merchantId": "0x663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f52",
+      "amount": "18000",
+      "intentHash": "0x609c72e1b46fe116b2d18b1dd50184fa1bd0cfbf19614f511ada53435d3a50ed",
+      "intentNonce": "0xe21d24946a619bcbebc653f301a981fe492d3cf9c09e56280d5e46ecc7866caf",
+      "metadataHash": "0x2f05a3f65a3606b7db89c1b2ed44fabb194da7d3fcea41e4129e94735b3d5faf"
+    },
+    "argsArray": [
+      "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
+      "0x663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f52",
+      "18000",
+      "0x609c72e1b46fe116b2d18b1dd50184fa1bd0cfbf19614f511ada53435d3a50ed",
+      "0xe21d24946a619bcbebc653f301a981fe492d3cf9c09e56280d5e46ecc7866caf",
+      "0x2f05a3f65a3606b7db89c1b2ed44fabb194da7d3fcea41e4129e94735b3d5faf"
+    ],
+    "calldata": "0xcbd12b96f0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f520000000000000000000000000000000000000000000000000000000000004650609c72e1b46fe116b2d18b1dd50184fa1bd0cfbf19614f511ada53435d3a50ede21d24946a619bcbebc653f301a981fe492d3cf9c09e56280d5e46ecc7866caf2f05a3f65a3606b7db89c1b2ed44fabb194da7d3fcea41e4129e94735b3d5faf",
+    "expectedReceiptId": "0x82b0f266606ffc7ac1856eb2192e5f6c68219a04d51af680c75953baa503ab5d",
+    "amountDecimals": 6,
+    "merchantIdNamespace": "allow-merchant:v1",
+    "intentNonceNamespace": "allow-intent-nonce:v1",
+    "writeIntentHash": "0x8697c4476a892b2cfaeca571df5a903ad8c268157a3ca28780bd48d4dbd792d2"
+  },
+  "safety": {
+    "broadcast": false,
+    "signsTransaction": false,
+    "includesPrivateKey": false,
+    "movesFunds": false,
+    "requiresHumanExecution": true,
+    "requiresExternalActionApproval": true,
+    "approvalActionType": "registry_receipt_write",
+    "note": "This packet is calldata and hash material only; it does not deploy, sign, broadcast, custody, or transfer funds."
+  },
+  "reasons": [],
+  "warnings": [
+    "Local demo receipt evidence must not be presented as pilot or production usage",
+    "Derived registry merchantId from offchain merchantId; createPolicy must use the same allow-merchant:v1 namespace",
+    "Amount units inferred from amountUsd with 6 decimals; verify registry policy caps use the same unit"
+  ]
+}

@@ -15,6 +15,13 @@ authorization was given directly in a live Claude Code session conversation
   the Sepolia attempt was blocked by an unfunded testnet deployer.
 - `x_post`: posting to the owner's X account using the OAuth 1.0a env
   credentials (`npm run x-post`, with `--dry-run` preview first).
+  Suspended same-session by owner direction ("forget x posts for now").
+- `registry_policy_create` and `registry_receipt_write` (added same-session,
+  owner follow-up): gas-only transactions from the `ALLOW_DEPLOY_PK` wallet
+  against the live `AllowanceRegistry`, to take the protocol from an empty
+  deployment to live verified usage ("I want this protocol to work live,
+  not just as a demo"). No value transfer, no custody, dry-run intent
+  packets validated before sending.
 
 Scope notes: the authorization covers exactly these two action types with
 credentials supplied through env vars only. All other action types in this
