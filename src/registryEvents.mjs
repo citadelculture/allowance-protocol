@@ -94,6 +94,53 @@ export function createRegistryEvents({ client, address, chain = "base", maxBlock
     }));
   }
 
+  // Poll for new events and invoke onEvent for each, in block/log order.
+  // Tracks a block cursor so restarts of the interval never re-deliver, and
+  // returns a stop() function. Polling (not eth_subscribe) keeps it working
+  // over plain HTTP transports.
+  function watchEvents({ eventName, policyId, onEvent, onError, pollMs = 15_000, fromBlock } = {}) {
+    if (typeof onEvent !== "function") throw new Error("watchEvents requires an onEvent callback");
+    const names = eventName ? [eventName] : EVENT_NAMES;
+    let cursor = fromBlock == null ? deployBlock : BigInt(fromBlock);
+    let stopped = false;
+    let inFlight = false;
+
+    async function poll() {
+      if (stopped || inFlight) return;
+      inFlight = true;
+      try {
+        const latest = BigInt(await client.getBlockNumber());
+        if (latest >= cursor) {
+          const batches = await Promise.all(
+            names.map((name) => getEvents(name, { policyId, fromBlock: cursor, toBlock: latest }))
+          );
+          const ordered = batches.flat().sort((a, b) => {
+            if (a.blockNumber !== b.blockNumber) return a.blockNumber < b.blockNumber ? -1 : 1;
+            return (a.logIndex ?? 0) < (b.logIndex ?? 0) ? -1 : 1;
+          });
+          for (const event of ordered) {
+            if (stopped) break;
+            onEvent(event);
+          }
+          cursor = latest + 1n;
+        }
+      } catch (err) {
+        if (typeof onError === "function") onError(err);
+      } finally {
+        inFlight = false;
+      }
+    }
+
+    const timer = setInterval(poll, pollMs);
+    if (typeof timer.unref === "function") timer.unref();
+    poll();
+
+    return function stop() {
+      stopped = true;
+      clearInterval(timer);
+    };
+  }
+
   return {
     address: registryAddress,
     chain: deployment?.chain || chain,
@@ -101,6 +148,7 @@ export function createRegistryEvents({ client, address, chain = "base", maxBlock
     getPolicyCreatedEvents: (options) => getEvents("PolicyCreated", options),
     getPolicyActiveSetEvents: (options) => getEvents("PolicyActiveSet", options),
     getReceiptRecordedEvents: (options) => getEvents("ReceiptRecorded", options),
-    getEvents
+    getEvents,
+    watchEvents
   };
 }
