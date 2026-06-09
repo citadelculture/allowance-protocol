@@ -81,6 +81,18 @@ outreach, secrets in env vars only. Completed cycles, all tested and pushed:
    deployer endpoint; GetBlock caps ranges at 1500 blocks).
 7. Example sanity pass after the allowFetch changes (`npm run demo`,
    `npm run example:allow-fetch`) — all green.
+8. Signer-level guards in `createX402Payer`: payTo/amount validation and a
+   `perTxCapUnits` hard ceiling independent of the policy engine.
+9. `createAllowFetch` receipt persistence: `receiptStore`/`onReceipt`/
+   `onReceiptError` hooks; denial reasons persist; verified into
+   `metrics-report`.
+10. Docs/dashboard parity: README + INTEGRATION.md fast path with the safe
+    config, live registry linked from the dashboard disclosure.
+11. `watchEvents` polling stream on `registry-events` (cursor-tracked,
+    ordered, stop()-able). Server + preflight smoke green.
+
+Owner later set the loop cadence to ~3-minute ticks with continuous
+back-to-back work between ticks.
 
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet

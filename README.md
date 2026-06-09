@@ -581,6 +581,15 @@ Scheduled interviews also need `scheduledAt`, `scheduledBy`, `channel`, safety a
 
 - `index.html`: dashboard and simulator
 - `src/policyEngine.mjs`: reusable policy evaluator
+- `src/allowFetch.mjs`: client-side x402 allowance fetch wrapper with receipt persistence
+- `src/x402Payer.mjs`: x402 exact-scheme USDC EIP-3009 signer with signer-level hard cap
+- `src/xClient.mjs`: OAuth 1.0a X API client (offline-verified signing)
+- `src/deployments.mjs`: canonical live contract deployments and lookup helpers
+- `src/registryReader.mjs`: read-only onchain policy/spend/allowlist/replay queries
+- `src/registryEvents.mjs`: decoded registry event scans and cursor-tracked polling watcher
+- `scripts/registry-status.mjs`: live registry health CLI (`npm run registry-status`)
+- `scripts/verification-input.mjs`: Basescan standard-JSON verification packet (`npm run verification-input`)
+- `scripts/deploy-registry.mjs` / `scripts/compile-registry.mjs`: offline solc build + viem deploy pipeline
 - `server.mjs`: static server and JSON evaluation endpoint
 - `src/httpPreflight.mjs`: x402-style preflight integration module
 - `src/httpMiddleware.mjs`: dependency-free paid route middleware
