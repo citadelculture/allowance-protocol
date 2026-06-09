@@ -115,8 +115,52 @@ async function serveStatic(req, res) {
   }
 }
 
+// Live registry snapshot, cached so dashboard refreshes don't hammer the RPC.
+// Read-only; degrades gracefully when the runtime has no network access.
+let liveRegistryCache = { at: 0, body: null };
+async function liveRegistrySnapshot() {
+  if (Date.now() - liveRegistryCache.at < 60_000 && liveRegistryCache.body) return liveRegistryCache.body;
+  const { allowanceRegistryDeployment } = await import("./src/deployments.mjs");
+  const deployment = allowanceRegistryDeployment("base");
+  try {
+    const { createPublicClient, http } = await import("viem");
+    const { base } = await import("viem/chains");
+    const { createRegistryEvents } = await import("./src/registryEvents.mjs");
+    const client = createPublicClient({ chain: base, transport: http("https://mainnet.base.org") });
+    const events = createRegistryEvents({ client, maxBlockRange: 1400 });
+    const [policies, receipts] = await Promise.all([
+      events.getPolicyCreatedEvents(),
+      events.getReceiptRecordedEvents()
+    ]);
+    liveRegistryCache = {
+      at: Date.now(),
+      body: {
+        live: true,
+        address: deployment.address,
+        chain: deployment.chain,
+        explorer: deployment.explorer,
+        policiesCreated: policies.length,
+        receiptsRecorded: receipts.length,
+        lastActivityBlock: Number([...policies, ...receipts].map((e) => e.blockNumber).sort((a, b) => (a < b ? -1 : 1)).at(-1) ?? 0) || null,
+        checkedAt: new Date().toISOString()
+      }
+    };
+  } catch (error) {
+    liveRegistryCache = {
+      at: Date.now(),
+      body: { live: false, address: deployment.address, chain: deployment.chain, explorer: deployment.explorer, error: "registry unreachable from this runtime" }
+    };
+  }
+  return liveRegistryCache.body;
+}
+
 const server = createServer(async (req, res) => {
   const requestUrl = new URL(req.url, "http://localhost");
+
+  if (req.method === "GET" && requestUrl.pathname === "/api/registry/live") {
+    sendApiResponse(res, { status: 200, body: await liveRegistrySnapshot() });
+    return;
+  }
 
   if (req.method === "GET" && requestUrl.pathname === "/api/builder/quickstart") {
     const result = buildBuilderQuickstartApiResponse(

@@ -404,4 +404,19 @@ function summarizeLedger() {
   );
 }
 
+async function showLiveRegistryStatus() {
+  const el = document.getElementById("liveRegistryStatus");
+  if (!el) return;
+  try {
+    const res = await fetch("/api/registry/live");
+    const live = await res.json();
+    if (live.live) {
+      el.textContent = `Live onchain now: ${live.policiesCreated} ${live.policiesCreated === 1 ? "policy" : "policies"}, ${live.receiptsRecorded} ${live.receiptsRecorded === 1 ? "receipt" : "receipts"} anchored (last activity block ${live.lastActivityBlock ?? "—"}).`;
+    }
+  } catch {
+    // offline runtime: leave the static disclosure as-is
+  }
+}
+
 init();
+showLiveRegistryStatus();
