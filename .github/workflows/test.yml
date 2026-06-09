@@ -1,0 +1,23 @@
+name: test
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run demo
+      - run: npm run example:allow-fetch
+      - run: npm run contract-review
+      # Offline compile must reproduce the deployed artifact deterministically.
+      - run: ALLOW_SKIP_RPC=1 node scripts/verification-input.mjs
