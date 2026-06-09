@@ -21,3 +21,6 @@ jobs:
       - run: npm run contract-review
       # Offline compile must reproduce the deployed artifact deterministically.
       - run: ALLOW_SKIP_RPC=1 node scripts/verification-input.mjs
+      # The two-command user onboarding path must stay green.
+      - run: node scripts/new-policy-intent.mjs --controller 0x1111111111111111111111111111111111111111 --merchants mcp_search,vector_cloud
+      - run: node scripts/receipt-anchor-intent.mjs ops/allow-fetch-example-receipts.local.jsonl 0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6
