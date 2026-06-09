@@ -34,6 +34,25 @@ ALLOW_RPC_URL`. Secrets live only in env vars, never in the repo.
 2. Deploy testnet: `ALLOW_CHAIN=base-sepolia npm run deploy-registry`.
 3. Post launch: `npm run x-post "<text>"` (preview first with `--dry-run`).
 
+## Live attempt status (2026-06-09, network-enabled session)
+
+Owner authorized automated execution of the Sepolia deploy and the launch X
+post (see `docs/EXTERNAL_ACTION_APPROVAL.md` amendment). Both commands run
+correctly end-to-end but are blocked on account resources only the owner can
+provide:
+
+- **Deploy**: compile succeeds; deployer `0xFB7F313f9C7b129a6744Bc8866518F5040337BdF`
+  has 0 ETH on Base Sepolia (it holds ~0.0999 ETH on Base mainnet, unusable for
+  testnet gas). Fund it via the Coinbase or Alchemy Base Sepolia faucet, then
+  rerun `ALLOW_CHAIN=base-sepolia npm run deploy-registry`.
+- **X post**: OAuth 1.0a signing is accepted, but the API returns HTTP 402
+  `CreditsDepleted` for enrolled account `2064326404553027584`. Add X API
+  credits (or a plan with post quota) in the developer portal, then rerun
+  `npm run x-post -- "<text>"` (dry-run preview verified, 66/280 chars).
+
+After either succeeds, record it in the execution evidence ledgers
+(`x-post-execution-evidence` / `deployment-check-evidence`).
+
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet
 won't move the needle alone; engaging in existing x402 / agent-payment threads
