@@ -1,0 +1,11 @@
+{
+  "contract": "AllowanceRegistry",
+  "chain": "base",
+  "chainId": 8453,
+  "address": "0x047b375f044b76efbdce655ab6b7ee142129c266",
+  "deployer": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+  "txHash": "0xaa7f127ba8a15b4bbe64ba3f1ddad9c5973286506dbaec29c4d3019c1f83f636",
+  "blockNumber": 47121983,
+  "compiler": "0.8.35+commit.47b9dedd.Emscripten.clang",
+  "deployedAt": "2026-06-09T19:28:32.697Z"
+}

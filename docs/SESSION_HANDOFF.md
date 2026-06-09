@@ -41,10 +41,15 @@ post (see `docs/EXTERNAL_ACTION_APPROVAL.md` amendment). Both commands run
 correctly end-to-end but are blocked on account resources only the owner can
 provide:
 
-- **Deploy**: compile succeeds; deployer `0xFB7F313f9C7b129a6744Bc8866518F5040337BdF`
-  has 0 ETH on Base Sepolia (it holds ~0.0999 ETH on Base mainnet, unusable for
-  testnet gas). Fund it via the Coinbase or Alchemy Base Sepolia faucet, then
-  rerun `ALLOW_CHAIN=base-sepolia npm run deploy-registry`.
+- **Deploy**: DONE on Base mainnet (owner redirected from Sepolia after the
+  testnet deployer was unfunded). `AllowanceRegistry` is live at
+  `0x047b375f044b76efbdce655ab6b7ee142129c266` (tx
+  `0xaa7f127ba8a15b4bbe64ba3f1ddad9c5973286506dbaec29c4d3019c1f83f636`,
+  block 47121983) — see `deployments/base.json`. Remaining: verify source on
+  Basescan (UI single-file verifier with `contracts/AllowanceRegistry.sol`,
+  solc 0.8.35) and complete the deployment-check evidence chain (manifest,
+  static analysis, independent review) — `npm run contract-review` passes
+  but is not an audit.
 - **X post**: OAuth 1.0a signing is accepted, but the API returns HTTP 402
   `CreditsDepleted` for enrolled account `2064326404553027584`. Add X API
   credits (or a plan with post quota) in the developer portal, then rerun

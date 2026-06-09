@@ -11,6 +11,8 @@ authorization was given directly in a live Claude Code session conversation
 
 - `contract_deployment`: deployment of `AllowanceRegistry` to Base Sepolia
   using the `ALLOW_DEPLOY_PK` env credential (`npm run deploy-registry`).
+  Extended same-session (owner follow-up, 2026-06-09) to Base mainnet after
+  the Sepolia attempt was blocked by an unfunded testnet deployer.
 - `x_post`: posting to the owner's X account using the OAuth 1.0a env
   credentials (`npm run x-post`, with `--dry-run` preview first).
 
