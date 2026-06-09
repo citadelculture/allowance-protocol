@@ -286,4 +286,59 @@ const secret = await buildExternalActionApprovalReport({
 assert.equal(secret.valid, false);
 assert.ok(secret.reasons.includes("External action packet text must not include private keys"));
 
+// --- owner_authorized_automated mode (2026-06-09 amendment) -------------------
+
+{
+  const ownerAuthorization = {
+    amendmentRef: "docs/EXTERNAL_ACTION_APPROVAL.md#owner-authorization-amendment-2026-06-09",
+    authorizedBy: "project-owner",
+    authorizedAt: "2026-06-09T19:00:00.000Z",
+    statement: "Owner explicitly authorized automated execution in the live session conversation."
+  };
+  const automatedApprovals = {
+    ownerAuthorizedAutomation: true,
+    automationScopeReviewed: true,
+    exactActionReviewed: true,
+    externalSideEffectAcknowledged: true,
+    noPrivateKeys: true,
+    noCustodyOrEscrow: true,
+    noTokenPitch: true,
+    noMarketManipulation: true,
+    legalEthicsReviewed: true
+  };
+  const automatedPost = {
+    ...xPost,
+    approvalId: "approval_owner_auto_1",
+    ownerAuthorization,
+    approvals: automatedApprovals,
+    action: { ...xPost.action, executionMode: "owner_authorized_automated", automated: true }
+  };
+
+  const valid = await buildExternalActionApprovalReport(automatedPost);
+  assert.equal(valid.valid, true, JSON.stringify(valid.reasons));
+
+  const missingAuthorization = await buildExternalActionApprovalReport({ ...automatedPost, ownerAuthorization: undefined });
+  assert.equal(missingAuthorization.valid, false);
+  assert.ok(missingAuthorization.reasons.includes("Missing ownerAuthorization.amendmentRef"));
+
+  const missingFlag = await buildExternalActionApprovalReport({
+    ...automatedPost,
+    approvals: { ...automatedApprovals, automationScopeReviewed: false }
+  });
+  assert.equal(missingFlag.valid, false);
+  assert.ok(missingFlag.reasons.includes("approvals.automationScopeReviewed must be true"));
+
+  const disallowedType = await buildExternalActionApprovalReport({
+    ...automatedPost,
+    actionType: "merchant_outreach",
+    payload: {}
+  });
+  assert.equal(disallowedType.valid, false);
+  assert.ok(disallowedType.reasons.some((r) => r.includes("owner_authorized_automated execution is limited to")));
+
+  // human_only packets are completely unaffected
+  const humanStill = await buildExternalActionApprovalReport(xPost);
+  assert.equal(humanStill.valid, true);
+}
+
 console.log("externalActionApproval tests passed");

@@ -22,9 +22,14 @@ export const EXTERNAL_ACTION_TYPES = [
 
 export const EXTERNAL_ACTION_STATUSES = ["draft", "approved", "executed", "rejected", "withdrawn"];
 
-const REQUIRED_APPROVAL_FLAGS = [
-  "humanWillExecute",
-  "automationDisabled",
+export const EXTERNAL_ACTION_EXECUTION_MODES = ["human_only", "owner_authorized_automated"];
+
+// Per the 2026-06-09 owner authorization amendment in
+// docs/EXTERNAL_ACTION_APPROVAL.md, only these two action types may use
+// owner_authorized_automated execution. Everything else stays human_only.
+const OWNER_AUTOMATION_ALLOWED_TYPES = ["x_post", "contract_deployment"];
+
+const SHARED_APPROVAL_FLAGS = [
   "exactActionReviewed",
   "externalSideEffectAcknowledged",
   "noPrivateKeys",
@@ -33,6 +38,9 @@ const REQUIRED_APPROVAL_FLAGS = [
   "noMarketManipulation",
   "legalEthicsReviewed"
 ];
+
+const HUMAN_ONLY_FLAGS = ["humanWillExecute", "automationDisabled", ...SHARED_APPROVAL_FLAGS];
+const OWNER_AUTOMATION_FLAGS = ["ownerAuthorizedAutomation", "automationScopeReviewed", ...SHARED_APPROVAL_FLAGS];
 
 const SENSITIVE_TEXT_PATTERNS = [
   { id: "private_key", pattern: /\b0x[0-9a-fA-F]{64}\b/, reason: "External action packet text must not include private keys" },
@@ -67,7 +75,21 @@ export async function buildExternalActionApprovalReport(packet = {}, options = {
   requireText(reasons, packet.requestedBy, "requestedBy");
   requireText(reasons, packet.requestedAt, "requestedAt");
   requireText(reasons, action.summary, "action.summary");
-  requireKnown(reasons, action.executionMode, ["human_only"], "action.executionMode");
+  requireKnown(reasons, action.executionMode, EXTERNAL_ACTION_EXECUTION_MODES, "action.executionMode");
+  const ownerAutomated = action.executionMode === "owner_authorized_automated";
+  if (ownerAutomated) {
+    if (!OWNER_AUTOMATION_ALLOWED_TYPES.includes(actionType)) {
+      reasons.push(`owner_authorized_automated execution is limited to: ${OWNER_AUTOMATION_ALLOWED_TYPES.join(", ")}`);
+    }
+    const authorization = packet.ownerAuthorization || {};
+    requireText(reasons, authorization.amendmentRef, "ownerAuthorization.amendmentRef");
+    requireText(reasons, authorization.authorizedBy, "ownerAuthorization.authorizedBy");
+    requireText(reasons, authorization.authorizedAt, "ownerAuthorization.authorizedAt");
+    requireText(reasons, authorization.statement, "ownerAuthorization.statement");
+    if (authorization.authorizedAt && !isValidDate(authorization.authorizedAt)) {
+      reasons.push("ownerAuthorization.authorizedAt must be a valid date");
+    }
+  }
 
   if (packet.requestedAt && !isValidDate(packet.requestedAt)) reasons.push("requestedAt must be a valid date");
   if (requireApproved && packet.status !== "approved") reasons.push("External action must be approved before execution");
@@ -77,9 +99,11 @@ export async function buildExternalActionApprovalReport(packet = {}, options = {
     if (packet.approvedAt && !isValidDate(packet.approvedAt)) reasons.push("approvedAt must be a valid date");
   }
   if (packet.status === "executed") reasons.push("Executed action packets are historical records, not pre-execution approvals");
-  if (action.automated === true) reasons.push("External action must not be marked automated");
+  if (action.automated === true && !ownerAutomated) {
+    reasons.push("External action must not be marked automated");
+  }
 
-  for (const flag of REQUIRED_APPROVAL_FLAGS) {
+  for (const flag of ownerAutomated ? OWNER_AUTOMATION_FLAGS : HUMAN_ONLY_FLAGS) {
     if (approvals[flag] !== true) reasons.push(`approvals.${flag} must be true`);
   }
 

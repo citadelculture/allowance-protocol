@@ -22,6 +22,14 @@ document (outreach, wallet policy signing, registry writes, pilot traffic,
 merchant promotion) remain `human_only`. Executed automated actions must
 still be recorded in the execution evidence ledgers after the fact.
 
+The approval validator supports this via
+`action.executionMode: "owner_authorized_automated"`, accepted only for
+`x_post` and `contract_deployment` packets that carry an
+`ownerAuthorization` block (`amendmentRef`, `authorizedBy`, `authorizedAt`,
+`statement`) and the `ownerAuthorizedAutomation` + `automationScopeReviewed`
+flags in place of `humanWillExecute`/`automationDisabled`. All remaining
+safety flags are unchanged, and `human_only` packets are unaffected.
+
 Use this gate before:
 
 - posting from X
