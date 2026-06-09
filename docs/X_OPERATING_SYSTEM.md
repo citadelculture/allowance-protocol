@@ -60,6 +60,12 @@ npm run external-action-approval -- ops/external_action_template.json
 ```
 
 The launch pack lives in `launch/` and contains draft-only post variants plus the rendered dashboard screenshot. Treat posting as an external action that requires account-owner approval.
+
+> Amendment (2026-06-09): the account owner has authorized automated posting
+> via `npm run x-post` with the env-var OAuth credentials, stated directly in
+> the live session conversation. See the Owner Authorization Amendment in
+> `docs/EXTERNAL_ACTION_APPROVAL.md`. Posts are previewed with `--dry-run`
+> first and recorded in the X post execution ledger after publication.
 The X post action pack generates unapproved `x_post` packets for those drafts. The external action approval packet must reference the exact X text and approved account handle. The command validates the post but does not post it.
 After a human posts, the X post execution evidence command validates exact text, account handle, public post URL, and redacted proof.
 The X post state command reconciles passed execution records against `launch/x_posts.json` before any post is treated as posted.

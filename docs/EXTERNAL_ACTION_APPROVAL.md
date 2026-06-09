@@ -2,6 +2,24 @@
 
 Allow can prepare external actions, but it must not execute them automatically.
 
+## Owner Authorization Amendment (2026-06-09)
+
+The repository and X account owner has explicitly switched two action types
+from `human_only` to **owner-authorized automated execution**. The
+authorization was given directly in a live Claude Code session conversation
+(2026-06-09, session 019fXQmJWbBsnAhKzSpfihaf), not via a handoff document:
+
+- `contract_deployment`: deployment of `AllowanceRegistry` to Base Sepolia
+  using the `ALLOW_DEPLOY_PK` env credential (`npm run deploy-registry`).
+- `x_post`: posting to the owner's X account using the OAuth 1.0a env
+  credentials (`npm run x-post`, with `--dry-run` preview first).
+
+Scope notes: the authorization covers exactly these two action types with
+credentials supplied through env vars only. All other action types in this
+document (outreach, wallet policy signing, registry writes, pilot traffic,
+merchant promotion) remain `human_only`. Executed automated actions must
+still be recorded in the execution evidence ledgers after the fact.
+
 Use this gate before:
 
 - posting from X
