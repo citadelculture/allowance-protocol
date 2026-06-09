@@ -50,14 +50,22 @@ export function parseX402Challenge(body) {
   return null;
 }
 
-// Choose which payment option to satisfy. By default we take the first; a
-// caller can pass `selectRequirements` to prefer a network/asset/scheme.
+const KNOWN_NETWORKS = new Set(["base", "base-sepolia"]);
+
+// Choose which payment option to satisfy. A caller can pass
+// `selectRequirements` to prefer a network/asset/scheme; by default we prefer
+// an exact-scheme option on a network we know how to pay (the server controls
+// the ordering of `accepts`, so "first entry" is not a safe default), then
+// fall back to the first entry.
 export function selectPaymentRequirements(accepts, select) {
   if (typeof select === "function") {
     const chosen = select(accepts);
     if (chosen) return chosen;
   }
-  return accepts[0];
+  const preferred = accepts.find(
+    (r) => (r.scheme || "exact") === "exact" && KNOWN_NETWORKS.has(String(r.network || "").toLowerCase().replace("_", "-"))
+  );
+  return preferred || accepts[0];
 }
 
 // x402 amounts are atomic token units. For USDC-like stables (6 decimals) this

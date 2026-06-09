@@ -56,6 +56,25 @@ assert.equal(intent.merchantId, "mcp_search");
 assert.equal(intent.amountUsd, 0.018);
 assert.equal(intent.resource, "https://api.example.com/search");
 
+// --- requirement selection prefers exact-scheme on known networks ------------
+
+{
+  const { selectPaymentRequirements } = await import("../src/allowFetch.mjs");
+  const exotic = { scheme: "exact", network: "tron", payTo: "0xExotic", maxAmountRequired: "1" };
+  const baseExact = { scheme: "exact", network: "base", payTo: "0xBase", maxAmountRequired: "2" };
+  assert.equal(
+    selectPaymentRequirements([exotic, baseExact]),
+    baseExact,
+    "server ordering cannot steer payment onto an unknown network"
+  );
+  assert.equal(selectPaymentRequirements([exotic]), exotic, "falls back to first when nothing matches");
+  assert.equal(
+    selectPaymentRequirements([exotic, baseExact], () => exotic),
+    exotic,
+    "explicit selectRequirements still wins"
+  );
+}
+
 // --- allowed payment flows through and records a receipt --------------------
 
 {
