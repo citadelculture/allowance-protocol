@@ -6,6 +6,17 @@ step is one command.
 
 ## Current owner checklist (2026-06-09)
 
+0. **SECURITY FIRST — unresolved credential exposure.** The incident record
+   (`ops/secret_exposure_incident.template.json`, reported 2026-06-09 12:50)
+   says a Base wallet private key and an X bearer token were pasted into chat
+   and remain unrotated. If the exposed key is the current deployer
+   (`0xFB7F…7BdF`, ~0.0998 ETH on Base mainnet), move those funds to a fresh
+   wallet before doing anything else, and use the fresh wallet — not the
+   exposed one — as the controller for the first onchain policy. Owner steps:
+   `work/credential-rotation-handoff.md`. The deployed registry itself is safe
+   (no owner privileges), but a compromised controller key means hijackable
+   policy control.
+
 1. **X API credits** — posting returns HTTP 402 `CreditsDepleted` for enrolled
    account `2064326404553027584`. Add credits in the developer portal; the
    session loop retries the approved launch text automatically and records

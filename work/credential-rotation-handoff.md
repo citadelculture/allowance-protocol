@@ -1,6 +1,6 @@
 # Allow Credential Rotation Handoff
 
-Generated: 2026-06-09T17:45:16.136Z
+Generated: 2026-06-09T21:01:45.734Z
 Status: ready_for_owner_rotation
 Incident: credential-exposure-2026-06-09
 Incident Status: needs_owner_rotation

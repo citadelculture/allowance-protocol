@@ -18,6 +18,7 @@
     "amountDecimals": 6
   },
   "notes": [
+    "SECURITY: the unresolved 2026-06-09 credential exposure may cover this deployer wallet. If so, regenerate this intent with a fresh controller wallet before sending — see work/credential-rotation-handoff.md.",
     "Self-test policy intent for the live Base registry: controller and agent are both the deployer wallet so the owner can create policy #1 and record the first receipt with one wallet.",
     "Dry-run only. This packet generates calldata, merchant id hashes, and the expected policy id; sending the transaction remains a human action from the controller wallet.",
     "controllerNonce is the public ASCII bytes32 of allow-first-policy-2026-06-09; replace before reuse."
