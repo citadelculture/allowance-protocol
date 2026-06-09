@@ -598,9 +598,15 @@ Scheduled interviews also need `scheduledAt`, `scheduledBy`, `channel`, safety a
 - `src/deployments.mjs`: canonical live contract deployments and lookup helpers
 - `src/registryReader.mjs`: read-only onchain policy/spend/allowlist/replay queries
 - `src/registryEvents.mjs`: decoded registry event scans and cursor-tracked polling watcher
-- `scripts/registry-status.mjs`: live registry health CLI (`npm run registry-status`)
+- `scripts/registry-status.mjs`: live registry health CLI (`npm run registry-status`, `--json` supported)
 - `scripts/verification-input.mjs`: Basescan standard-JSON verification packet (`npm run verification-input`)
 - `scripts/deploy-registry.mjs` / `scripts/compile-registry.mjs`: offline solc build + viem deploy pipeline
+- `scripts/new-policy-intent.mjs`: generate + validate a policy intent for your wallet (`npm run new-policy-intent`)
+- `scripts/send-registry-intent.mjs`: simulate-then-send a validated intent report (`npm run send-registry-intent`)
+- `scripts/receipt-anchor-intent.mjs`: latest allowed JSONL receipt → recordReceipt calldata (`npm run receipt-anchor-intent`)
+- `scripts/registry-enforcement-proof.mjs`: gas-free live enforcement checks (`npm run registry-enforcement-proof`)
+- `npm run live-proof`: one-command verification — usage, enforcement, byte-for-byte bytecode match
+- `examples/live-registry.mjs`: read the live policy, remaining allowance, and anchored receipts
 - `server.mjs`: static server and JSON evaluation endpoint
 - `src/httpPreflight.mjs`: x402-style preflight integration module
 - `src/httpMiddleware.mjs`: dependency-free paid route middleware
