@@ -38,6 +38,12 @@ const { remaining } = await reader.remainingEpochAllowance(policyId);
 const ok = await reader.isMerchantAllowed(policyId, "mcp_search");
 ```
 
+Index onchain activity with `createRegistryEvents` (`allow-protocol/registry-events`) — decoded `PolicyCreated`, `PolicyActiveSet`, and `ReceiptRecorded` logs, bounded at the deploy block. Or check everything from the CLI:
+
+```bash
+npm run registry-status
+```
+
 The contract custodies no funds — it records controller-signed policies and policy-bounded receipts only. It is a prototype and has not had an independent audit.
 
 ## 30-second demo

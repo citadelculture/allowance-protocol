@@ -50,6 +50,19 @@ function stubClient(logs = []) {
   await assert.rejects(() => events.getEvents("NotAnEvent"), /Unknown registry event/);
 }
 
+// --- chunked scanning respects provider getLogs caps ----------------------------
+{
+  const client = stubClient();
+  client.getBlockNumber = () => Promise.resolve(47121983n + 2999n);
+  const events = createRegistryEvents({ client, maxBlockRange: 1000 });
+  await events.getReceiptRecordedEvents();
+  const windows = client.calls.map((c) => [c.fromBlock, c.toBlock]);
+  assert.equal(windows.length, 3, "3000 blocks at range 1000 = 3 windows");
+  assert.deepEqual(windows[0], [47121983n, 47122982n]);
+  assert.deepEqual(windows[1], [47122983n, 47123982n]);
+  assert.deepEqual(windows[2], [47123983n, 47124982n], "last window clamps to the latest block");
+}
+
 // --- decoded log shape -----------------------------------------------------------
 {
   const rawLog = {

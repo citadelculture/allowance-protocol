@@ -48,7 +48,7 @@ export const ALLOWANCE_REGISTRY_EVENTS_ABI = [
 
 const EVENT_NAMES = ALLOWANCE_REGISTRY_EVENTS_ABI.map((e) => e.name);
 
-export function createRegistryEvents({ client, address, chain = "base" } = {}) {
+export function createRegistryEvents({ client, address, chain = "base", maxBlockRange = null } = {}) {
   if (!client || typeof client.getLogs !== "function") {
     throw new Error("createRegistryEvents requires a viem-compatible client with getLogs");
   }
@@ -67,13 +67,24 @@ export function createRegistryEvents({ client, address, chain = "base" } = {}) {
       throw new Error(`Unknown registry event "${eventName}". Use: ${EVENT_NAMES.join(", ")}`);
     }
     const event = ALLOWANCE_REGISTRY_EVENTS_ABI.find((e) => e.name === eventName);
-    const logs = await client.getLogs({
-      address: registryAddress,
-      event,
-      args: policyId ? { policyId } : undefined,
-      fromBlock: fromBlock == null ? deployBlock : BigInt(fromBlock),
-      toBlock
-    });
+    const args = policyId ? { policyId } : undefined;
+    const start = fromBlock == null ? deployBlock : BigInt(fromBlock);
+
+    // Many RPC providers cap eth_getLogs spans (e.g. 1500 blocks); when
+    // maxBlockRange is set, walk the range in windows instead of one call.
+    let logs;
+    if (maxBlockRange == null) {
+      logs = await client.getLogs({ address: registryAddress, event, args, fromBlock: start, toBlock });
+    } else {
+      const window = BigInt(maxBlockRange);
+      const end = toBlock === "latest" ? BigInt(await client.getBlockNumber()) : BigInt(toBlock);
+      logs = [];
+      for (let from = start; from <= end; from += window) {
+        const to = from + window - 1n < end ? from + window - 1n : end;
+        logs.push(...(await client.getLogs({ address: registryAddress, event, args, fromBlock: from, toBlock: to })));
+      }
+    }
+
     return logs.map((log) => ({
       event: eventName,
       blockNumber: log.blockNumber,
