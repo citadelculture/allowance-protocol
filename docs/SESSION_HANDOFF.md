@@ -58,6 +58,30 @@ provide:
 After either succeeds, record it in the execution evidence ledgers
 (`x-post-execution-evidence` / `deployment-check-evidence`).
 
+## Continuous improvement loop (2026-06-09, same session)
+
+Owner directed an indefinite autonomous improvement loop ("don't disturb").
+Standing limits: only the two owner-authorized external actions (launch X
+post — retried every cycle, still blocked on API credits — and the completed
+mainnet deploy), no further mainnet transactions, no npm publish, no
+outreach, secrets in env vars only. Completed cycles, all tested and pushed:
+
+1. `allow-protocol/deployments` — live registry as an SDK export.
+2. `allow-protocol/registry-reader` — read-only onchain policy/spend/replay
+   queries with epoch-rollover-aware remaining-allowance math.
+3. `npm run verification-input` — Basescan standard-JSON packet; recompiled
+   runtime bytecode matches eth_getCode byte-for-byte (see work/verification/).
+4. Live-path bug fixes: paid retries dropped Headers-instance headers;
+   malformed x402 amounts crashed instead of denying; USDC EIP-712 domain
+   name fallback was wrong on Base Sepolia ("USDC", verified onchain).
+5. `allow-protocol/registry-events` — decoded PolicyCreated/PolicyActiveSet/
+   ReceiptRecorded logs, deploy-block-bounded, verified against the live contract.
+6. `npm run registry-status` — live health CLI with wrong-chain RPC guard and
+   windowed eth_getLogs for capped providers (ALLOW_RPC_URL is the Sepolia
+   deployer endpoint; GetBlock caps ranges at 1500 blocks).
+7. Example sanity pass after the allowFetch changes (`npm run demo`,
+   `npm run example:allow-fetch`) — all green.
+
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet
 won't move the needle alone; engaging in existing x402 / agent-payment threads
