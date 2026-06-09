@@ -67,7 +67,15 @@ export function amountUsdFromRequirements(requirements, { stableDecimals = 6 } =
   const raw = requirements.maxAmountRequired ?? requirements.amount;
   if (raw == null) return NaN;
   const decimals = Number(requirements.extra?.decimals ?? stableDecimals);
-  const value = Number(BigInt(String(raw))) / 10 ** decimals;
+  let units;
+  try {
+    units = BigInt(String(raw));
+  } catch {
+    // Malformed atomic amounts (decimals, hex junk) become NaN so the policy
+    // engine denies with "Invalid payment amount" instead of the wrapper throwing.
+    return NaN;
+  }
+  const value = Number(units) / 10 ** decimals;
   return Number.isFinite(value) ? value : NaN;
 }
 
@@ -158,7 +166,7 @@ export function createAllowFetch(options = {}) {
 
     const retryInit = {
       ...init,
-      headers: { ...(init.headers || {}), [PAYMENT_HEADER]: paymentHeader }
+      headers: { ...headersToObject(init.headers), [PAYMENT_HEADER]: paymentHeader }
     };
     const settled = await fetchImpl(url, retryInit);
 
@@ -174,6 +182,18 @@ export function createAllowFetch(options = {}) {
   wrapped.receipts = receipts;
   wrapped.policy = policy;
   return wrapped;
+}
+
+// Spreading a Headers instance (or [key, value] entries array) yields {} —
+// silently dropping every caller header from the paid retry. Normalize all
+// three RequestInit header shapes into a plain object first.
+function headersToObject(headers) {
+  if (!headers) return {};
+  if (typeof Headers !== "undefined" && headers instanceof Headers) {
+    return Object.fromEntries(headers.entries());
+  }
+  if (Array.isArray(headers)) return Object.fromEntries(headers);
+  return { ...headers };
 }
 
 function newNonce() {

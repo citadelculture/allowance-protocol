@@ -128,6 +128,58 @@ assert.equal(intent.resource, "https://api.example.com/search");
   await assert.rejects(() => af("https://api.example.com/search"), AllowancePaymentBlockedError);
 }
 
+// --- caller headers survive the paid retry, including Headers instances -----
+
+{
+  const seen = [];
+  const fetchImpl = async (url, init = {}) => {
+    const headers = new Headers(init.headers || {});
+    seen.push(headers);
+    if (!headers.get(PAYMENT_HEADER)) {
+      return new Response(JSON.stringify({ x402Version: 1, accepts: [usdcRequirements] }), {
+        status: 402,
+        headers: { "content-type": "application/json" }
+      });
+    }
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+  };
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "nonce-headers-1",
+    pay: async () => "PAYMENT"
+  });
+  const res = await af("https://api.example.com/search", {
+    headers: new Headers({ authorization: "Bearer agent-token", "x-trace": "t-1" })
+  });
+  assert.equal(res.status, 200);
+  const retry = seen[1];
+  assert.equal(retry.get("authorization"), "Bearer agent-token", "Headers-instance auth survives the retry");
+  assert.equal(retry.get("x-trace"), "t-1", "custom header survives the retry");
+  assert.equal(retry.get(PAYMENT_HEADER), "PAYMENT");
+}
+
+// --- malformed atomic amounts deny instead of throwing TypeError ------------
+
+{
+  assert.ok(Number.isNaN(amountUsdFromRequirements({ maxAmountRequired: "0.01" })), "decimal atomic amount is NaN");
+  const badRequirements = { ...usdcRequirements, maxAmountRequired: "0.01" };
+  const { fetchImpl } = mockUpstream({ requirements: badRequirements });
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "nonce-malformed-1",
+    pay: async () => "SHOULD_NOT_HAPPEN"
+  });
+  await assert.rejects(
+    () => af("https://api.example.com/search"),
+    AllowancePaymentBlockedError,
+    "malformed amount is a policy deny, not a crash"
+  );
+}
+
 // --- non-402 responses pass straight through --------------------------------
 
 {

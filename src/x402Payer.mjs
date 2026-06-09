@@ -30,8 +30,13 @@ export const EIP3009_TRANSFER_TYPES = {
 };
 
 function randomNonce32() {
+  // `require` does not exist in ESM, so the old CommonJS fallback could never
+  // run — fail loudly instead if webcrypto is genuinely missing (Node < 19).
+  if (!globalThis.crypto?.getRandomValues) {
+    throw new Error("randomNonce32 requires globalThis.crypto (Node 19+ or a browser)");
+  }
   const bytes = new Uint8Array(32);
-  (globalThis.crypto || require("node:crypto").webcrypto).getRandomValues(bytes);
+  globalThis.crypto.getRandomValues(bytes);
   return "0x" + Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
@@ -41,10 +46,20 @@ function usdcAddressFor(network, override) {
   return USDC_ADDRESS[key] || USDC_ADDRESS.base;
 }
 
-// Build the EIP-712 domain for USDC's EIP-3009. USDC uses name "USD Coin",
-// version "2". chainId comes from the requirements/network.
-export function usdcDomain({ chainId, verifyingContract, name = "USD Coin", version = "2" }) {
-  return { name, version, chainId: Number(chainId), verifyingContract };
+// USDC's EIP-712 domain name differs per deployment (read onchain via
+// name()/version()): Base mainnet is "USD Coin", Base Sepolia is "USDC".
+// Servers should send extra.name; these are the verified fallbacks.
+export const USDC_DOMAIN_NAME = {
+  base: "USD Coin",
+  "base-sepolia": "USDC"
+};
+
+// Build the EIP-712 domain for USDC's EIP-3009. chainId comes from the
+// requirements/network; name defaults per network when the server omits it.
+export function usdcDomain({ chainId, verifyingContract, network, name, version = "2" }) {
+  const resolvedName =
+    name || USDC_DOMAIN_NAME[String(network || "base").toLowerCase().replace("_", "-")] || "USD Coin";
+  return { name: resolvedName, version, chainId: Number(chainId), verifyingContract };
 }
 
 // Map an x402 requirements object to the authorization message + domain.
@@ -83,6 +98,7 @@ export function createX402Payer(options = {}) {
     const domain = usdcDomain({
       chainId,
       verifyingContract,
+      network,
       name: requirements.extra?.name || options.tokenName,
       version: requirements.extra?.version || options.tokenVersion
     });

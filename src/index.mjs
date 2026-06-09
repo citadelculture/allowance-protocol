@@ -245,7 +245,8 @@ export {
   buildAuthorization,
   usdcDomain,
   EIP3009_TRANSFER_TYPES,
-  USDC_ADDRESS
+  USDC_ADDRESS,
+  USDC_DOMAIN_NAME
 } from "./x402Payer.mjs";
 
 export { postTweet, oauth1Header, percentEncode, credsFromEnv } from "./xClient.mjs";

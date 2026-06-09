@@ -57,7 +57,7 @@ const pay = createX402Payer({ account });
   const auth = payment.payload.authorization;
   const valid = await verifyTypedData({
     address: account.address,
-    domain: usdcDomain({ chainId: 84532, verifyingContract: USDC_ADDRESS["base-sepolia"] }),
+    domain: usdcDomain({ chainId: 84532, verifyingContract: USDC_ADDRESS["base-sepolia"], network: "base-sepolia" }),
     types: EIP3009_TRANSFER_TYPES,
     primaryType: "TransferWithAuthorization",
     message: {
@@ -101,6 +101,24 @@ const pay = createX402Payer({ account });
   const res = await allowFetch("https://api.example.com/search");
   assert.equal(res.status, 200, "allowance + real signed payment settles");
   assert.equal(allowFetch.receipts.length, 1);
+}
+
+// --- USDC domain name defaults per network (verified onchain) ---------------
+
+{
+  const { usdcDomain, USDC_DOMAIN_NAME } = await import("../src/x402Payer.mjs");
+  assert.equal(USDC_DOMAIN_NAME.base, "USD Coin");
+  assert.equal(USDC_DOMAIN_NAME["base-sepolia"], "USDC");
+
+  const mainnet = usdcDomain({ chainId: 8453, verifyingContract: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", network: "base" });
+  assert.equal(mainnet.name, "USD Coin", "Base mainnet USDC domain name");
+  assert.equal(mainnet.version, "2");
+
+  const sepolia = usdcDomain({ chainId: 84532, verifyingContract: "0x036CbD53842c5426634e7929541eC2318f3dCF7e", network: "base-sepolia" });
+  assert.equal(sepolia.name, "USDC", "Base Sepolia USDC domain name differs from mainnet");
+
+  const explicit = usdcDomain({ chainId: 84532, verifyingContract: "0x036CbD53842c5426634e7929541eC2318f3dCF7e", network: "base-sepolia", name: "Custom" });
+  assert.equal(explicit.name, "Custom", "server-provided extra.name wins over the fallback");
 }
 
 console.log("x402Payer tests passed");
