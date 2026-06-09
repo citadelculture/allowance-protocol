@@ -4,6 +4,14 @@
   "private": true,
   "type": "module",
   "description": "Allowance layer and payment guardrails for autonomous AI agents.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/citadelculture/allowance-protocol.git"
+  },
+  "keywords": ["x402", "ai-agents", "payments", "allowance", "usdc", "base", "eip-3009", "mcp", "spend-policy"],
+  "engines": {
+    "node": ">=18.17"
+  },
   "exports": {
     ".": "./src/index.mjs",
     "./policy": "./src/policyEngine.mjs",
