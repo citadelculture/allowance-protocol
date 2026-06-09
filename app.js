@@ -407,14 +407,48 @@ function summarizeLedger() {
 async function showLiveRegistryStatus() {
   const el = document.getElementById("liveRegistryStatus");
   if (!el) return;
+
+  const render = (policies, receipts, lastBlock) => {
+    el.textContent = `Live onchain now: ${policies} ${policies === 1 ? "policy" : "policies"}, ${receipts} ${receipts === 1 ? "receipt" : "receipts"} anchored (last activity block ${lastBlock ?? "—"}).`;
+  };
+
+  // Served by the Node server: use its cached endpoint.
   try {
     const res = await fetch("/api/registry/live");
-    const live = await res.json();
-    if (live.live) {
-      el.textContent = `Live onchain now: ${live.policiesCreated} ${live.policiesCreated === 1 ? "policy" : "policies"}, ${live.receiptsRecorded} ${live.receiptsRecorded === 1 ? "receipt" : "receipts"} anchored (last activity block ${live.lastActivityBlock ?? "—"}).`;
+    if (res.ok) {
+      const live = await res.json();
+      if (live.live) return render(live.policiesCreated, live.receiptsRecorded, live.lastActivityBlock);
     }
   } catch {
-    // offline runtime: leave the static disclosure as-is
+    // static hosting (e.g. GitHub Pages): fall through to a direct chain query
+  }
+
+  // Static hosting: query Base mainnet directly from the browser.
+  try {
+    const REGISTRY = "0x047B375f044B76efBdCE655Ab6b7EE142129c266";
+    const DEPLOY_BLOCK = "0x2cf063f"; // 47121983
+    const TOPICS = {
+      policyCreated: "0x9480c52da07df6b7d139101831db045fcdb2925204af9f508d10a297b2a4614d",
+      receiptRecorded: "0x773095ed48fdf68b23def17e191bb535b64cdde6a7960653551f6c9db59b5157"
+    };
+    const getLogs = async (topic) => {
+      const res = await fetch("https://mainnet.base.org", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 1,
+          method: "eth_getLogs",
+          params: [{ address: REGISTRY, topics: [topic], fromBlock: DEPLOY_BLOCK, toBlock: "latest" }]
+        })
+      });
+      return (await res.json()).result || [];
+    };
+    const [policies, receipts] = await Promise.all([getLogs(TOPICS.policyCreated), getLogs(TOPICS.receiptRecorded)]);
+    const lastBlock = [...policies, ...receipts].map((l) => parseInt(l.blockNumber, 16)).sort((a, b) => a - b).at(-1);
+    render(policies.length, receipts.length, lastBlock);
+  } catch {
+    // no network: leave the static disclosure as-is
   }
 }
 

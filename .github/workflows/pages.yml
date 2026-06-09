@@ -1,0 +1,36 @@
+name: pages
+
+on:
+  push:
+    branches: [main, claude/allow-protocol-launch-9jlxgz]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      # The dashboard is fully static: index.html + app.js import the policy
+      # engine as browser ESM, and live registry status queries Base directly.
+      - name: Stage static site
+        run: |
+          mkdir -p _site/src
+          cp index.html app.js styles.css _site/
+          cp src/*.mjs _site/src/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - uses: actions/deploy-pages@v4
+        id: deployment
