@@ -78,5 +78,6 @@ const persisted = await loadReceiptRecords(receiptLog);
 console.log(`\nReceipts in memory: ${allowFetch.receipts.length} (allowed payments only — the replay window).`);
 console.log(`Decisions persisted: ${persisted.length} -> ${receiptLog}`);
 for (const record of persisted.slice(-2)) {
-  console.log(`  ${record.decision.toUpperCase()} ${record.intent?.merchantId} $${record.intent?.amountUsd}`);
+  const why = record.reasons?.[0] ? ` — ${record.reasons[0]}` : "";
+  console.log(`  ${record.decision.toUpperCase()} ${record.receipt?.merchantId} $${record.receipt?.amountUsd}${why}`);
 }

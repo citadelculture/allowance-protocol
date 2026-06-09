@@ -153,7 +153,15 @@ export function createAllowFetch(options = {}) {
     // persistence failures must never turn into payments, so they propagate
     // only via onReceiptError and the in-memory flow continues.
     if (options.receiptStore?.record || typeof options.onReceipt === "function") {
-      const entry = { decision: evaluation.decision, receipt: evaluation.receipt, intent, requirements };
+      const entry = {
+        source: "allow-fetch",
+        decision: evaluation.decision,
+        reasons: evaluation.reasons || [],
+        warnings: evaluation.warnings || [],
+        receipt: evaluation.receipt,
+        intent,
+        requirements
+      };
       try {
         if (typeof options.onReceipt === "function") options.onReceipt(entry);
         if (options.receiptStore?.record) await options.receiptStore.record(entry);
