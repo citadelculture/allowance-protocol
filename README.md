@@ -25,16 +25,20 @@ answers with HTTP 402, the allowance is checked **before** any payment is signed
 
 ```js
 import { createAllowFetch } from "allow-protocol/allow-fetch";
+import { createX402Payer } from "allow-protocol/x402-payer";
+import { privateKeyToAccount } from "viem/accounts";
 
 const fetch = createAllowFetch({
   policy: controllerSignedPolicy,        // daily/per-tx caps, merchant allowlist, PII rules
   resolveMerchant: (req) => merchantFor(req.payTo),
-  pay: (requirements) => wallet.signX402(requirements) // only called if the allowance approves
+  pay: createX402Payer({ account: privateKeyToAccount(AGENT_KEY) }) // signs USDC EIP-3009; only runs if the allowance approves
 });
 
 // Use it like normal fetch. Blocked payments throw AllowancePaymentBlockedError.
 const res = await fetch("https://api.vendor.com/search");
 ```
+
+`createX402Payer` signs the x402 `exact`-scheme USDC authorization (EIP-3009) off-chain and returns the `X-PAYMENT` header. It is only invoked after the allowance clears the payment — over-cap, off-allowlist, PII, or replayed requests never reach the signer.
 
 Run the live local example (mock x402 server, no network, no keys):
 

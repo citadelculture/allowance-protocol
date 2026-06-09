@@ -241,6 +241,14 @@ export {
 } from "./allowFetch.mjs";
 
 export {
+  createX402Payer,
+  buildAuthorization,
+  usdcDomain,
+  EIP3009_TRANSFER_TYPES,
+  USDC_ADDRESS
+} from "./x402Payer.mjs";
+
+export {
   createAllowGatewayHandler,
   gatewayHealth,
   intentFromGatewayRequest,
