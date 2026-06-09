@@ -78,6 +78,22 @@ const res = await fetch("https://api.vendor.com/search");
 
 `createX402Payer` signs the x402 `exact`-scheme USDC authorization (EIP-3009) off-chain and returns the `X-PAYMENT` header. It is only invoked after the allowance clears the payment — over-cap, off-allowlist, PII, or replayed requests never reach the signer.
 
+Defense in depth and durable evidence:
+
+```js
+const pay = createX402Payer({
+  account,
+  perTxCapUnits: 1_500_000n // signer's own hard ceiling (1.50 USDC) — refuses to sign above it, even on direct pay() calls
+});
+
+import { createJsonlReceiptStore } from "allow-protocol/receipts";
+const fetch = createAllowFetch({
+  policy, resolveMerchant, pay,
+  receiptStore: createJsonlReceiptStore("ops/agent-receipts.jsonl"), // persists every decision — denied payments are signal too
+  onReceiptError: (err) => console.error("receipt persistence failed", err)
+});
+```
+
 Run the live local example (mock x402 server, no network, no keys):
 
 ```bash
