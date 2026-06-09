@@ -233,11 +233,16 @@ export {
   createAllowFetch,
   AllowancePaymentBlockedError,
   parseX402Challenge,
+  parseX402ChallengeHeader,
   selectPaymentRequirements,
   requirementsToIntent,
   amountUsdFromRequirements,
+  normalizeX402Network,
   PAYMENT_HEADER,
-  PAYMENT_RESPONSE_HEADER
+  PAYMENT_RESPONSE_HEADER,
+  PAYMENT_REQUIRED_HEADER_V2,
+  PAYMENT_SIGNATURE_HEADER_V2,
+  PAYMENT_RESPONSE_HEADER_V2
 } from "./allowFetch.mjs";
 
 export {

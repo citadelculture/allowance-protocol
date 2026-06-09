@@ -115,8 +115,13 @@ export function createX402Payer(options = {}) {
         `x402 payer refused to sign: ${valueUnits} atomic units exceeds the signer cap of ${perTxCapUnits}`
       );
     }
-    const network = String(requirements.network || "base").toLowerCase().replace("_", "-");
-    const chainId = Number(requirements.extra?.chainId || chainIds[network] || chainIds.base);
+    // Accept both friendly names ("base-sepolia") and CAIP-2 ids
+    // ("eip155:84532", used by x402 v2 servers).
+    const rawNetwork = String(requirements.network || "base").toLowerCase().replace("_", "-");
+    const caip = rawNetwork.match(/^eip155:(\d+)$/);
+    const caipChainId = caip ? Number(caip[1]) : null;
+    const network = caipChainId === 8453 ? "base" : caipChainId === 84532 ? "base-sepolia" : rawNetwork;
+    const chainId = Number(requirements.extra?.chainId || caipChainId || chainIds[network] || chainIds.base);
 
     // The asset address is server-supplied. Signing against an arbitrary
     // token would authorize transferring THAT token from the agent's wallet,

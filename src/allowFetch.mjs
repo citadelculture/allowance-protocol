@@ -18,6 +18,21 @@ import { DEFAULT_POLICY, evaluatePaymentIntent } from "./policyEngine.mjs";
 
 export const PAYMENT_HEADER = "x-payment";
 export const PAYMENT_RESPONSE_HEADER = "x-payment-response";
+// x402 v2 carries everything in headers (base64 JSON).
+export const PAYMENT_REQUIRED_HEADER_V2 = "payment-required";
+export const PAYMENT_SIGNATURE_HEADER_V2 = "payment-signature";
+export const PAYMENT_RESPONSE_HEADER_V2 = "payment-response";
+
+// Normalize x402 network identifiers: v1 uses friendly names ("base",
+// "base-sepolia"); v2 uses CAIP-2 ("eip155:8453"). Returns a friendly key
+// plus the numeric chain id when known.
+export function normalizeX402Network(network) {
+  const raw = String(network || "").toLowerCase().replace("_", "-");
+  const caip = raw.match(/^eip155:(\d+)$/);
+  const chainId = caip ? Number(caip[1]) : { base: 8453, "base-sepolia": 84532 }[raw] ?? null;
+  const key = chainId === 8453 ? "base" : chainId === 84532 ? "base-sepolia" : raw;
+  return { key, chainId, raw };
+}
 
 export class AllowancePaymentBlockedError extends Error {
   constructor(evaluation, requirements) {
@@ -33,13 +48,13 @@ export class AllowancePaymentBlockedError extends Error {
   }
 }
 
-// Pull the x402 challenge out of a 402 response body. The standard shape is
+// Pull the x402 challenge out of a 402 response body. The standard v1 shape is
 // `{ x402Version, accepts: [paymentRequirements...] }`; we also accept a bare
 // requirements object or array for resilience against early implementations.
 export function parseX402Challenge(body) {
   if (!body || typeof body !== "object") return null;
   if (Array.isArray(body.accepts) && body.accepts.length > 0) {
-    return { x402Version: Number(body.x402Version || 1), accepts: body.accepts };
+    return { x402Version: Number(body.x402Version || 1), accepts: body.accepts, resource: body.resource };
   }
   if (Array.isArray(body) && body.length > 0) {
     return { x402Version: 1, accepts: body };
@@ -50,20 +65,33 @@ export function parseX402Challenge(body) {
   return null;
 }
 
-const KNOWN_NETWORKS = new Set(["base", "base-sepolia"]);
+// x402 v2: the challenge is the base64-encoded PAYMENT-REQUIRED response
+// header. Returns the same normalized challenge shape as parseX402Challenge.
+export function parseX402ChallengeHeader(headerValue) {
+  const raw = String(headerValue || "").trim();
+  if (!raw) return null;
+  try {
+    const decoded = typeof atob === "function" ? atob(raw) : Buffer.from(raw, "base64").toString("utf8");
+    return parseX402Challenge(JSON.parse(decoded));
+  } catch {
+    return null;
+  }
+}
+
+const KNOWN_NETWORK_KEYS = new Set(["base", "base-sepolia"]);
 
 // Choose which payment option to satisfy. A caller can pass
 // `selectRequirements` to prefer a network/asset/scheme; by default we prefer
 // an exact-scheme option on a network we know how to pay (the server controls
 // the ordering of `accepts`, so "first entry" is not a safe default), then
-// fall back to the first entry.
+// fall back to the first entry. Handles both friendly and CAIP-2 network ids.
 export function selectPaymentRequirements(accepts, select) {
   if (typeof select === "function") {
     const chosen = select(accepts);
     if (chosen) return chosen;
   }
   const preferred = accepts.find(
-    (r) => (r.scheme || "exact") === "exact" && KNOWN_NETWORKS.has(String(r.network || "").toLowerCase().replace("_", "-"))
+    (r) => (r.scheme || "exact") === "exact" && KNOWN_NETWORK_KEYS.has(normalizeX402Network(r.network).key)
   );
   return preferred || accepts[0];
 }
@@ -128,8 +156,10 @@ export function createAllowFetch(options = {}) {
     const first = await fetchImpl(url, init);
     if (first.status !== 402) return first;
 
-    const challengeBody = await readJson(first);
-    const challenge = parseX402Challenge(challengeBody);
+    // v2 challenges live in the PAYMENT-REQUIRED header; v1 in the JSON body.
+    const headerChallenge = parseX402ChallengeHeader(first.headers?.get?.(PAYMENT_REQUIRED_HEADER_V2));
+    const challengeBody = headerChallenge ? null : await readJson(first);
+    const challenge = headerChallenge || parseX402Challenge(challengeBody);
     if (!challenge) {
       // 402 without parseable x402 requirements — hand it back untouched.
       return rebuildResponse(first, challengeBody);
@@ -202,9 +232,20 @@ export function createAllowFetch(options = {}) {
     // Record the allowed receipt before retrying so a duplicate nonce is caught.
     receipts.push(evaluation.receipt);
 
+    // v1 sends the payer envelope as X-PAYMENT; v2 re-wraps the signed payload
+    // into a PaymentPayload (resource + accepted + payload) in PAYMENT-SIGNATURE.
+    let paymentHeaders;
+    if (challenge.x402Version >= 2) {
+      paymentHeaders = {
+        [PAYMENT_SIGNATURE_HEADER_V2]: toV2PaymentSignature(paymentHeader, challenge, requirements)
+      };
+    } else {
+      paymentHeaders = { [PAYMENT_HEADER]: paymentHeader };
+    }
+
     const retryInit = {
       ...init,
-      headers: { ...headersToObject(init.headers), [PAYMENT_HEADER]: paymentHeader }
+      headers: { ...headersToObject(init.headers), ...paymentHeaders }
     };
     const settled = await fetchImpl(url, retryInit);
 
@@ -220,6 +261,28 @@ export function createAllowFetch(options = {}) {
   wrapped.receipts = receipts;
   wrapped.policy = policy;
   return wrapped;
+}
+
+// Re-wrap a v1 payer envelope ({x402Version, scheme, network, payload}) into
+// the v2 PaymentPayload header value: base64({x402Version: 2, resource,
+// accepted, payload}).
+function toV2PaymentSignature(v1Header, challenge, requirements) {
+  const decode = (value) =>
+    typeof atob === "function" && typeof Buffer === "undefined"
+      ? atob(value)
+      : Buffer.from(value, "base64").toString("utf8");
+  const encode = (value) =>
+    typeof btoa === "function" && typeof Buffer === "undefined"
+      ? btoa(value)
+      : Buffer.from(value, "utf8").toString("base64");
+  const envelope = JSON.parse(decode(v1Header));
+  const v2 = {
+    x402Version: 2,
+    resource: challenge.resource || undefined,
+    accepted: requirements,
+    payload: envelope.payload
+  };
+  return encode(JSON.stringify(v2));
 }
 
 // Spreading a Headers instance (or [key, value] entries array) yields {} —
