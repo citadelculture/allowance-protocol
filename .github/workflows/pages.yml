@@ -27,7 +27,7 @@ jobs:
       - name: Stage static site
         run: |
           mkdir -p _site/src
-          cp index.html app.js styles.css _site/
+          cp index.html console.html app.js styles.css _site/
           cp src/*.mjs _site/src/
       - uses: actions/upload-pages-artifact@v3
         with:

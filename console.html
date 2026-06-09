@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Allow Protocol</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">A</div>
+        <div>
+          <strong>Allow Protocol</strong>
+          <span>Allowance layer for autonomous payments</span>
+        </div>
+      </div>
+      <div class="network">
+        <span>Base mainnet</span>
+        <span>USDC</span>
+        <span>v0.1</span>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="metrics" aria-label="Protocol metrics">
+        <div class="metric">
+          <span>Receipts</span>
+          <strong id="statReceipts">0</strong>
+        </div>
+        <div class="metric">
+          <span>Approved</span>
+          <strong id="statApproved">0</strong>
+        </div>
+        <div class="metric">
+          <span>Denied</span>
+          <strong id="statDenied">0</strong>
+        </div>
+        <div class="metric">
+          <span>Blocked value</span>
+          <strong id="statBlocked">$0.00</strong>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="panel control-panel">
+          <div class="panel-head">
+            <div>
+              <p>Payment Intent</p>
+              <h1>Agent allowance console</h1>
+            </div>
+            <select id="scenario" aria-label="Scenario"></select>
+          </div>
+
+          <div class="field-grid">
+            <label>
+              <span>Merchant</span>
+              <select id="merchant"></select>
+            </label>
+            <label>
+              <span>Amount</span>
+              <input id="amount" type="number" min="0.001" step="0.001">
+            </label>
+            <label class="wide">
+              <span>Resource</span>
+              <input id="resource" type="text" spellcheck="false">
+            </label>
+            <label class="wide">
+              <span>Intent nonce</span>
+              <input id="nonce" type="text" spellcheck="false">
+            </label>
+            <label class="wide">
+              <span>Metadata</span>
+              <textarea id="metadata" spellcheck="false"></textarea>
+            </label>
+          </div>
+
+          <div class="policy-controls">
+            <label>
+              <span>Daily cap <strong id="dailyCapValue">$25.00</strong></span>
+              <input id="dailyCap" type="range" min="5" max="100" step="1">
+            </label>
+            <label>
+              <span>Per tx cap <strong id="perTxValue">$1.50</strong></span>
+              <input id="perTxCap" type="range" min="0.05" max="10" step="0.05">
+            </label>
+            <label>
+              <span>Risk limit <strong id="riskLimitValue">64</strong></span>
+              <input id="riskLimit" type="range" min="10" max="95" step="1">
+            </label>
+          </div>
+
+          <div class="toggles">
+            <label class="toggle">
+              <input id="blockPii" type="checkbox">
+              <span>Block PII metadata</span>
+            </label>
+            <label class="toggle">
+              <input id="blockTrading" type="checkbox">
+              <span>Block trading routes</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="panel result-panel">
+          <div class="decision-row">
+            <span id="decision" class="decision">ALLOW</span>
+            <div class="risk">
+              <span>Risk <strong id="riskScore">0</strong></span>
+              <div class="risk-track">
+                <div id="riskBar" class="risk-bar"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="budget-grid">
+            <div>
+              <span>Remaining</span>
+              <strong id="remaining">$0.00</strong>
+            </div>
+            <div>
+              <span>Projected</span>
+              <strong id="projected">$0.00</strong>
+            </div>
+          </div>
+
+          <div class="result-lists">
+            <div>
+              <p>Decision reasons</p>
+              <ul id="reasons"></ul>
+            </div>
+            <div>
+              <p>Advisory flags</p>
+              <ul id="warnings"></ul>
+            </div>
+          </div>
+
+          <div class="receipt">
+            <span>Receipt</span>
+            <code id="receiptId">allow_00000000</code>
+          </div>
+
+          <div class="actions">
+            <button id="recordReceipt" type="button">Record receipt</button>
+            <button id="reset" type="button" class="secondary">Reset epoch</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="lower">
+        <div class="panel ledger-panel">
+          <div class="panel-head compact">
+            <div>
+              <p>Receipt Ledger</p>
+              <h2>Recent policy outcomes</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Merchant</th>
+                  <th>Amount</th>
+                  <th>Decision</th>
+                  <th>Receipt</th>
+                </tr>
+              </thead>
+              <tbody id="ledger"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel policy-panel">
+          <div class="panel-head compact">
+            <div>
+              <p>Policy Object</p>
+              <h2>Agent spending envelope</h2>
+            </div>
+          </div>
+          <pre id="policyPreview"></pre>
+        </div>
+      </section>
+
+      <section class="panel quickstart-panel">
+        <div class="panel-head compact">
+          <div>
+            <p>Builder Smoke</p>
+            <h2>Local integration checks</h2>
+          </div>
+          <div class="panel-actions">
+            <span id="quickstartStatus" class="mini allow">ready</span>
+            <button id="copyQuickstart" type="button" class="secondary">Copy commands</button>
+          </div>
+        </div>
+        <div id="quickstartChecks" class="quickstart-checks"></div>
+        <pre id="quickstartCommands" class="command-pre" aria-live="polite"></pre>
+      </section>
+
+      <section class="panel developer-panel">
+        <div class="panel-head compact">
+          <div>
+            <p>Developer Packet</p>
+            <h2>Copyable API preflight fixture</h2>
+          </div>
+          <button id="copyPacket" type="button" class="secondary">Copy packet</button>
+        </div>
+        <pre id="integrationPacket" aria-live="polite"></pre>
+      </section>
+
+      <section class="publication-disclosure" aria-label="Publication disclosures">
+        <strong>Experimental demo.</strong>
+        <span>Allow Protocol is no-custody infrastructure for agent payment policy checks. The metrics on this page are demo metrics until backed by validated execution evidence. There is no token at launch, and any future token plan is subject to legal review. Users remain responsible for their own wallet security.</span>
+        <span>The no-custody <code>AllowanceRegistry</code> is live on Base mainnet at
+          <a href="https://basescan.org/address/0x047B375f044B76efBdCE655Ab6b7EE142129c266" rel="noopener" target="_blank"><code>0x047B…c266</code></a>
+          (unaudited prototype; records policies and receipts only, never funds).</span>
+        <span id="liveRegistryStatus"></span>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
