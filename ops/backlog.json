@@ -640,5 +640,35 @@
     "status": "done",
     "track": "security",
     "task": "Add owner-only credential rotation action pack for leaked wallet and X credentials"
+  },
+  {
+    "priority": 108,
+    "status": "done",
+    "track": "protocol",
+    "task": "Deploy AllowanceRegistry to Base mainnet with byte-for-byte verification packet"
+  },
+  {
+    "priority": 109,
+    "status": "done",
+    "track": "integration",
+    "task": "Ship onchain SDK surface: deployments, registry reader, events watcher, status CLI"
+  },
+  {
+    "priority": 110,
+    "status": "done",
+    "track": "security",
+    "task": "Harden client payment path: signer caps, asset allowlist, known-network selection, fail-closed amounts"
+  },
+  {
+    "priority": 111,
+    "status": "done",
+    "track": "integration",
+    "task": "Persist allow/deny receipts from allowFetch and bridge them to registry receipt intents"
+  },
+  {
+    "priority": 112,
+    "status": "next",
+    "track": "operations",
+    "task": "Owner: rotate exposed credentials, add X API credits, verify source on Basescan, send first policy transaction"
   }
 ]

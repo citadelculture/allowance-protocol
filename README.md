@@ -44,6 +44,13 @@ Index onchain activity with `createRegistryEvents` (`allow-protocol/registry-eve
 npm run registry-status
 ```
 
+From receipt to chain, dry-run only (execution stays human-approved):
+
+```bash
+npm run registry-policy-intent -- ops/first_policy_intent.json   # createPolicy calldata + expected policyId
+npm run receipt-anchor-intent -- <receipts.jsonl> <policyId>      # recordReceipt calldata for the latest allowed receipt
+```
+
 The contract custodies no funds — it records controller-signed policies and policy-bounded receipts only. It is a prototype and has not had an independent audit.
 
 ## 30-second demo
