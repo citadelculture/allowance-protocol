@@ -58,11 +58,16 @@ npm run example:live-registry   # read the live policy, remaining allowance, rec
 npm run live-proof              # verify everything: usage, enforcement, bytecode
 ```
 
-Anchor your own receipts: create a policy with your controller wallet
-(`npm run registry-policy-intent`), then turn any allowed receipt from your
-JSONL log into calldata (`npm run receipt-anchor-intent`) and send it
-(`npm run send-registry-intent`). Replays, over-cap amounts, and unknown
-merchants revert onchain — run the proof yourself.
+Anchor your own receipts in three commands:
+
+```bash
+npm run new-policy-intent -- --controller 0x<yourWallet> --per-tx-usd 1.5 --epoch-usd 25
+npm run send-registry-intent -- work/registry/my-policy.report.json    # from the controller wallet
+npm run receipt-anchor-intent -- agent-receipts.jsonl <policyId>       # then send-registry-intent again
+```
+
+Replays, over-cap amounts, and unknown merchants revert onchain — run
+`npm run live-proof` yourself.
 
 ## Status
 

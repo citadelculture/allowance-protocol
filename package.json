@@ -117,6 +117,7 @@
     "registry-status": "node scripts/registry-status.mjs",
     "receipt-anchor-intent": "node scripts/receipt-anchor-intent.mjs",
     "send-registry-intent": "node scripts/send-registry-intent.mjs",
+    "new-policy-intent": "node scripts/new-policy-intent.mjs",
     "registry-enforcement-proof": "node scripts/registry-enforcement-proof.mjs",
     "live-proof": "node scripts/registry-status.mjs && node scripts/registry-enforcement-proof.mjs && node scripts/verification-input.mjs",
     "deploy-registry": "node scripts/compile-registry.mjs && node scripts/deploy-registry.mjs",

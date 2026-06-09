@@ -112,6 +112,16 @@ block required); validated launch post packet at ops/launch_post_packet.json
 posts from the gate-validated packet and prefills execution evidence on
 success (exit 2 while credit-blocked).
 
+LIVE MILESTONE (owner-directed, "make it work live, not just a demo"; X
+posting suspended by owner): policy #1 created onchain (tx 0xfbad04b4,
+policyId 0xf0215a33…16c6) and the first real allowFetch receipt anchored
+(tx 0x954d44c3, receiptId 0x82b0f266…ab5d) — both ids matched offline
+predictions. Enforcement proven live via classified eth_call simulations
+(npm run live-proof, sound against RPC rate limits). New user surface:
+docs/QUICKSTART.md, example:live-registry, /api/registry/live dashboard
+endpoint, new-policy-intent generator, send-registry-intent sender. See
+ops/registry_live_usage.json.
+
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet
 won't move the needle alone; engaging in existing x402 / agent-payment threads
