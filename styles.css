@@ -845,3 +845,8 @@ pre {
   font-size: 15px;
   line-height: 1;
 }
+
+a.brand {
+  color: inherit;
+  text-decoration: none;
+}
