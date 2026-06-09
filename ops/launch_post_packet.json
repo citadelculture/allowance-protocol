@@ -1,0 +1,46 @@
+{
+  "approvalId": "approval_launch_post_owner_auto_1",
+  "actionType": "x_post",
+  "status": "approved",
+  "requestedBy": "claude-code-session",
+  "requestedAt": "2026-06-09T19:45:00.000Z",
+  "approvedBy": "project-owner",
+  "approvedAt": "2026-06-09T19:46:00.000Z",
+  "ownerAuthorization": {
+    "amendmentRef": "docs/EXTERNAL_ACTION_APPROVAL.md#owner-authorization-amendment-2026-06-09",
+    "authorizedBy": "project-owner",
+    "authorizedAt": "2026-06-09T19:00:00.000Z",
+    "statement": "Owner explicitly authorized automated posting of this exact launch text from the env-var OAuth credentials, stated directly in the live session conversation."
+  },
+  "action": {
+    "summary": "Post the Allow Protocol launch tweet",
+    "channel": "x",
+    "destination": "@allowance_prtcl",
+    "executionMode": "owner_authorized_automated",
+    "exactText": "AI agents are getting wallets. None of them have a spending limit.",
+    "automated": true,
+    "command": "npm run x-post -- \"AI agents are getting wallets. None of them have a spending limit.\""
+  },
+  "approvals": {
+    "ownerAuthorizedAutomation": true,
+    "automationScopeReviewed": true,
+    "exactActionReviewed": true,
+    "externalSideEffectAcknowledged": true,
+    "noPrivateKeys": true,
+    "noCustodyOrEscrow": true,
+    "noTokenPitch": true,
+    "noMarketManipulation": true,
+    "legalEthicsReviewed": true
+  },
+  "payload": {
+    "post": {
+      "id": "launch-post-1",
+      "status": "draft_only",
+      "text": "AI agents are getting wallets. None of them have a spending limit."
+    }
+  },
+  "notes": [
+    "Posting is currently blocked by X API credits (HTTP 402 CreditsDepleted); the session loop retries this exact text.",
+    "After the post succeeds, fill ops/x_post_execution_template.json with the public URL and redacted proof, then run x-post-execution-evidence and x-post-state."
+  ]
+}
