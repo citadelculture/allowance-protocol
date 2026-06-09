@@ -17,6 +17,31 @@ npm run demo
 
 Runs the real policy engine against five payments an agent might attempt — a metered search, an inference call, an off-policy swap, a PII leak in metadata, and a replayed receipt — and shows which clear and which get stopped. No network, no keys.
 
+## Wrap your agent's fetch (x402 client)
+
+The fastest integration: wrap the `fetch` your agent already uses. When a server
+answers with HTTP 402, the allowance is checked **before** any payment is signed
+— off-policy or over-budget payments are blocked, never paid.
+
+```js
+import { createAllowFetch } from "allow-protocol/allow-fetch";
+
+const fetch = createAllowFetch({
+  policy: controllerSignedPolicy,        // daily/per-tx caps, merchant allowlist, PII rules
+  resolveMerchant: (req) => merchantFor(req.payTo),
+  pay: (requirements) => wallet.signX402(requirements) // only called if the allowance approves
+});
+
+// Use it like normal fetch. Blocked payments throw AllowancePaymentBlockedError.
+const res = await fetch("https://api.vendor.com/search");
+```
+
+Run the live local example (mock x402 server, no network, no keys):
+
+```bash
+npm run example:allow-fetch
+```
+
 ## Run
 
 ```bash

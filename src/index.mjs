@@ -230,6 +230,17 @@ export {
 } from "./httpMiddleware.mjs";
 
 export {
+  createAllowFetch,
+  AllowancePaymentBlockedError,
+  parseX402Challenge,
+  selectPaymentRequirements,
+  requirementsToIntent,
+  amountUsdFromRequirements,
+  PAYMENT_HEADER,
+  PAYMENT_RESPONSE_HEADER
+} from "./allowFetch.mjs";
+
+export {
   createAllowGatewayHandler,
   gatewayHealth,
   intentFromGatewayRequest,
