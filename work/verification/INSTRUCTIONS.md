@@ -1,7 +1,7 @@
 # Basescan Source Verification — AllowanceRegistry
 
-Generated 2026-06-09T21:10:19.061Z by scripts/verification-input.mjs.
-Onchain bytecode check: skipped (ALLOW_SKIP_RPC=1)
+Generated 2026-06-09T21:10:31.881Z by scripts/verification-input.mjs.
+Onchain bytecode check: MATCH — recompiled runtime bytecode equals eth_getCode output exactly
 
 ## Target
 
