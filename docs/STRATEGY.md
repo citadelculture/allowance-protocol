@@ -20,6 +20,30 @@ The second market is merchants who want agents to buy from them but need to prov
 
 The third market is token holders only after usage exists.
 
+## Monetization Math (2026-06 owner discussion)
+
+Fees on micropayments need enormous scale: at a 0.5% take, $100k/yr of
+revenue requires ~$20M/yr of routed agent spend (~2B one-cent requests).
+Per-transaction fees are the long-term prize, not the first dollar.
+
+Realistic first revenue is hosted policy + audit SaaS sold to teams running
+agent fleets: ~20 teams at $200/mo or 4-5 enterprise compliance contracts at
+~$50k/yr both clear $200k/yr. The buyer trigger is a finance/security team
+asking what stops deployed agents from spending wrong.
+
+The DIY objection ("teams can cap spend themselves") is answered by three
+things simple caps cannot provide: adversarial correctness in the details
+(retry header loss, per-chain USDC signing domains, accepts-ordering and
+asset-substitution attacks, v1/v2 transport differences — all found and
+fixed in this repo), receipts a *second party* can verify (self-imposed
+limits prove nothing to a CFO, merchant, or client), and one policy plane
+plus audit trail across heterogeneous agent frameworks. The standing risk
+is platform wallets shipping good-enough native limits; speed and the
+neutral cross-platform audit position are the race.
+
+Usage gates before token consideration stay as documented: 100 agents, 50
+merchants, 10,000 credible receipts.
+
 ## Product Primitive
 
 An Allow policy answers one question:
