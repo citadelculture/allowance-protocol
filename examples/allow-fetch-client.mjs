@@ -6,7 +6,14 @@
 // The allowance lets the cheap, on-policy call through and blocks the
 // expensive off-policy one BEFORE any payment is signed. No network, no keys.
 
-import { createAllowFetch, AllowancePaymentBlockedError, PAYMENT_HEADER, createX402Payer } from "../src/index.mjs";
+import {
+  createAllowFetch,
+  AllowancePaymentBlockedError,
+  PAYMENT_HEADER,
+  createX402Payer,
+  createJsonlReceiptStore,
+  loadReceiptRecords
+} from "../src/index.mjs";
 import { privateKeyToAccount } from "viem/accounts";
 
 // --- a stand-in x402 upstream (replace with the real internet) --------------
@@ -36,15 +43,19 @@ const mockFetch = async (url, init = {}) => {
 };
 
 // --- the integration: this is the whole thing ------------------------------
+const receiptLog = new URL("../ops/allow-fetch-example-receipts.local.jsonl", import.meta.url).pathname;
 const allowFetch = createAllowFetch({
   fetchImpl: mockFetch,
   policy: { spentTodayUsd: 0 }, // controller-signed allowance; uses sane demo defaults
   resolveMerchant: (req) => (req.payTo === MERCHANT_ADDR ? "mcp_search" : "wallet_swapper"),
   // Real x402 signer (USDC EIP-3009). Throwaway demo key; reached ONLY after the
-  // allowance approves the payment.
+  // allowance approves the payment — and it carries its own hard ceiling.
   pay: createX402Payer({
-    account: privateKeyToAccount("0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d")
+    account: privateKeyToAccount("0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d"),
+    perTxCapUnits: 1_500_000n // 1.50 USDC: the signer refuses anything above this, policy or not
   }),
+  // Persist every decision — denied payments are evidence too.
+  receiptStore: createJsonlReceiptStore(receiptLog),
   onDecision: ({ decision, intent }) => console.log(`  policy: ${decision.toUpperCase()} ${intent.merchantId} ($${intent.amountUsd})`)
 });
 
@@ -63,4 +74,9 @@ for (const path of ["/search", "/swap"]) {
   }
 }
 
-console.log(`\nReceipts recorded: ${allowFetch.receipts.length} (only allowed payments).`);
+const persisted = await loadReceiptRecords(receiptLog);
+console.log(`\nReceipts in memory: ${allowFetch.receipts.length} (allowed payments only — the replay window).`);
+console.log(`Decisions persisted: ${persisted.length} -> ${receiptLog}`);
+for (const record of persisted.slice(-2)) {
+  console.log(`  ${record.decision.toUpperCase()} ${record.intent?.merchantId} $${record.intent?.amountUsd}`);
+}
