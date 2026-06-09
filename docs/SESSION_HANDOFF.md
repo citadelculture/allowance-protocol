@@ -112,6 +112,18 @@ block required); validated launch post packet at ops/launch_post_packet.json
 posts from the gate-validated packet and prefills execution evidence on
 success (exit 2 while credit-blocked).
 
+LIVE MILESTONE 2 (x402 v2 interop): https://www.x402.org/protected is
+reachable from this environment and speaks x402 v2. Added v2 support
+(PAYMENT-REQUIRED header challenges, CAIP-2 networks, PAYMENT-SIGNATURE
+submission; real captured challenge pinned in test/allowFetchV2.test.mjs).
+Live run: policy allowed the real $0.01 ask, the facilitator recovered our
+signature and simulated the transfer onchain, failing only on the unfunded
+wallet (invalid_exact_evm_transaction_simulation_failed). Funded settlement
+is the single remaining untested step (owner: ~1 Base Sepolia USDC from
+faucet.circle.com + AGENT_TEST_PK in env). Also shipped: white-minimal
+design system, landing page (index.html; console at console.html), Pages
+workflow, refreshed launch screenshots.
+
 LIVE MILESTONE (owner-directed, "make it work live, not just a demo"; X
 posting suspended by owner): policy #1 created onchain (tx 0xfbad04b4,
 policyId 0xf0215a33…16c6) and the first real allowFetch receipt anchored

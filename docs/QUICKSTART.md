@@ -36,7 +36,10 @@ const fetch = createAllowFetch({
 });
 ```
 
-Use it like normal `fetch`. When a server answers HTTP 402 (x402), the
+Use it like normal `fetch`. Both x402 transports are supported — v1 JSON-body
+challenges and v2 `PAYMENT-REQUIRED` header challenges with CAIP-2 network
+ids — live-verified against the reference server at x402.org. When a server
+answers HTTP 402 (x402), the
 allowance is checked **before** any payment is signed. Off-policy, over-cap,
 PII-leaking, or replayed payments throw `AllowancePaymentBlockedError` and
 never reach the signer. Every decision — allowed and denied — lands in your
