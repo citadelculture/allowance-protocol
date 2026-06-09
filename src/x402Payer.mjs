@@ -111,7 +111,25 @@ export function createX402Payer(options = {}) {
     }
     const network = String(requirements.network || "base").toLowerCase().replace("_", "-");
     const chainId = Number(requirements.extra?.chainId || chainIds[network] || chainIds.base);
-    const verifyingContract = usdcAddressFor(network, requirements.asset && isAddress(requirements.asset) ? requirements.asset : options.usdcAddress);
+
+    // The asset address is server-supplied. Signing against an arbitrary
+    // token would authorize transferring THAT token from the agent's wallet,
+    // not USDC — so unknown assets are refused unless the integrator opts in
+    // (options.usdcAddress for a fixed override, trustRequirementsAsset for
+    // marketplaces that vet assets themselves).
+    let verifyingContract;
+    const knownUsdc = usdcAddressFor(network, options.usdcAddress);
+    if (requirements.asset && isAddress(requirements.asset)) {
+      const sameAsKnown = requirements.asset.toLowerCase() === knownUsdc.toLowerCase();
+      if (!sameAsKnown && options.trustRequirementsAsset !== true) {
+        throw new Error(
+          `x402 payer refused to sign: server asset ${requirements.asset} is not the known USDC for ${network} (${knownUsdc}); set trustRequirementsAsset: true to override`
+        );
+      }
+      verifyingContract = requirements.asset;
+    } else {
+      verifyingContract = knownUsdc;
+    }
 
     const authorization = buildAuthorization(requirements, {
       from: account.address,

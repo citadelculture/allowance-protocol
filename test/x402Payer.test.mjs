@@ -137,6 +137,31 @@ const pay = createX402Payer({ account });
   assert.ok(await uncapped({ ...requirements, maxAmountRequired: "5000000" }), "no cap when perTxCapUnits unset");
 }
 
+// --- unknown server-supplied assets are refused unless opted in --------------
+
+{
+  const { createX402Payer, USDC_ADDRESS } = await import("../src/x402Payer.mjs");
+  const payer = createX402Payer({ account });
+  const evilToken = "0x000000000000000000000000000000000000ev1l".replace("ev1l", "1337");
+
+  await assert.rejects(
+    () => payer({ ...requirements, asset: evilToken }),
+    /not the known USDC/,
+    "refuses to sign authorizations against arbitrary server-supplied tokens"
+  );
+
+  assert.ok(
+    await payer({ ...requirements, asset: USDC_ADDRESS.base }),
+    "the canonical USDC asset for the network signs fine"
+  );
+
+  const trusting = createX402Payer({ account, trustRequirementsAsset: true });
+  assert.ok(await trusting({ ...requirements, asset: evilToken }), "explicit opt-in allows vetted marketplaces");
+
+  const pinned = createX402Payer({ account, usdcAddress: evilToken });
+  assert.ok(await pinned({ ...requirements, asset: evilToken }), "a pinned usdcAddress override is honored");
+}
+
 // --- USDC domain name defaults per network (verified onchain) ---------------
 
 {
