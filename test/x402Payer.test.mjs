@@ -74,6 +74,14 @@ const pay = createX402Payer({ account });
   const auth = buildAuthorization(requirements, { from: account.address, validForSeconds: 120 });
   assert.ok(Number(auth.validBefore) > Math.floor(Date.now() / 1000), "validBefore is in the future");
   assert.equal(auth.validAfter, "0");
+
+  const now = Math.floor(Date.now() / 1000);
+  const serverWindow = buildAuthorization({ ...requirements, maxTimeoutSeconds: 300 }, { from: account.address });
+  assert.ok(Number(serverWindow.validBefore) >= now + 295, "server maxTimeoutSeconds widens the validity window");
+  const capped = buildAuthorization({ ...requirements, maxTimeoutSeconds: 999999 }, { from: account.address });
+  assert.ok(Number(capped.validBefore) <= now + 3601, "validity window is capped at one hour");
+  const explicit = buildAuthorization({ ...requirements, maxTimeoutSeconds: 300 }, { from: account.address, validForSeconds: 30 });
+  assert.ok(Number(explicit.validBefore) <= now + 31, "explicit validForSeconds wins over the server window");
 }
 
 // --- end to end: allowance approves, payer signs, request settles -----------

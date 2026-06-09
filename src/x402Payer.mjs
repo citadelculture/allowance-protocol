@@ -63,7 +63,13 @@ export function usdcDomain({ chainId, verifyingContract, network, name, version 
 }
 
 // Map an x402 requirements object to the authorization message + domain.
-export function buildAuthorization(requirements, { from, chainId, validForSeconds = 60, nonce } = {}) {
+export function buildAuthorization(requirements, { from, chainId, validForSeconds, nonce } = {}) {
+  // Respect the server's stated settlement window (x402 maxTimeoutSeconds) so
+  // the authorization does not expire before the facilitator can broadcast it.
+  if (validForSeconds == null) {
+    const serverWindow = Number(requirements.maxTimeoutSeconds);
+    validForSeconds = Number.isFinite(serverWindow) && serverWindow > 0 ? Math.min(serverWindow, 3600) : 60;
+  }
   const now = Math.floor(Date.now() / 1000);
   const value = String(requirements.maxAmountRequired ?? requirements.amount ?? "0");
   return {
