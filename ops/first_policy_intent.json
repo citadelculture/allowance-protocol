@@ -1,0 +1,25 @@
+{
+  "intentId": "first-policy-base-mainnet-self-test",
+  "policyPath": "allow-policy.example.json",
+  "deploymentManifestPath": "",
+  "requireDeployedRegistry": true,
+  "registry": {
+    "contractAddress": "0x047B375f044B76efBdCE655Ab6b7EE142129c266",
+    "chainId": 8453,
+    "network": "Base",
+    "environment": "mainnet",
+    "controller": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+    "agentAddress": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+    "settlementToken": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "controllerNonce": "0x616c6c6f772d66697273742d706f6c6963792d323032362d30362d3039000000",
+    "epochCapUsd": 25,
+    "perTxCapUsd": 1.5,
+    "epochSeconds": 86400,
+    "amountDecimals": 6
+  },
+  "notes": [
+    "Self-test policy intent for the live Base registry: controller and agent are both the deployer wallet so the owner can create policy #1 and record the first receipt with one wallet.",
+    "Dry-run only. This packet generates calldata, merchant id hashes, and the expected policy id; sending the transaction remains a human action from the controller wallet.",
+    "controllerNonce is the public ASCII bytes32 of allow-first-policy-2026-06-09; replace before reuse."
+  ]
+}

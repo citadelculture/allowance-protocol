@@ -1,0 +1,121 @@
+{
+  "manifestPath": "ops/first_policy_intent.json",
+  "intentId": "first-policy-base-mainnet-self-test",
+  "policyPath": "allow-policy.example.json",
+  "valid": true,
+  "status": "ready_for_external_approval",
+  "generatedAt": "2026-06-09T20:53:34.329Z",
+  "mode": "dry_run",
+  "contract": {
+    "name": "AllowanceRegistry",
+    "abi": [
+      {
+        "type": "function",
+        "name": "createPolicy",
+        "stateMutability": "nonpayable",
+        "inputs": [
+          {
+            "name": "agent",
+            "type": "address"
+          },
+          {
+            "name": "settlementToken",
+            "type": "address"
+          },
+          {
+            "name": "epochCap",
+            "type": "uint128"
+          },
+          {
+            "name": "perTxCap",
+            "type": "uint128"
+          },
+          {
+            "name": "epochSeconds",
+            "type": "uint64"
+          },
+          {
+            "name": "controllerNonce",
+            "type": "bytes32"
+          },
+          {
+            "name": "merchantIds",
+            "type": "bytes32[]"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "policyId",
+            "type": "bytes32"
+          }
+        ]
+      }
+    ],
+    "address": "0x047b375f044b76efbdce655ab6b7ee142129c266",
+    "chainId": 8453,
+    "network": "Base",
+    "environment": "mainnet",
+    "controller": "0xfb7f313f9c7b129a6744bc8866518f5040337bdf"
+  },
+  "sourcePolicy": {
+    "policyId": "allow_policy_demo_alpha",
+    "agentId": "agent-alpha",
+    "controller": "0xController",
+    "fingerprint": "10cee07e",
+    "allowedMerchants": [
+      "mcp_search",
+      "vector_cloud",
+      "lead_graph"
+    ]
+  },
+  "registry": {
+    "functionName": "createPolicy",
+    "args": {
+      "agent": "0xfb7f313f9c7b129a6744bc8866518f5040337bdf",
+      "settlementToken": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "epochCap": "25000000",
+      "perTxCap": "1500000",
+      "epochSeconds": "86400",
+      "controllerNonce": "0x616c6c6f772d66697273742d706f6c6963792d323032362d30362d3039000000",
+      "merchantIds": [
+        "0x663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f52",
+        "0xde8eb9d99ead9fd85f6c3713cf7853aaeeb7f810e05159027160d9b7acf706d6",
+        "0x2ab65a371007604d5b8f934f3c64dc0421be5d75561a7b5ad12a0d3645031f8a"
+      ]
+    },
+    "argsArray": [
+      "0xfb7f313f9c7b129a6744bc8866518f5040337bdf",
+      "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "25000000",
+      "1500000",
+      "86400",
+      "0x616c6c6f772d66697273742d706f6c6963792d323032362d30362d3039000000",
+      [
+        "0x663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f52",
+        "0xde8eb9d99ead9fd85f6c3713cf7853aaeeb7f810e05159027160d9b7acf706d6",
+        "0x2ab65a371007604d5b8f934f3c64dc0421be5d75561a7b5ad12a0d3645031f8a"
+      ]
+    ],
+    "calldata": "0x9199f3dc000000000000000000000000fb7f313f9c7b129a6744bc8866518f5040337bdf000000000000000000000000833589fcd6edb6e08f4c7c32d4f71b54bda0291300000000000000000000000000000000000000000000000000000000017d7840000000000000000000000000000000000000000000000000000000000016e3600000000000000000000000000000000000000000000000000000000000015180616c6c6f772d66697273742d706f6c6963792d323032362d30362d303900000000000000000000000000000000000000000000000000000000000000000000e00000000000000000000000000000000000000000000000000000000000000003663a99672766de52e3f94d2cd409386cab28ad02fe4d7576dd612cafb1b34f52de8eb9d99ead9fd85f6c3713cf7853aaeeb7f810e05159027160d9b7acf706d62ab65a371007604d5b8f934f3c64dc0421be5d75561a7b5ad12a0d3645031f8a",
+    "expectedPolicyId": "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
+    "amountDecimals": 6,
+    "merchantIdNamespace": "allow-merchant:v1",
+    "writeIntentHash": "0x32aa3851d4c53584b5b5ab0da01c3dccaa8e28a8c22278bbf6f1f1d4c256d70f"
+  },
+  "safety": {
+    "broadcast": false,
+    "signsTransaction": false,
+    "includesPrivateKey": false,
+    "movesFunds": false,
+    "requiresHumanExecution": true,
+    "requiresExternalActionApproval": true,
+    "approvalActionType": "registry_policy_create",
+    "note": "This packet is calldata and hash material only; it does not deploy, sign, broadcast, custody, or transfer funds."
+  },
+  "reasons": [],
+  "warnings": [
+    "epochCap inferred from USD value with 6 decimals; verify registry caps use the same settlement-token unit",
+    "perTxCap inferred from USD value with 6 decimals; verify registry caps use the same settlement-token unit",
+    "Derived registry merchantIds from offchain merchant ids; receipt writers must use the same allow-merchant:v1 namespace"
+  ]
+}
