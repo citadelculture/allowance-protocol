@@ -251,6 +251,12 @@ export {
 export { postTweet, oauth1Header, percentEncode, credsFromEnv } from "./xClient.mjs";
 
 export {
+  ALLOWANCE_REGISTRY_DEPLOYMENTS,
+  allowanceRegistryAddress,
+  allowanceRegistryDeployment
+} from "./deployments.mjs";
+
+export {
   createAllowGatewayHandler,
   gatewayHealth,
   intentFromGatewayRequest,

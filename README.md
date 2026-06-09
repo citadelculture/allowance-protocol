@@ -8,6 +8,26 @@ It gives wallet-bearing agents spend policies before they can pay APIs, MCP serv
 
 It is no-custody by design — the protocol never holds funds, it only authorizes and records. It is x402-native and MCP-native, so it sits exactly where autonomous payment volume is forming.
 
+## Live deployment
+
+`AllowanceRegistry` — the no-custody policy/receipt registry — is live on Base mainnet:
+
+| | |
+|---|---|
+| Address | [`0x047B375f044B76efBdCE655Ab6b7EE142129c266`](https://basescan.org/address/0x047B375f044B76efBdCE655Ab6b7EE142129c266) |
+| Chain | Base (8453) |
+| Deploy tx | `0xaa7f127ba8a15b4bbe64ba3f1ddad9c5973286506dbaec29c4d3019c1f83f636` |
+
+Resolve it from the SDK without hardcoding:
+
+```js
+import { allowanceRegistryAddress } from "allow-protocol/deployments";
+
+const registry = allowanceRegistryAddress("base"); // or by chain id: allowanceRegistryAddress(8453)
+```
+
+The contract custodies no funds — it records controller-signed policies and policy-bounded receipts only. It is a prototype and has not had an independent audit.
+
 ## 30-second demo
 
 ```bash
