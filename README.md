@@ -4,6 +4,19 @@ Allow Protocol is the allowance layer for autonomous AI payments.
 
 It gives wallet-bearing agents spend policies before they can pay APIs, MCP servers, data vendors, inference endpoints, or other services. The first version ships as a local simulator, policy engine, receipt ledger, and no-custody Solidity registry prototype.
 
+**The problem:** giving an autonomous agent a wallet means giving it a signer that can approve anything. There is no native concept of an allowance — a bounded budget, an approved counterparty list, a per-transaction ceiling — between the agent and its funds. Allow Protocol is that layer. Every payment the agent attempts becomes a signed, replay-protected receipt that is checked against a controller-signed policy *before* value moves: allow, route to human review, or deny.
+
+It is no-custody by design — the protocol never holds funds, it only authorizes and records. It is x402-native and MCP-native, so it sits exactly where autonomous payment volume is forming.
+
+## 30-second demo
+
+```bash
+npm install
+npm run demo
+```
+
+Runs the real policy engine against five payments an agent might attempt — a metered search, an inference call, an off-policy swap, a PII leak in metadata, and a replayed receipt — and shows which clear and which get stopped. No network, no keys.
+
 ## Run
 
 ```bash
