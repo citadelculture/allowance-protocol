@@ -6,16 +6,41 @@ step is one command.
 
 ## 0. Prerequisite: an open network session
 
-The agent's build environment is firewalled to GitHub + npm. To let it act on
-the internet (deploy, post, hit live x402 servers), recreate the Claude Code web
-session with a network policy that allowlists at minimum:
+The default build environment is firewalled to GitHub + npm. To let the agent
+act on the internet (deploy, post, hit live x402 servers), the Claude Code web
+environment must use **Custom** (or **Full**) network access. Configure it via
+the cloud icon → Add/Edit environment → **Network access → Custom → Allowed
+domains** (check "Also include default list of common package managers").
 
-- `mainnet.base.org` / `sepolia.base.org` (or your Alchemy/Infura RPC)
-- `api.basescan.org`
-- `api.x.com`, `api.twitter.com` (only if posting to X)
-- your chosen x402 facilitator
+Allowed domains (one per line):
 
-Docs: https://code.claude.com/docs/en/claude-code-on-the-web
+```
+api.x.com
+api.twitter.com
+upload.twitter.com
+go.getblock.io
+mainnet.base.org
+sepolia.base.org
+api.basescan.org
+api-sepolia.basescan.org
+```
+
+Set secrets in the same dialog's **Environment variables** field (.env format,
+no quotes). The scripts read these keys:
+
+```
+X_API_KEY=
+X_API_SECRET=
+X_ACCESS_TOKEN=
+X_ACCESS_TOKEN_SECRET=
+ALLOW_DEPLOY_PK=
+ALLOW_RPC_URL=
+```
+
+Then start a new task on this branch with that environment selected. Network
+policy changes only apply to new sessions.
+
+Docs: https://code.claude.com/docs/en/claude-code-on-the-web (Network access)
 
 ## 1. Deploy the no-custody registry to Base
 
