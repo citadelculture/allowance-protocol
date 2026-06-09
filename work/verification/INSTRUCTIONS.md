@@ -1,6 +1,6 @@
 # Basescan Source Verification — AllowanceRegistry
 
-Generated 2026-06-09T21:10:31.881Z by scripts/verification-input.mjs.
+Generated 2026-06-09T22:02:26.251Z by scripts/verification-input.mjs.
 Onchain bytecode check: MATCH — recompiled runtime bytecode equals eth_getCode output exactly
 
 ## Target

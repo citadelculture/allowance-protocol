@@ -1,6 +1,6 @@
 {
-  "proofId": "registry-enforcement-1781042229987",
-  "generatedAt": "2026-06-09T21:57:09.987Z",
+  "proofId": "registry-enforcement-1781042545199",
+  "generatedAt": "2026-06-09T22:02:25.199Z",
   "registry": "0x047B375f044B76efBdCE655Ab6b7EE142129c266",
   "chainId": 8453,
   "policyId": "0xf0215a330054b86fcf1d48cf803cacaa32a72d140bc460f8f470d103876616c6",
@@ -9,28 +9,28 @@
     {
       "id": "replayed_nonce_reverts",
       "expectRevert": true,
-      "reverted": true,
+      "outcome": "reverted",
       "pass": true,
       "detail": "RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0xcbd12b96f0215a330054b86fcf1d48cf803cacaa32a72d140bc46"
     },
     {
       "id": "over_per_tx_cap_reverts",
       "expectRevert": true,
-      "reverted": true,
+      "outcome": "reverted",
       "pass": true,
       "detail": "RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0xcbd12b96f0215a330054b86fcf1d48cf803cacaa32a72d140bc46"
     },
     {
       "id": "unknown_merchant_reverts",
       "expectRevert": true,
-      "reverted": true,
+      "outcome": "reverted",
       "pass": true,
       "detail": "RPC Request failed.\n\nURL: https://mainnet.base.org\nRequest body: {\"method\":\"eth_call\",\"params\":[{\"data\":\"0xcbd12b96f0215a330054b86fcf1d48cf803cacaa32a72d140bc46"
     },
     {
       "id": "fresh_in_policy_receipt_allows",
       "expectRevert": false,
-      "reverted": false,
+      "outcome": "allowed",
       "pass": true,
       "detail": "call succeeded"
     }
