@@ -102,6 +102,16 @@ test; the unresolved 2026-06-09 credential exposure surfaced as owner
 action 0 with the rotation handoff generated; bytes32 validation in the
 registry reader.
 
+Cycles 30-39: publish metadata (engines/repository/keywords); CI workflow
+(.github/workflows/test.yml); receipt-anchor-intent bridge (allowFetch JSONL
+to recordReceipt calldata); backlog reconciled (entries 108-112); gateway +
+mcp/wallet guard audits clean; owner_authorized_automated execution mode in
+the approval gate (x_post + contract_deployment only, ownerAuthorization
+block required); validated launch post packet at ops/launch_post_packet.json
+(@allowance_prtcl confirmed via authenticated getMe); npm run x-launch-retry
+posts from the gate-validated packet and prefills execution evidence on
+success (exit 2 while credit-blocked).
+
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet
 won't move the needle alone; engaging in existing x402 / agent-payment threads
