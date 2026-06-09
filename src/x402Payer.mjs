@@ -84,7 +84,31 @@ export function createX402Payer(options = {}) {
 
   const chainIds = { base: 8453, "base-sepolia": 84532, ...(options.chainIds || {}) };
 
+  // Signer-level ceiling in atomic units (e.g. 1_500_000n = 1.50 USDC). The
+  // policy engine is the primary gate; this is the signer's own last line —
+  // it refuses to sign over-cap authorizations even if a caller invokes
+  // pay() directly with requirements the policy never evaluated.
+  const perTxCapUnits = options.perTxCapUnits == null ? null : BigInt(options.perTxCapUnits);
+
   return async function pay(requirements, ctx = {}) {
+    if (!isAddress(requirements?.payTo)) {
+      throw new Error(`x402 payer refused to sign: payTo is not an address (${String(requirements?.payTo)})`);
+    }
+
+    let valueUnits;
+    try {
+      valueUnits = BigInt(String(requirements.maxAmountRequired ?? requirements.amount ?? ""));
+    } catch {
+      throw new Error("x402 payer refused to sign: payment amount is not a valid atomic unit string");
+    }
+    if (valueUnits <= 0n) {
+      throw new Error("x402 payer refused to sign: payment amount must be positive");
+    }
+    if (perTxCapUnits != null && valueUnits > perTxCapUnits) {
+      throw new Error(
+        `x402 payer refused to sign: ${valueUnits} atomic units exceeds the signer cap of ${perTxCapUnits}`
+      );
+    }
     const network = String(requirements.network || "base").toLowerCase().replace("_", "-");
     const chainId = Number(requirements.extra?.chainId || chainIds[network] || chainIds.base);
     const verifyingContract = usdcAddressFor(network, requirements.asset && isAddress(requirements.asset) ? requirements.asset : options.usdcAddress);

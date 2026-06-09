@@ -103,6 +103,40 @@ const pay = createX402Payer({ account });
   assert.equal(allowFetch.receipts.length, 1);
 }
 
+// --- signer-level guards: payTo, amount shape, and hard cap ------------------
+
+{
+  const { createX402Payer } = await import("../src/x402Payer.mjs");
+  const guarded = createX402Payer({ account, perTxCapUnits: 1_500_000n }); // 1.50 USDC
+
+  await assert.rejects(
+    () => guarded({ ...requirements, payTo: "merchant-not-an-address" }),
+    /payTo is not an address/,
+    "refuses malformed destinations"
+  );
+  await assert.rejects(
+    () => guarded({ ...requirements, maxAmountRequired: "0.018" }),
+    /not a valid atomic unit/,
+    "refuses decimal amounts"
+  );
+  await assert.rejects(
+    () => guarded({ ...requirements, maxAmountRequired: "0" }),
+    /must be positive/,
+    "refuses zero-value authorizations"
+  );
+  await assert.rejects(
+    () => guarded({ ...requirements, maxAmountRequired: "5000000" }),
+    /exceeds the signer cap/,
+    "refuses over-cap authorizations even when called directly"
+  );
+
+  const header = await guarded(requirements); // 18000 units, under cap
+  assert.ok(header, "under-cap payments still sign");
+
+  const uncapped = createX402Payer({ account });
+  assert.ok(await uncapped({ ...requirements, maxAmountRequired: "5000000" }), "no cap when perTxCapUnits unset");
+}
+
 // --- USDC domain name defaults per network (verified onchain) ---------------
 
 {
