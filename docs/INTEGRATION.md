@@ -4,6 +4,25 @@ Allow v0 exposes a preflight check for paid APIs and agent clients.
 
 It is x402-style rather than a full x402 settlement implementation: Allow evaluates whether the agent is permitted to spend before the payment is signed or accepted.
 
+## Agent Client (fastest path)
+
+Wrap the `fetch` your agent already uses. Real x402 402 challenges are parsed, the allowance is evaluated, and only approved payments reach the signer — which carries its own hard cap. Every decision can persist to a JSONL receipt log.
+
+```js
+import { createAllowFetch } from "allow-protocol/allow-fetch";
+import { createX402Payer } from "allow-protocol/x402-payer";
+import { createJsonlReceiptStore } from "allow-protocol/receipts";
+
+const fetch = createAllowFetch({
+  policy: controllerSignedPolicy,
+  resolveMerchant: (req) => merchantFor(req.payTo),
+  pay: createX402Payer({ account, perTxCapUnits: 1_500_000n }),
+  receiptStore: createJsonlReceiptStore("ops/agent-receipts.jsonl")
+});
+```
+
+Runnable end to end: `npm run example:allow-fetch`. The no-custody `AllowanceRegistry` these receipts can anchor to is live on Base — resolve it with `allowanceRegistryAddress("base")` from `allow-protocol/deployments`, and read it with `allow-protocol/registry-reader` / `allow-protocol/registry-events`.
+
 ## Local Endpoint
 
 ```bash
