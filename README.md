@@ -2,6 +2,8 @@
 
 Allow Protocol is the allowance layer for autonomous AI payments.
 
+![Allow Protocol landing page](launch/allow-landing.png)
+
 It gives wallet-bearing agents spend policies before they can pay APIs, MCP servers, data vendors, inference endpoints, or other services. The first version ships as a local simulator, policy engine, receipt ledger, and no-custody Solidity registry prototype.
 
 **The problem:** giving an autonomous agent a wallet means giving it a signer that can approve anything. There is no native concept of an allowance — a bounded budget, an approved counterparty list, a per-transaction ceiling — between the agent and its funds. Allow Protocol is that layer. Every payment the agent attempts becomes a signed, replay-protected receipt that is checked against a controller-signed policy *before* value moves: allow, route to human review, or deny.
