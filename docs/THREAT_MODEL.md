@@ -19,6 +19,9 @@ Allow Protocol exists because autonomous payments fail in boring, expensive ways
 - Replay attacker that reuses an old receipt or intent
 - Data broker that hides personal data inside metadata
 - Speculator trying to turn product metrics into misleading token claims
+- Malicious x402 server that orders `accepts[]` to steer payment onto an unknown network
+- Malicious x402 server that supplies a non-USDC `asset` address so the agent signs away a different token
+- Compromised caller that invokes the payment signer directly, bypassing policy evaluation
 
 ## Current Controls
 
@@ -46,6 +49,11 @@ Allow Protocol exists because autonomous payments fail in boring, expensive ways
 - Live x402 smoke readiness blocks local, unapproved, verify-only, or synthetic-payment configs
 - Receipt evidence provenance separates local demos from merchant-approved testnet and mainnet pilot evidence
 - Receipt-bound dispute packet validator blocks raw sensitive metadata and runtime secrets
+- Client-side x402 selection prefers exact-scheme offers on known networks over server `accepts[]` ordering
+- Payment signer refuses non-canonical USDC asset addresses unless the integrator explicitly opts in
+- Signer-level `perTxCapUnits` hard ceiling plus payTo/amount validation, enforced even on direct `pay()` calls
+- Malformed x402 amounts fail closed as policy denials instead of client exceptions
+- Every allow/deny decision can persist to a JSONL receipt log with denial reasons
 
 ## Known Gaps
 
