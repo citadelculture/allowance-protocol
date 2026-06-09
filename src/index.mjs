@@ -264,6 +264,11 @@ export {
 } from "./registryReader.mjs";
 
 export {
+  ALLOWANCE_REGISTRY_EVENTS_ABI,
+  createRegistryEvents
+} from "./registryEvents.mjs";
+
+export {
   createAllowGatewayHandler,
   gatewayHealth,
   intentFromGatewayRequest,
