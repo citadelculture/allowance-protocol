@@ -32,6 +32,13 @@ step is one command.
    fresh (non-exposed) controller wallet for production agents.
 4. **npm publish** (optional) — needs an npm token, `private: false`, and a
    final package name.
+5. **Funded live settlement** — the only untested protocol step. The client
+   is live-verified against https://www.x402.org/protected (x402 v2): the
+   facilitator accepts our payload, recovers the signature, and simulates
+   the USDC transfer; it fails only on the unfunded wallet
+   (`invalid_exact_evm_transaction_simulation_failed`). Send ~1 testnet USDC
+   on Base Sepolia (Circle faucet: https://faucet.circle.com) to an agent
+   wallet and rerun the flow to complete a real settlement end to end.
 
 ## 0. Prerequisite: an open network session
 
