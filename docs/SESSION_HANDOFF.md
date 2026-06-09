@@ -92,7 +92,15 @@ outreach, secrets in env vars only. Completed cycles, all tested and pushed:
     ordered, stop()-able). Server + preflight smoke green.
 
 Owner later set the loop cadence to ~3-minute ticks with continuous
-back-to-back work between ticks.
+back-to-back work between ticks. Later cycles (18+): exact-scheme/known-
+network default selection in allowFetch; payer refuses non-canonical USDC
+assets and honors maxTimeoutSeconds; threat model updated with the new
+client-side adversaries/controls; registry-status --json; dry-run first-
+policy intent packet (expected policyId 0xf0215a33…16c6); GO_LIVE owner
+checklist; stream-body retry guard; payer↔facilitator round-trip interop
+test; the unresolved 2026-06-09 credential exposure surfaced as owner
+action 0 with the rotation handoff generated; bytes32 validation in the
+registry reader.
 
 ## Honest status / next leverage
 The hard problem is distribution, not tooling. A zero-follower launch tweet

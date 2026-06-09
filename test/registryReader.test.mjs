@@ -82,6 +82,16 @@ function stubClient(overrides = {}) {
   assert.ok(client.calls.every((c) => c.address === ALLOWANCE_REGISTRY_DEPLOYMENTS.base.address));
 }
 
+// --- malformed policy ids are rejected before any RPC call ----------------------
+{
+  const client = stubClient();
+  const reader = createRegistryReader({ client });
+  await assert.rejects(() => reader.getPolicy("policy-1"), /bytes32/);
+  await assert.rejects(() => reader.getSpentInEpoch("0x1234"), /bytes32/);
+  await assert.rejects(() => reader.isMerchantAllowed(undefined, "mcp_search"), /bytes32/);
+  assert.equal(client.calls.length, 0, "no RPC call was made for invalid ids");
+}
+
 // --- missing policy returns null ------------------------------------------------
 {
   const client = stubClient({ policies: [ZERO_ADDRESS, ZERO_ADDRESS, ZERO_ADDRESS, 0n, 0n, 0n, 0n, false] });

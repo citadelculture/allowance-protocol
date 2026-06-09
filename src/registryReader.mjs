@@ -80,7 +80,14 @@ export function createRegistryReader({ client, address, chain = "base" } = {}) {
   const read = (functionName, args) =>
     client.readContract({ address: registryAddress, abi: ALLOWANCE_REGISTRY_READ_ABI, functionName, args });
 
+  const assertPolicyId = (policyId) => {
+    if (!BYTES32_PATTERN.test(String(policyId || ""))) {
+      throw new Error(`policyId must be a 0x-prefixed bytes32 value (got ${String(policyId)})`);
+    }
+  };
+
   async function getPolicy(policyId) {
+    assertPolicyId(policyId);
     const [controller, agent, settlementToken, epochCap, perTxCap, epochSeconds, epochStartedAt, active] =
       await read("policies", [policyId]);
     if (!controller || controller.toLowerCase() === ZERO_ADDRESS) return null;
@@ -88,14 +95,17 @@ export function createRegistryReader({ client, address, chain = "base" } = {}) {
   }
 
   async function getSpentInEpoch(policyId) {
+    assertPolicyId(policyId);
     return BigInt(await read("spentInEpoch", [policyId]));
   }
 
   async function isMerchantAllowed(policyId, merchantId) {
+    assertPolicyId(policyId);
     return Boolean(await read("allowedMerchant", [policyId, normalizeRegistryMerchantId(merchantId)]));
   }
 
   async function isIntentNonceUsed(policyId, intentNonce) {
+    assertPolicyId(policyId);
     return Boolean(await read("usedIntentNonce", [policyId, intentNonce]));
   }
 
