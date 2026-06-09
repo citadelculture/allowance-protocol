@@ -186,6 +186,14 @@ export function createAllowFetch(options = {}) {
       throw new Error("createAllowFetch: payment allowed but no pay() function was provided");
     }
 
+    // A stream body was already consumed by the first request; retrying would
+    // silently send an empty body to a paid endpoint. Fail loudly instead.
+    if (typeof ReadableStream !== "undefined" && init.body instanceof ReadableStream) {
+      throw new Error(
+        "createAllowFetch: cannot retry a ReadableStream body after a 402 — pass a reusable body (string, Buffer, Blob, or FormData)"
+      );
+    }
+
     const paymentHeader = await pay(requirements, { intent, url, init, x402Version: challenge.x402Version });
     if (!paymentHeader) {
       throw new Error("createAllowFetch: pay() did not return an X-PAYMENT header");

@@ -249,6 +249,29 @@ assert.equal(intent.resource, "https://api.example.com/search");
   assert.deepEqual(errors, ["disk full"], "failure surfaced via onReceiptError");
 }
 
+// --- stream bodies fail loudly instead of retrying empty ---------------------
+
+{
+  const { fetchImpl } = mockUpstream({ requirements: usdcRequirements });
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "nonce-stream-1",
+    pay: async () => "PAYMENT"
+  });
+  const stream = new ReadableStream({ start(c) { c.enqueue(new TextEncoder().encode("{}")); c.close(); } });
+  await assert.rejects(
+    () => af("https://api.example.com/search", { method: "POST", body: stream, duplex: "half" }),
+    /cannot retry a ReadableStream body/,
+    "consumed stream bodies are rejected before payment"
+  );
+
+  // String bodies remain retryable.
+  const ok = await af("https://api.example.com/search", { method: "POST", body: "{\"q\":\"x\"}" });
+  assert.equal(ok.status, 200, "reusable bodies still settle");
+}
+
 // --- non-402 responses pass straight through --------------------------------
 
 {
