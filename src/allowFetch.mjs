@@ -148,6 +148,20 @@ export function createAllowFetch(options = {}) {
       options.onDecision({ decision: evaluation.decision, evaluation, requirements, intent });
     }
 
+    // Persist every decision — denied receipts are pilot evidence too. A
+    // receiptStore is anything with record() (e.g. createJsonlReceiptStore);
+    // persistence failures must never turn into payments, so they propagate
+    // only via onReceiptError and the in-memory flow continues.
+    if (options.receiptStore?.record || typeof options.onReceipt === "function") {
+      const entry = { decision: evaluation.decision, receipt: evaluation.receipt, intent, requirements };
+      try {
+        if (typeof options.onReceipt === "function") options.onReceipt(entry);
+        if (options.receiptStore?.record) await options.receiptStore.record(entry);
+      } catch (err) {
+        if (typeof options.onReceiptError === "function") options.onReceiptError(err, entry);
+      }
+    }
+
     if (evaluation.decision !== "allow") {
       throw new AllowancePaymentBlockedError(evaluation, requirements);
     }

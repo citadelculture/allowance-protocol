@@ -180,6 +180,56 @@ assert.equal(intent.resource, "https://api.example.com/search");
   );
 }
 
+// --- every decision reaches the receipt store, including denials -------------
+
+{
+  const stored = [];
+  const store = { record: async (entry) => stored.push(entry) };
+  const { fetchImpl } = mockUpstream({ requirements: usdcRequirements });
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "nonce-store-allow",
+    receiptStore: store,
+    pay: async () => "PAYMENT"
+  });
+  await af("https://api.example.com/search");
+  assert.equal(stored.length, 1);
+  assert.equal(stored[0].decision, "allow");
+
+  const denied = createAllowFetch({
+    fetchImpl: mockUpstream({ requirements: usdcRequirements }).fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "unknown_merchant_xyz",
+    intentNonce: "nonce-store-deny",
+    receiptStore: store,
+    pay: async () => "SHOULD_NOT_HAPPEN"
+  });
+  await assert.rejects(() => denied("https://api.example.com/search"), AllowancePaymentBlockedError);
+  assert.equal(stored.length, 2, "denied decision was persisted too");
+  assert.equal(stored[1].decision, "deny");
+}
+
+// --- receipt store failures never block or trigger payment -------------------
+
+{
+  const errors = [];
+  const { fetchImpl } = mockUpstream({ requirements: usdcRequirements });
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "nonce-store-fail",
+    receiptStore: { record: async () => { throw new Error("disk full"); } },
+    onReceiptError: (err) => errors.push(err.message),
+    pay: async () => "PAYMENT"
+  });
+  const res = await af("https://api.example.com/search");
+  assert.equal(res.status, 200, "payment flow survives a persistence failure");
+  assert.deepEqual(errors, ["disk full"], "failure surfaced via onReceiptError");
+}
+
 // --- non-402 responses pass straight through --------------------------------
 
 {
