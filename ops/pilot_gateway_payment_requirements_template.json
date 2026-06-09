@@ -1,0 +1,17 @@
+{
+  "scheme": "exact",
+  "network": "eip155:84532",
+  "asset": "",
+  "amount": "",
+  "payTo": "",
+  "maxTimeoutSeconds": 60,
+  "extra": {
+    "name": "USDC",
+    "version": "2"
+  },
+  "notes": [
+    "Fill with real facilitator paymentRequirements only after the merchant-approved pilot scope passes.",
+    "asset and payTo must be public EVM addresses, never private keys or secrets.",
+    "This template must fail until real x402 requirements are attached."
+  ]
+}

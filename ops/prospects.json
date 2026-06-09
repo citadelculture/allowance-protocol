@@ -1,0 +1,108 @@
+[
+  {
+    "id": "agentic-market-research",
+    "name": "Agentic Market: Market Research services",
+    "segment": "x402 sellers on Agentic Market",
+    "source": "https://agentic.market/",
+    "detailSource": "https://agentic.market/bundles/market-research",
+    "evidence": "Agentic Market lists a Market Research bundle priced around $0.03-$0.04 using Exa Neural Search, Parallel Search, Stock Quote, Stock Peers, Analyst Recs, Exa Contents, and Exa Answer.",
+    "contactDiscoveryHints": [
+      "Blockrun / Exa Neural Search",
+      "Parallel / Parallel Search",
+      "toon.haus finance endpoints"
+    ],
+    "contactStatus": "identified",
+    "outreachStatus": "not_started",
+    "interviewStatus": "not_started",
+    "integrationStatus": "not_started",
+    "score": {
+      "existingEndpoint": 2,
+      "usageBasedPricing": 2,
+      "agentUsersLikely": 2,
+      "metadataOrAbuseRisk": 2,
+      "canTestWithinWeek": 1,
+      "publicProofPotential": 2
+    },
+    "nextAction": "Find service owner or marketplace contact; ask for one protected market-research endpoint test."
+  },
+  {
+    "id": "agentic-market-morning-briefing",
+    "name": "Agentic Market: Morning Briefing services",
+    "segment": "x402 sellers on Agentic Market",
+    "source": "https://agentic.market/",
+    "evidence": "Agentic Market lists daily briefing services spanning markets, AI, crypto, and global news.",
+    "contactStatus": "needs_contact_discovery",
+    "outreachStatus": "not_started",
+    "interviewStatus": "not_started",
+    "integrationStatus": "not_started",
+    "score": {
+      "existingEndpoint": 2,
+      "usageBasedPricing": 2,
+      "agentUsersLikely": 2,
+      "metadataOrAbuseRisk": 1,
+      "canTestWithinWeek": 1,
+      "publicProofPotential": 2
+    },
+    "nextAction": "Find operator contact; ask whether replay checks and metadata filtering matter for briefing requests."
+  },
+  {
+    "id": "agentic-market-ipo-analysis",
+    "name": "Agentic Market: IPO Analysis services",
+    "segment": "x402 sellers on Agentic Market",
+    "source": "https://agentic.market/",
+    "evidence": "Agentic Market lists institutional filing-analysis style services with higher per-request pricing.",
+    "contactStatus": "needs_contact_discovery",
+    "outreachStatus": "not_started",
+    "interviewStatus": "not_started",
+    "integrationStatus": "not_started",
+    "score": {
+      "existingEndpoint": 2,
+      "usageBasedPricing": 2,
+      "agentUsersLikely": 2,
+      "metadataOrAbuseRisk": 2,
+      "canTestWithinWeek": 1,
+      "publicProofPotential": 1
+    },
+    "nextAction": "Ask whether spend caps are needed for higher-priced report bundles."
+  },
+  {
+    "id": "mcp-public-remote-research",
+    "name": "Public MCP remote research servers",
+    "segment": "Public MCP server developers",
+    "source": "https://modelcontextprotocol.io/registry/about",
+    "evidence": "The MCP Registry supports public server metadata and remote server discovery.",
+    "contactStatus": "needs_contact_discovery",
+    "outreachStatus": "not_started",
+    "interviewStatus": "not_started",
+    "integrationStatus": "not_started",
+    "score": {
+      "existingEndpoint": 2,
+      "usageBasedPricing": 1,
+      "agentUsersLikely": 2,
+      "metadataOrAbuseRisk": 2,
+      "canTestWithinWeek": 1,
+      "publicProofPotential": 2
+    },
+    "nextAction": "Use the public MCP Registry to identify remote research/data servers and ask where paid tool policy should live."
+  },
+  {
+    "id": "base-agent-wallet-builders",
+    "name": "Base agent wallet and x402 service builders",
+    "segment": "Base agent ecosystem builders",
+    "source": "https://www.base.org/agents",
+    "evidence": "Base highlights agent wallets, x402 services, agentic payments, and spend guardrails.",
+    "contactStatus": "identified",
+    "outreachStatus": "not_started",
+    "interviewStatus": "not_started",
+    "integrationStatus": "not_started",
+    "score": {
+      "existingEndpoint": 1,
+      "usageBasedPricing": 1,
+      "agentUsersLikely": 2,
+      "metadataOrAbuseRisk": 2,
+      "canTestWithinWeek": 1,
+      "publicProofPotential": 2
+    },
+    "nextAction": "Review the402 contact path; ask if Allow should sit as wallet policy, gateway preflight, or provider-side guard for x402 marketplace services."
+  }
+]

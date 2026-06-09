@@ -1,0 +1,468 @@
+{
+  "artifact": "allow_external_action_workspace",
+  "generatedAt": "2026-06-09T10:43:54.656Z",
+  "outputDir": "work/external-action-workspace",
+  "queue": {
+    "status": "has_ready_actions",
+    "valid": true,
+    "readinessStatus": "needs_external_action",
+    "launchSequenceStatus": "ready_for_external_action",
+    "currentStage": "public_build_post",
+    "counts": {
+      "total": 12,
+      "readyForApproval": 8,
+      "needsPacketFixes": 1,
+      "blocked": 3,
+      "notReady": 0,
+      "complete": 0
+    },
+    "primaryAction": {
+      "id": "public_build_post:x_post_day_one_thesis",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "approvalId": "x_post_day_one_thesis",
+      "title": "Human posts Allow launch draft day-one-thesis from the approved X account",
+      "approvalCommand": "npm run external-action-approval -- <approved-x-post-day-one-thesis.json>",
+      "nextAction": "Review x_post_day_one_thesis, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    "nextAction": "Review x_post_day_one_thesis, fill approval fields, then run external-action-approval before any human executes it"
+  },
+  "draftPackets": [
+    {
+      "kind": "draft_packet",
+      "path": "packets/01-x-post-day-one-thesis.draft.json",
+      "approvalId": "x_post_day_one_thesis",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft day-one-thesis from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "status": "ready_for_approval",
+      "sha256": "0x0a888cfc441c6df974d237a43059353c8e54bb1b0e9e1fe568216365024a1a2d",
+      "bytes": 1872,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/01-x-post-day-one-thesis.draft.json",
+      "evidenceTemplatePath": "evidence/01-x-post-day-one-thesis.x-post-execution.template.json",
+      "evidenceCommand": "npm run x-post-execution-evidence -- ops/x_post_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/02-x-post-core-question.draft.json",
+      "approvalId": "x_post_core_question",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft core-question from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "status": "ready_for_approval",
+      "sha256": "0x090a0718211ebcb1f8e43e5586d3249306374b40b37dc3635dca67e9919eb067",
+      "bytes": 1843,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/02-x-post-core-question.draft.json",
+      "evidenceTemplatePath": "evidence/02-x-post-core-question.x-post-execution.template.json",
+      "evidenceCommand": "npm run x-post-execution-evidence -- ops/x_post_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/03-x-post-builder-ask.draft.json",
+      "approvalId": "x_post_builder_ask",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft builder-ask from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "status": "ready_for_approval",
+      "sha256": "0xcbf33b157445132e9df1b7ae7fd1f6ba730e480046012400d922fff673889ecb",
+      "bytes": 1827,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/03-x-post-builder-ask.draft.json",
+      "evidenceTemplatePath": "evidence/03-x-post-builder-ask.x-post-execution.template.json",
+      "evidenceCommand": "npm run x-post-execution-evidence -- ops/x_post_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/04-merchant-outreach-blockrun-partners.draft.json",
+      "approvalId": "merchant_outreach_blockrun_partners",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to blockrun-partners",
+      "destination": "https://blockrun.ai/",
+      "channel": "partner/contact page",
+      "status": "ready_for_approval",
+      "sha256": "0xabc9dd008cee78116f3e0faac2b02a2b7d5e99232ba003d0f0dac702a9f5b158",
+      "bytes": 3102,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/04-merchant-outreach-blockrun-partners.draft.json",
+      "evidenceTemplatePath": "evidence/04-merchant-outreach-blockrun-partners.outreach-execution.template.json",
+      "evidenceCommand": "npm run outreach-execution-evidence -- ops/outreach_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/05-merchant-outreach-blockrun-github-franklin.draft.json",
+      "approvalId": "merchant_outreach_blockrun_github_franklin",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to blockrun-github-franklin",
+      "destination": "https://github.com/BlockRunAI/Franklin",
+      "channel": "GitHub issue or repository discussion",
+      "status": "ready_for_approval",
+      "sha256": "0x50888d97d6b15f00e46270bb4c4f03987a3e58c568e857d8e8e6cedb0ed383c0",
+      "bytes": 3089,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/05-merchant-outreach-blockrun-github-franklin.draft.json",
+      "evidenceTemplatePath": "evidence/05-merchant-outreach-blockrun-github-franklin.outreach-execution.template.json",
+      "evidenceCommand": "npm run outreach-execution-evidence -- ops/outreach_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/06-merchant-outreach-parallel-contact.draft.json",
+      "approvalId": "merchant_outreach_parallel_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to parallel-contact",
+      "destination": "https://contact.parallel.ai/",
+      "channel": "contact form",
+      "status": "ready_for_approval",
+      "sha256": "0xe6446e8d02b87f2b5c3bc93ebc9acfe70573c83b1e67f580f4bc27d25561aeb0",
+      "bytes": 2901,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/06-merchant-outreach-parallel-contact.draft.json",
+      "evidenceTemplatePath": "evidence/06-merchant-outreach-parallel-contact.outreach-execution.template.json",
+      "evidenceCommand": "npm run outreach-execution-evidence -- ops/outreach_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/07-merchant-outreach-agentic-market-seller-tools.draft.json",
+      "approvalId": "merchant_outreach_agentic_market_seller_tools",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to agentic-market-seller-tools",
+      "destination": "https://agentic.market/tools/sellers",
+      "channel": "seller tooling / marketplace path",
+      "status": "ready_for_approval",
+      "sha256": "0xf3cbc4380fe5bdebb26245b9277b60c3ae15229bfd32c629bbf6cb51010ed5c2",
+      "bytes": 3106,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/07-merchant-outreach-agentic-market-seller-tools.draft.json",
+      "evidenceTemplatePath": "evidence/07-merchant-outreach-agentic-market-seller-tools.outreach-execution.template.json",
+      "evidenceCommand": "npm run outreach-execution-evidence -- ops/outreach_execution_template.json"
+    },
+    {
+      "kind": "draft_packet",
+      "path": "packets/08-merchant-outreach-the402-contact.draft.json",
+      "approvalId": "merchant_outreach_the402_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to the402-contact",
+      "destination": "https://the402.ai/contact/",
+      "channel": "contact form",
+      "status": "ready_for_approval",
+      "sha256": "0x1d3f06b8515962ca9b8bfa241754c0a117afe59675ce71ec2464d08f9a6c3150",
+      "bytes": 3086,
+      "approvalCommand": "npm run external-action-approval -- work/external-action-workspace/packets/08-merchant-outreach-the402-contact.draft.json",
+      "evidenceTemplatePath": "evidence/08-merchant-outreach-the402-contact.outreach-execution.template.json",
+      "evidenceCommand": "npm run outreach-execution-evidence -- ops/outreach_execution_template.json"
+    }
+  ],
+  "executionEvidenceTemplates": [
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/01-x-post-day-one-thesis.x-post-execution.template.json",
+      "approvalId": "x_post_day_one_thesis",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft day-one-thesis from the approved X account",
+      "status": "template_only",
+      "sha256": "0x8262291de3f712a34fb3018ee8dc97feac424d096c629791211d0974752b37ac",
+      "bytes": 3485,
+      "validationCommand": "npm run x-post-execution-evidence -- work/external-action-workspace/evidence/01-x-post-day-one-thesis.x-post-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/02-x-post-core-question.x-post-execution.template.json",
+      "approvalId": "x_post_core_question",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft core-question from the approved X account",
+      "status": "template_only",
+      "sha256": "0x152cfb2c3c93226f5c498e5ae2255335b6ec0276179564c48460254b8fe2b747",
+      "bytes": 3427,
+      "validationCommand": "npm run x-post-execution-evidence -- work/external-action-workspace/evidence/02-x-post-core-question.x-post-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/03-x-post-builder-ask.x-post-execution.template.json",
+      "approvalId": "x_post_builder_ask",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "title": "Human posts Allow launch draft builder-ask from the approved X account",
+      "status": "template_only",
+      "sha256": "0x3aef554ab5673d1e29dfd37eba96032826e2ee4532aa3fcafbb54d12355527d4",
+      "bytes": 3395,
+      "validationCommand": "npm run x-post-execution-evidence -- work/external-action-workspace/evidence/03-x-post-builder-ask.x-post-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/04-merchant-outreach-blockrun-partners.outreach-execution.template.json",
+      "approvalId": "merchant_outreach_blockrun_partners",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to blockrun-partners",
+      "status": "template_only",
+      "sha256": "0x2a4dc80275a88155a4bf8b255fa85a17baa65bc826b1342a1adfb5925d917b2c",
+      "bytes": 6355,
+      "validationCommand": "npm run outreach-execution-evidence -- work/external-action-workspace/evidence/04-merchant-outreach-blockrun-partners.outreach-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/05-merchant-outreach-blockrun-github-franklin.outreach-execution.template.json",
+      "approvalId": "merchant_outreach_blockrun_github_franklin",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to blockrun-github-franklin",
+      "status": "template_only",
+      "sha256": "0x8ea5c5de1a3c776ffcfdc1655b40b235930783e0284debbbe7deb969d62e5cd7",
+      "bytes": 6343,
+      "validationCommand": "npm run outreach-execution-evidence -- work/external-action-workspace/evidence/05-merchant-outreach-blockrun-github-franklin.outreach-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/06-merchant-outreach-parallel-contact.outreach-execution.template.json",
+      "approvalId": "merchant_outreach_parallel_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to parallel-contact",
+      "status": "template_only",
+      "sha256": "0xbbd57ddc23e60f77cfa65a5737af26f8b3fe07a86f605f5542b4090680e7febd",
+      "bytes": 5951,
+      "validationCommand": "npm run outreach-execution-evidence -- work/external-action-workspace/evidence/06-merchant-outreach-parallel-contact.outreach-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/07-merchant-outreach-agentic-market-seller-tools.outreach-execution.template.json",
+      "approvalId": "merchant_outreach_agentic_market_seller_tools",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to agentic-market-seller-tools",
+      "status": "template_only",
+      "sha256": "0x66aa15b82703d1e4da1365caa06122de50cfe8135c4f64522aebc8c47bf98dc8",
+      "bytes": 6383,
+      "validationCommand": "npm run outreach-execution-evidence -- work/external-action-workspace/evidence/07-merchant-outreach-agentic-market-seller-tools.outreach-execution.template.json"
+    },
+    {
+      "kind": "execution_evidence_template",
+      "path": "evidence/08-merchant-outreach-the402-contact.outreach-execution.template.json",
+      "approvalId": "merchant_outreach_the402_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "title": "Human sends product-feedback ask to the402-contact",
+      "status": "template_only",
+      "sha256": "0x25dfde7a6825dc8772f494c3c9ef1eb20f59486d6015cb76fd71df17cf3ee06a",
+      "bytes": 6323,
+      "validationCommand": "npm run outreach-execution-evidence -- work/external-action-workspace/evidence/08-merchant-outreach-the402-contact.outreach-execution.template.json"
+    }
+  ],
+  "needsPacketFixes": [
+    {
+      "id": "controller_policy_signature:controller_policy_signature_allow_policy_demo_alpha",
+      "stageId": "controller_policy_signature",
+      "actionType": "controller_policy_signature",
+      "approvalId": "controller_policy_signature_allow_policy_demo_alpha",
+      "status": "needs_packet_fixes",
+      "title": "Controller wallet signs Allow production policy allow_policy_demo_alpha",
+      "destination": "0xController",
+      "channel": "wallet",
+      "reasons": [
+        "Production policy controller must be a 20-byte EVM address"
+      ],
+      "blockers": [],
+      "nextAction": "Fix the production policy template or controller address before preparing a signing approval packet."
+    }
+  ],
+  "blocked": [
+    {
+      "id": "deployment_review_package:pending_packet",
+      "stageId": "deployment_review_package",
+      "actionType": "contract_deployment",
+      "approvalId": null,
+      "status": "blocked",
+      "title": "Prepare deployment evidence",
+      "destination": null,
+      "channel": null,
+      "reasons": [
+        "deployment check evidence has not passed",
+        "independent contract review evidence has not passed",
+        "deployment manifest has not passed"
+      ],
+      "blockers": [
+        "deployment check evidence has not passed",
+        "independent contract review evidence has not passed",
+        "deployment manifest has not passed"
+      ],
+      "nextAction": "Fill the compiler/static-analysis evidence and independent review before any deployment approval: deployment check evidence has not passed; independent contract review evidence has not passed; deployment manifest has not passed"
+    },
+    {
+      "id": "live_pilot_traffic:missing_packet",
+      "stageId": "live_pilot_traffic",
+      "actionType": "live_pilot",
+      "approvalId": null,
+      "status": "blocked",
+      "title": "Live pilot traffic",
+      "destination": null,
+      "channel": null,
+      "reasons": [
+        "five valid merchant interviews are not complete",
+        "production signed policy is not configured"
+      ],
+      "blockers": [
+        "five valid merchant interviews are not complete",
+        "production signed policy is not configured"
+      ],
+      "nextAction": "Do not run live traffic until interviews and signed policy are complete: five valid merchant interviews are not complete; production signed policy is not configured"
+    },
+    {
+      "id": "live_directory_claims:pending_packet",
+      "stageId": "live_directory_claims",
+      "actionType": "merchant_promotion",
+      "approvalId": null,
+      "status": "blocked",
+      "title": "Publish live merchant proof",
+      "destination": null,
+      "channel": null,
+      "reasons": [
+        "pilot evidence has not passed"
+      ],
+      "blockers": [
+        "pilot evidence has not passed"
+      ],
+      "nextAction": "Wait for passing pilot evidence before any live directory or public usage claim: pilot evidence has not passed"
+    }
+  ],
+  "notReady": [],
+  "readyItems": [
+    {
+      "id": "public_build_post:x_post_day_one_thesis",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "approvalId": "x_post_day_one_thesis",
+      "status": "ready_for_approval",
+      "title": "Human posts Allow launch draft day-one-thesis from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review x_post_day_one_thesis, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "public_build_post:x_post_core_question",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "approvalId": "x_post_core_question",
+      "status": "ready_for_approval",
+      "title": "Human posts Allow launch draft core-question from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review x_post_core_question, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "public_build_post:x_post_builder_ask",
+      "stageId": "public_build_post",
+      "actionType": "x_post",
+      "approvalId": "x_post_builder_ask",
+      "status": "ready_for_approval",
+      "title": "Human posts Allow launch draft builder-ask from the approved X account",
+      "destination": "@allow_protocol",
+      "channel": "x",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review x_post_builder_ask, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "merchant_outreach:merchant_outreach_blockrun_partners",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "approvalId": "merchant_outreach_blockrun_partners",
+      "status": "ready_for_approval",
+      "title": "Human sends product-feedback ask to blockrun-partners",
+      "destination": "https://blockrun.ai/",
+      "channel": "partner/contact page",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review merchant_outreach_blockrun_partners, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "merchant_outreach:merchant_outreach_blockrun_github_franklin",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "approvalId": "merchant_outreach_blockrun_github_franklin",
+      "status": "ready_for_approval",
+      "title": "Human sends product-feedback ask to blockrun-github-franklin",
+      "destination": "https://github.com/BlockRunAI/Franklin",
+      "channel": "GitHub issue or repository discussion",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review merchant_outreach_blockrun_github_franklin, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "merchant_outreach:merchant_outreach_parallel_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "approvalId": "merchant_outreach_parallel_contact",
+      "status": "ready_for_approval",
+      "title": "Human sends product-feedback ask to parallel-contact",
+      "destination": "https://contact.parallel.ai/",
+      "channel": "contact form",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review merchant_outreach_parallel_contact, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "merchant_outreach:merchant_outreach_agentic_market_seller_tools",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "approvalId": "merchant_outreach_agentic_market_seller_tools",
+      "status": "ready_for_approval",
+      "title": "Human sends product-feedback ask to agentic-market-seller-tools",
+      "destination": "https://agentic.market/tools/sellers",
+      "channel": "seller tooling / marketplace path",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review merchant_outreach_agentic_market_seller_tools, fill approval fields, then run external-action-approval before any human executes it"
+    },
+    {
+      "id": "merchant_outreach:merchant_outreach_the402_contact",
+      "stageId": "merchant_outreach",
+      "actionType": "merchant_outreach",
+      "approvalId": "merchant_outreach_the402_contact",
+      "status": "ready_for_approval",
+      "title": "Human sends product-feedback ask to the402-contact",
+      "destination": "https://the402.ai/contact/",
+      "channel": "contact form",
+      "reasons": [],
+      "blockers": [],
+      "nextAction": "Review merchant_outreach_the402_contact, fill approval fields, then run external-action-approval before any human executes it"
+    }
+  ],
+  "reasons": [],
+  "warnings": [
+    "controller_policy_signature:controller_policy_signature_allow_policy_demo_alpha: verifyingContract is zero address; set the deployed verifier or registry before public mainnet use",
+    "controller_policy_signature:controller_policy_signature_allow_policy_demo_alpha: Controller still matches the demo placeholder",
+    "live_pilot_traffic:missing_packet: dispute: Draft dispute is not ready for merchant review",
+    "live_pilot_traffic:missing_packet: runtime: Runtime policy source was not provided in env"
+  ],
+  "instructions": [
+    "Review each draft packet before editing it.",
+    "To approve a packet, set status to approved, fill approvedBy and approvedAt, and set every approval flag to true.",
+    "Run npm run external-action-approval against the edited packet before any human performs the action.",
+    "After the human performs the exact action, fill the matching evidence template and collect post-execution evidence with the matching validator.",
+    "Do not paste private keys, seed phrases, API secrets, or bearer tokens into any workspace file."
+  ],
+  "evidenceBoundary": {
+    "writesLocalDraftFiles": true,
+    "writesLocalEvidenceTemplates": true,
+    "postsContent": false,
+    "sendsOutreach": false,
+    "signsWalletPayloads": false,
+    "deploysContracts": false,
+    "startsPilotTraffic": false,
+    "promotesMerchant": false,
+    "movesFunds": false,
+    "storesSecrets": false,
+    "approvesExternalAction": false
+  }
+}

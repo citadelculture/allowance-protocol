@@ -1,0 +1,35 @@
+{
+  "name": "allow-local-search-gateway",
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 4190
+  },
+  "upstream": {
+    "baseUrl": "http://127.0.0.1:4181",
+    "timeoutMs": 10000
+  },
+  "receipts": {
+    "path": "ops/gateway-receipts.local.jsonl"
+  },
+  "evidence": {
+    "environment": "local",
+    "merchantApproved": false,
+    "rail": "demo",
+    "network": "local",
+    "label": "local-gateway-example"
+  },
+  "rateLimit": {
+    "max": 60,
+    "windowMs": 60000
+  },
+  "forwardHeaders": ["accept", "content-type", "user-agent", "x-allow-nonce", "x-intent-nonce", "x-allow-metadata"],
+  "routes": [
+    {
+      "pathPrefix": "/paid-search",
+      "merchantId": "mcp_search",
+      "amountUsd": 0.018,
+      "metadataHeader": "x-allow-metadata",
+      "resourceTemplate": "path_and_query"
+    }
+  ]
+}

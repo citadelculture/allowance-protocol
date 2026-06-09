@@ -1,0 +1,43 @@
+{
+  "manifestId": "allow-token-lock-001",
+  "phase": "locked",
+  "generatedAt": "2026-06-08",
+  "owner": "allow-operator",
+  "publicSummary": "Allow has no token at launch. Token design stays locked until credible product usage and legal review are complete.",
+  "token": {
+    "launchEnabled": false,
+    "transferable": false,
+    "salePlanned": false,
+    "airdropPlanned": false,
+    "liquidityPlanned": false,
+    "marketMakingPlanned": false,
+    "influencerPromotionPlanned": false,
+    "returnClaimsPlanned": false
+  },
+  "usageThresholds": {
+    "minActiveAgents": 100,
+    "minMerchants": 50,
+    "minCredibleReceipts": 10000,
+    "minThirdPartyReceiptSharePct": 20
+  },
+  "usageEvidence": {
+    "thirdPartyReceiptSharePct": 0,
+    "evidenceBundleRef": ""
+  },
+  "legal": {
+    "counselRef": "",
+    "riskDisclosureRef": ""
+  },
+  "governance": {
+    "treasuryMultisig": "",
+    "allocationPolicyRef": ""
+  },
+  "approvals": {
+    "independentCounselEngaged": false,
+    "riskDisclosuresReady": false,
+    "treasuryMultisigReady": false,
+    "independentContractReviewReady": false,
+    "externalActionApprovalPrepared": false,
+    "evidenceBundlePrepared": false
+  }
+}

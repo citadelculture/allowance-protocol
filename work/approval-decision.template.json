@@ -1,0 +1,72 @@
+{
+  "artifact": "allow_action_time_approval_decision",
+  "generatedAt": "2026-06-09T11:28:46.854Z",
+  "status": "pending",
+  "decision": "pending",
+  "approvalId": "x_post_day_one_thesis",
+  "actionType": "x_post",
+  "packet": {
+    "path": "packets/01-x-post-day-one-thesis.draft.json",
+    "sha256": "0x0a888cfc441c6df974d237a43059353c8e54bb1b0e9e1fe568216365024a1a2d",
+    "bytes": 1872,
+    "statusAtReview": "draft",
+    "exactTextSha256": "0x3e2d8df46a2a80384d7cea3db29ae6729cada34fa7bbd35fd4d158b47cf00b3e",
+    "exactTextChars": 275
+  },
+  "reviewer": {
+    "approvedBy": "",
+    "approvedAt": "",
+    "decisionReason": ""
+  },
+  "approvals": {
+    "humanWillExecute": false,
+    "automationDisabled": false,
+    "exactActionReviewed": false,
+    "externalSideEffectAcknowledged": false,
+    "noPrivateKeys": false,
+    "noCustodyOrEscrow": false,
+    "noTokenPitch": false,
+    "noMarketManipulation": false,
+    "legalEthicsReviewed": false
+  },
+  "assertions": {
+    "packetHashReviewed": false,
+    "exactActionReviewedAtApprovalTime": false,
+    "noChangesAfterReview": false,
+    "humanWillExecuteExactlyOnce": false,
+    "postExecutionEvidenceWillBeCollected": false
+  },
+  "commands": [
+    "npm run external-action-approval -- work/external-action-workspace/packets/01-x-post-day-one-thesis.draft.json",
+    "npm run x-post-execution-evidence -- work/external-action-workspace/evidence/01-x-post-day-one-thesis.x-post-execution.template.json",
+    "npm run execution-evidence-ledger-entry -- <filled-x-post-evidence.json>",
+    "npm run state-update-preview -- work/execution-evidence-ledger-entry.json",
+    "npm run canonical-update-set -- work/execution-evidence-ledger-entry.json work/state-update-preview.json",
+    "npm run x-post-state -- ops/x_post_execution_records.json"
+  ],
+  "instructions": [
+    "Do not change this template to approved without explicit action-time approval.",
+    "Before approval, confirm the current draft packet SHA-256 still matches packet.sha256.",
+    "If approved, fill reviewer fields, set every approval flag and assertion to true, then edit the packet and run external-action-approval.",
+    "If rejected, set decision to rejected, fill reviewer fields and decisionReason, and do not execute the action."
+  ],
+  "evidenceBoundary": {
+    "writesFiles": false,
+    "approvesExternalAction": false,
+    "marksApproved": false,
+    "postsContent": false,
+    "sendsOutreach": false,
+    "schedulesInterviews": false,
+    "signsWalletPayloads": false,
+    "deploysContracts": false,
+    "startsPilotTraffic": false,
+    "promotesMerchant": false,
+    "movesFunds": false,
+    "storesSecrets": false,
+    "updatesCanonicalState": false,
+    "enablesToken": false,
+    "requiresHumanApproval": true,
+    "finalExternalActionApprovalRequired": true,
+    "postExecutionEvidenceRequired": true
+  }
+}

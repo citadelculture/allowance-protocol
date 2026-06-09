@@ -1,0 +1,20 @@
+[
+  {
+    "id": "day-one-thesis",
+    "status": "draft_only",
+    "assetPath": "launch/allow-dashboard-rendered.png",
+    "text": "AI agents should not get blank-check wallets.\n\nAllow Protocol is building the allowance layer for autonomous payments: merchant allowlists, per-tx caps, daily budgets, metadata filters, route blocks, and receipt proofs.\n\nDay 1: policy engine, dashboard, x402-style preflight."
+  },
+  {
+    "id": "core-question",
+    "status": "draft_only",
+    "assetPath": "launch/allow-dashboard-rendered.png",
+    "text": "Every autonomous payment should answer one question before settlement:\n\nCan this agent spend this amount with this merchant for this resource right now?\n\nAllow Protocol ships the first local demo today: spend policy, nonce checks, metadata filters, and receipts."
+  },
+  {
+    "id": "builder-ask",
+    "status": "draft_only",
+    "assetPath": "launch/allow-dashboard-rendered.png",
+    "text": "x402 makes payment native to HTTP. Allow makes agent spend bounded enough to automate.\n\nToday: no-custody policy engine, preflight middleware, signed-policy path, and merchant intake validator.\n\nLooking for API/MCP builders to test a low-risk paid endpoint."
+  }
+]

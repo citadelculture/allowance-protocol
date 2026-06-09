@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-06-09T04:40:49.047Z",
+  "valid": true,
+  "status": "ready_for_human_review",
+  "prospectId": "agentic-market-research",
+  "prospectName": "Agentic Market: Market Research services",
+  "candidateId": "blockrun-github-franklin",
+  "candidateName": "BlockRun Franklin maintainers",
+  "channel": "GitHub issue or repository discussion",
+  "destination": "https://github.com/BlockRunAI/Franklin",
+  "relevantSurface": "x402-enabled API marketplace repository",
+  "publicEvidence": "BlockRunAI/Franklin is public code for an x402-enabled API marketplace and serverless platform.",
+  "reasons": [],
+  "warnings": [],
+  "opening": "We are building Allow Protocol, a no-custody allowance layer for agent payments. It sits before x402-style settlement and answers: can this agent spend this amount with this merchant for this resource right now?",
+  "questions": [
+    "Do you expect AI agents to call or pay for your API/MCP server directly?",
+    "Do you already price per request, per result, per token, per job, or per bundle?",
+    "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+    "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+    "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+    "Where would Allow sit best: client middleware, server middleware, MCP gateway, or wallet policy hook?",
+    "What metadata should never be included in a paid request?",
+    "What would make this integration too risky or annoying to try?",
+    "Would you test Allow on one low-risk x402-enabled API marketplace repository path if the first pass takes less than one hour?"
+  ],
+  "close": "If we send you a 20-line middleware example, would you try it on one low-risk endpoint? We are not pitching a token. We need product feedback from builders who actually handle paid agent requests.",
+  "intakeFieldsToFill": [
+    "merchantId",
+    "name",
+    "website",
+    "service.category",
+    "service.endpointType",
+    "service.pricingModel",
+    "service.examplePriceUsd",
+    "agentPaymentFit.expectsAgentUsers",
+    "agentPaymentFit.currentX402Support",
+    "agentPaymentFit.currentMcpSupport",
+    "risk.sensitiveMetadataClasses",
+    "risk.abuseModes",
+    "risk.maxSafeTestSpendUsd",
+    "integration.preferredSurface",
+    "integration.canTestThisWeek",
+    "integration.testEndpoint",
+    "integration.successMetric"
+  ],
+  "qualificationSignals": {
+    "existingEndpoint": 2,
+    "usageBasedPricing": 2,
+    "agentUsersLikely": 2,
+    "metadataOrAbuseRisk": 2,
+    "canTestWithinWeek": 1,
+    "publicProofPotential": 2
+  },
+  "humanApprovalChecklist": [
+    "Account owner confirms destination and channel before outreach",
+    "Message remains a product-feedback or integration ask, not a token pitch",
+    "Interviewer records answers into a merchant intake file before any pilot claim",
+    "Merchant explicitly approves a low-risk test endpoint before pilot traffic",
+    "No private keys, seed phrases, API secrets, or settlement credentials are requested"
+  ],
+  "evidenceBoundary": {
+    "outreachSentByThisPacket": false,
+    "merchantApprovedByThisPacket": false,
+    "countsAsCompletedInterview": false,
+    "completedInterviewRequires": [
+      "merchant identity and contact path confirmed",
+      "questions answered or explicitly skipped by merchant",
+      "merchant intake JSON created and validates",
+      "test endpoint approval captured before any traffic"
+    ]
+  },
+  "nextAction": "Review interview packet, then ask BlockRun Franklin maintainers for product feedback"
+}

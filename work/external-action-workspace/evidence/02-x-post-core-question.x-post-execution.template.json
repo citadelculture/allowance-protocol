@@ -1,0 +1,75 @@
+{
+  "evidenceId": "x_post_core_question_execution",
+  "generatedAt": "",
+  "executionStatus": "posted",
+  "approvalRef": "external-action:x_post_core_question",
+  "approvalPacket": {
+    "approvalId": "x_post_core_question",
+    "actionType": "x_post",
+    "status": "draft",
+    "requestedBy": "allow-operator",
+    "requestedAt": "2026-06-09",
+    "approvedBy": "",
+    "approvedAt": "",
+    "action": {
+      "summary": "Human posts Allow launch draft core-question from the approved X account",
+      "channel": "x",
+      "destination": "@allow_protocol",
+      "executionMode": "human_only",
+      "exactText": "Every autonomous payment should answer one question before settlement:\n\nCan this agent spend this amount with this merchant for this resource right now?\n\nAllow Protocol ships the first local demo today: spend policy, nonce checks, metadata filters, and receipts.",
+      "automated": false
+    },
+    "approvals": {
+      "humanWillExecute": false,
+      "automationDisabled": false,
+      "exactActionReviewed": false,
+      "externalSideEffectAcknowledged": false,
+      "noPrivateKeys": false,
+      "noCustodyOrEscrow": false,
+      "noTokenPitch": false,
+      "noMarketManipulation": false,
+      "legalEthicsReviewed": false
+    },
+    "payload": {
+      "post": {
+        "id": "core-question",
+        "status": "draft_only",
+        "assetPath": "launch/allow-dashboard-rendered.png",
+        "text": "Every autonomous payment should answer one question before settlement:\n\nCan this agent spend this amount with this merchant for this resource right now?\n\nAllow Protocol ships the first local demo today: spend policy, nonce checks, metadata filters, and receipts."
+      }
+    },
+    "notes": [
+      "Generated from the launch post pack.",
+      "This packet must remain draft until the X account owner reviews the exact text and sets every approval flag.",
+      "Run npm run external-action-approval on the approved packet before any human posts.",
+      "Do not add token sale, investment, return, partnership, or usage claims without approved evidence."
+    ]
+  },
+  "post": {
+    "id": "core-question",
+    "status": "draft_only",
+    "assetPath": "launch/allow-dashboard-rendered.png",
+    "text": "Every autonomous payment should answer one question before settlement:\n\nCan this agent spend this amount with this merchant for this resource right now?\n\nAllow Protocol ships the first local demo today: spend policy, nonce checks, metadata filters, and receipts."
+  },
+  "posted": {
+    "postedAt": "",
+    "postedBy": "",
+    "accountHandle": "@allow_protocol",
+    "postUrl": "",
+    "exactText": "Every autonomous payment should answer one question before settlement:\n\nCan this agent spend this amount with this merchant for this resource right now?\n\nAllow Protocol ships the first local demo today: spend policy, nonce checks, metadata filters, and receipts.",
+    "humanExecuted": false,
+    "accountOwnerApproved": false,
+    "automationUsed": false
+  },
+  "proof": {
+    "type": "post_permalink",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "notes": [
+    "Template only. Fill after a human posts the final approved x_post packet.",
+    "This must fail until approvalPacket is final approved and posted/proof fields are complete.",
+    "Do not include account cookies, private DMs, bearer tokens, API keys, seed phrases, or wallet secrets."
+  ]
+}

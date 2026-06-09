@@ -1,0 +1,16 @@
+{
+  "opening": "We are building Allow Protocol, a no-custody allowance layer for agent payments. It sits before x402-style settlement and answers: can this agent spend this amount with this merchant for this resource right now?",
+  "questions": [
+    "Do you expect AI agents to call or pay for your API/MCP server directly?",
+    "Do you already price per request, per result, per token, per job, or per bundle?",
+    "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+    "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+    "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+    "Where would Allow sit best: client middleware, server middleware, MCP gateway, or wallet policy hook?",
+    "What metadata should never be included in a paid request?",
+    "What would make this integration too risky or annoying to try?",
+    "Could you test a single protected endpoint this week?",
+    "What metric would prove this is useful to you?"
+  ],
+  "close": "If we send you a 20-line middleware example, would you try it on one low-risk endpoint? We are not pitching a token. We need product feedback from builders who actually handle paid agent requests."
+}

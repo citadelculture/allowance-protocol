@@ -1,0 +1,44 @@
+{
+  "evidenceId": "outreach-execution-template",
+  "generatedAt": "2026-06-08",
+  "outreachStatus": "sent",
+  "approvalRef": "",
+  "candidateId": "",
+  "prospectId": "",
+  "approvalPacket": {},
+  "outreachDraft": {},
+  "sent": {
+    "sentAt": "",
+    "sentBy": "",
+    "channel": "",
+    "destination": "",
+    "subject": "",
+    "exactText": "",
+    "humanExecuted": false,
+    "accountOwnerApproved": false,
+    "automationUsed": true
+  },
+  "proof": {
+    "type": "manual_log",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "response": {
+    "status": "none",
+    "receivedAt": "",
+    "summary": "",
+    "scheduledAt": "",
+    "interviewId": ""
+  },
+  "links": {
+    "candidateId": "",
+    "prospectId": "",
+    "interviewId": ""
+  },
+  "notes": [
+    "Fill this only after a human sends a final approved merchant_outreach external action.",
+    "This evidence record must fail until it includes the approved packet, exact sent text, redacted proof reference, and human execution flags.",
+    "This validator does not send outreach, approve outreach, schedule interviews, count completed interviews, start pilot traffic, move funds, or make token claims."
+  ]
+}

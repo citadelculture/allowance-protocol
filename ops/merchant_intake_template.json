@@ -1,0 +1,46 @@
+{
+  "merchantId": "",
+  "name": "",
+  "website": "",
+  "contact": {
+    "name": "",
+    "role": "",
+    "emailOrHandle": ""
+  },
+  "service": {
+    "category": "search | data | research | inference | workflow | other",
+    "endpointType": "api | mcp | gateway | content | other",
+    "description": "",
+    "pricingModel": "per_request | per_result | per_token | per_job | bundle | unknown",
+    "examplePriceUsd": 0
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": false,
+    "currentX402Support": false,
+    "currentMcpSupport": false,
+    "needsSpendCaps": false,
+    "needsMetadataFilters": false,
+    "needsReplayProtection": false,
+    "needsReceipts": false
+  },
+  "risk": {
+    "sensitiveMetadataClasses": [],
+    "abuseModes": [],
+    "maxSafeTestSpendUsd": 0
+  },
+  "integration": {
+    "preferredSurface": "server_middleware | client_middleware | mcp_gateway | wallet_policy_hook | unknown",
+    "canTestThisWeek": false,
+    "testEndpoint": "",
+    "successMetric": ""
+  },
+  "score": {
+    "existingEndpoint": 0,
+    "usageBasedPricing": 0,
+    "agentUsersLikely": 0,
+    "metadataOrAbuseRisk": 0,
+    "canTestWithinWeek": 0,
+    "publicProofPotential": 0
+  },
+  "notes": ""
+}

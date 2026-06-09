@@ -1,0 +1,92 @@
+{
+  "id": "interview-blockrun-partners",
+  "prospectId": "agentic-market-research",
+  "candidateId": "blockrun-partners",
+  "status": "completed",
+  "completedAt": "",
+  "completedBy": "",
+  "channel": "partner/contact page",
+  "destination": "https://blockrun.ai/",
+  "summary": "",
+  "intakePath": "",
+  "suggestedIntakePath": "ops/intakes/blockrun-partners.json",
+  "answers": [
+    {
+      "id": "q1",
+      "question": "Do you expect AI agents to call or pay for your API/MCP server directly?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q2",
+      "question": "Do you already price per request, per result, per token, per job, or per bundle?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q3",
+      "question": "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q4",
+      "question": "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q5",
+      "question": "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q6",
+      "question": "Where would Allow sit best: client middleware, server middleware, MCP gateway, or wallet policy hook?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q7",
+      "question": "What metadata should never be included in a paid request?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q8",
+      "question": "What would make this integration too risky or annoying to try?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q9",
+      "question": "Would you test Allow on one low-risk Agentic Market Market Research bundle / Exa Neural Search service wrapper path if the first pass takes less than one hour?",
+      "answer": "",
+      "skipped": false
+    }
+  ],
+  "approvals": {
+    "productFeedbackOnly": false,
+    "noTokenPitch": false,
+    "noSecretsRequested": false,
+    "merchantUnderstandsPrototype": false
+  },
+  "pilotApproval": {
+    "merchantApprovedTestEndpoint": false,
+    "testEndpoint": "",
+    "maxTestSpendUsd": null,
+    "approvedAt": "",
+    "approvedBy": ""
+  },
+  "source": {
+    "workspace": "work/interview-workspace",
+    "packetPath": "packets/blockrun-partners.interview-packet.json",
+    "publicEvidence": "BlockRun describes turnkey blockchain products, marketplace infrastructure, and a live products page with marketplace offerings."
+  },
+  "notes": [
+    "Template only. This must fail interview-report until a real interview is completed and approvals are true.",
+    "Do not record private keys, seed phrases, API secrets, bearer tokens, passwords, or settlement credentials.",
+    "A pilot endpoint requires separate explicit merchant approval and live-pilot preflight."
+  ]
+}

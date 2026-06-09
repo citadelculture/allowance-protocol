@@ -1,0 +1,7 @@
+{
+  "merchantId": "mcp_search",
+  "amountUsd": 0.018,
+  "resource": "/v1/search?q=x402",
+  "metadata": "public search request",
+  "intentNonce": "agent-intent-example-001"
+}

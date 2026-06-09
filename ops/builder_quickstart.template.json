@@ -1,0 +1,15 @@
+{
+  "server": {
+    "protocol": "http",
+    "host": "127.0.0.1",
+    "port": 4174
+  },
+  "intent": {
+    "merchantId": "mcp_search",
+    "amountUsd": 0.018,
+    "resource": "/v1/search?q=agent+payments",
+    "intentNonce": "quickstart-search-001",
+    "metadata": "public search context for agent payment integration"
+  },
+  "receipts": []
+}

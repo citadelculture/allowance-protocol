@@ -1,0 +1,96 @@
+{
+  "evidenceId": "merchant_outreach_the402_contact_execution",
+  "generatedAt": "",
+  "outreachStatus": "sent",
+  "approvalRef": "external-action:merchant_outreach_the402_contact",
+  "candidateId": "the402-contact",
+  "prospectId": "base-agent-wallet-builders",
+  "approvalPacket": {
+    "approvalId": "merchant_outreach_the402_contact",
+    "actionType": "merchant_outreach",
+    "status": "draft",
+    "requestedBy": "allow-operator",
+    "requestedAt": "2026-06-09",
+    "approvedBy": "",
+    "approvedAt": "",
+    "action": {
+      "summary": "Human sends product-feedback ask to the402-contact",
+      "channel": "contact form",
+      "destination": "https://the402.ai/contact/",
+      "subject": "Allow Protocol feedback for Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+      "executionMode": "human_only",
+      "exactText": "Hi the402,\n\nI am building Allow Protocol, a no-custody policy layer for agent payments.\n\nI found Base mainnet x402 service marketplace, MCP catalog, and provider onboarding while mapping early x402 and agent-service merchants. The specific question: would a pre-settlement guard help before an agent pays for services like this?\n\nAllow blocks unsafe paid requests before settlement:\n- merchant allowlists\n- per-transaction and daily spend caps\n- metadata filters\n- per-policy nonce/replay checks\n- receipts for allowed and denied attempts\n\nWould you be open to giving blunt feedback on the middleware shape, or testing one low-risk endpoint?\n\nNo token pitch. I am trying to learn where agent-payment guardrails are actually painful.",
+      "automated": false
+    },
+    "approvals": {
+      "humanWillExecute": false,
+      "automationDisabled": false,
+      "exactActionReviewed": false,
+      "externalSideEffectAcknowledged": false,
+      "noPrivateKeys": false,
+      "noCustodyOrEscrow": false,
+      "noTokenPitch": false,
+      "noMarketManipulation": false,
+      "legalEthicsReviewed": false
+    },
+    "payload": {
+      "outreachDraft": {
+        "prospectId": "base-agent-wallet-builders",
+        "candidateId": "the402-contact",
+        "channel": "contact form",
+        "destination": "https://the402.ai/contact/",
+        "subject": "Allow Protocol feedback for Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+        "message": "Hi the402,\n\nI am building Allow Protocol, a no-custody policy layer for agent payments.\n\nI found Base mainnet x402 service marketplace, MCP catalog, and provider onboarding while mapping early x402 and agent-service merchants. The specific question: would a pre-settlement guard help before an agent pays for services like this?\n\nAllow blocks unsafe paid requests before settlement:\n- merchant allowlists\n- per-transaction and daily spend caps\n- metadata filters\n- per-policy nonce/replay checks\n- receipts for allowed and denied attempts\n\nWould you be open to giving blunt feedback on the middleware shape, or testing one low-risk endpoint?\n\nNo token pitch. I am trying to learn where agent-payment guardrails are actually painful.",
+        "status": "draft_only"
+      }
+    },
+    "notes": [
+      "Generated from review-only outreach drafts.",
+      "This packet must remain draft until the account owner reviews the exact message and sets every approval flag.",
+      "Run npm run external-action-approval on the approved packet before any human sends the message."
+    ]
+  },
+  "outreachDraft": {
+    "prospectId": "base-agent-wallet-builders",
+    "candidateId": "the402-contact",
+    "channel": "contact form",
+    "destination": "https://the402.ai/contact/",
+    "subject": "Allow Protocol feedback for Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+    "message": "Hi the402,\n\nI am building Allow Protocol, a no-custody policy layer for agent payments.\n\nI found Base mainnet x402 service marketplace, MCP catalog, and provider onboarding while mapping early x402 and agent-service merchants. The specific question: would a pre-settlement guard help before an agent pays for services like this?\n\nAllow blocks unsafe paid requests before settlement:\n- merchant allowlists\n- per-transaction and daily spend caps\n- metadata filters\n- per-policy nonce/replay checks\n- receipts for allowed and denied attempts\n\nWould you be open to giving blunt feedback on the middleware shape, or testing one low-risk endpoint?\n\nNo token pitch. I am trying to learn where agent-payment guardrails are actually painful.",
+    "status": "draft_only"
+  },
+  "sent": {
+    "sentAt": "",
+    "sentBy": "",
+    "channel": "contact form",
+    "destination": "https://the402.ai/contact/",
+    "subject": "Allow Protocol feedback for Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+    "exactText": "Hi the402,\n\nI am building Allow Protocol, a no-custody policy layer for agent payments.\n\nI found Base mainnet x402 service marketplace, MCP catalog, and provider onboarding while mapping early x402 and agent-service merchants. The specific question: would a pre-settlement guard help before an agent pays for services like this?\n\nAllow blocks unsafe paid requests before settlement:\n- merchant allowlists\n- per-transaction and daily spend caps\n- metadata filters\n- per-policy nonce/replay checks\n- receipts for allowed and denied attempts\n\nWould you be open to giving blunt feedback on the middleware shape, or testing one low-risk endpoint?\n\nNo token pitch. I am trying to learn where agent-payment guardrails are actually painful.",
+    "humanExecuted": false,
+    "accountOwnerApproved": false,
+    "automationUsed": false
+  },
+  "proof": {
+    "type": "manual_log",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "response": {
+    "status": "none",
+    "receivedAt": "",
+    "summary": "",
+    "scheduledAt": "",
+    "interviewId": ""
+  },
+  "links": {
+    "candidateId": "the402-contact",
+    "prospectId": "base-agent-wallet-builders",
+    "interviewId": ""
+  },
+  "notes": [
+    "Template only. Fill after a human sends the final approved merchant_outreach packet.",
+    "This must fail until approvalPacket is final approved and sent/proof fields are complete.",
+    "This evidence record does not count as an interview or pilot integration."
+  ]
+}

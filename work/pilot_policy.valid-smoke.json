@@ -1,0 +1,28 @@
+{
+  "policyId": "allow_policy_pilot_alpha",
+  "agentId": "agent-alpha",
+  "controller": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+  "controllerSignature": "0x36d82e4535c199e6b33b645b727a122c20d1082e382e2ed3c9d7bdbde5a4b98b0b5e9d5a823a7dd970044f0529a75926f169db4106374b77439809b448d0fb3d1c",
+  "signatureMode": "eip712",
+  "chain": "Base Sepolia",
+  "settlementAsset": "USDC",
+  "spentTodayUsd": 0,
+  "dailyCapUsd": 5,
+  "perTxCapUsd": 0.5,
+  "maxRiskScore": 64,
+  "allowedMerchants": [
+    "mcp_search"
+  ],
+  "blockedCategories": [
+    "trading"
+  ],
+  "requireReceipt": true,
+  "requireSignedPolicy": true,
+  "requireIntentNonce": true,
+  "blockPii": true,
+  "metadataMaxChars": 320,
+  "agentAddress": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+  "production": true,
+  "chainId": 84532,
+  "requireAgentIntentSignature": true
+}

@@ -1,0 +1,60 @@
+{
+  "authorizationId": "pilot-authorization-template",
+  "generatedAt": "2026-06-08",
+  "interviewId": "",
+  "intakeRef": "",
+  "pilotPacketRef": "",
+  "publicSummary": "Experimental Allow Protocol pilot authorization. No token pitch.",
+  "merchant": {
+    "merchantId": "",
+    "name": "",
+    "approverRef": "",
+    "approvedAt": ""
+  },
+  "pilot": {
+    "environment": "testnet",
+    "network": "eip155:84532",
+    "paymentRail": "x402",
+    "testEndpoint": "",
+    "pathPrefix": "",
+    "amountUsd": 0,
+    "maxRequests": 0,
+    "maxTotalSpendUsd": 0,
+    "expiresAt": "",
+    "receiptLogPath": "",
+    "evidenceLabel": ""
+  },
+  "approvals": {
+    "merchantApprovedPilot": false,
+    "merchantUnderstandsExperimental": false,
+    "noProductionSla": false,
+    "noSecretsShared": false,
+    "noCustodyOrEscrow": false,
+    "noTokenPitch": false,
+    "dataUseApproved": false,
+    "disputePathApproved": false,
+    "publicClaimsRequireSeparateApproval": false
+  },
+  "safety": {
+    "noTradingAuthority": false,
+    "merchantScoped": false,
+    "spendCapsReviewed": false,
+    "metadataPolicyReviewed": false,
+    "rateLimitReviewed": false,
+    "settlementProofRequired": false
+  },
+  "dispute": {
+    "contact": "",
+    "processRef": "ops/dispute_template.json"
+  },
+  "evidence": {
+    "label": "",
+    "publicUseApproved": false,
+    "caseStudyApproved": false
+  },
+  "notes": [
+    "Fill only after a completed merchant interview and validated merchant intake.",
+    "This template must fail until real merchant approval, pilot scope, and safety flags are attached.",
+    "This validator does not start traffic, move funds, sign wallets, publish claims, mark a merchant live, or unlock token work."
+  ]
+}

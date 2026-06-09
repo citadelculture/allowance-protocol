@@ -1,0 +1,36 @@
+{
+  "manifestId": "allow-live-resource-handoff-001",
+  "generatedAt": "2026-06-09",
+  "owner": "allow-operator",
+  "wallet": {
+    "address": "",
+    "chain": "Base",
+    "network": "base_mainnet",
+    "declaredFundingUsd": 100,
+    "maxSingleActionUsd": 10,
+    "userControlled": true,
+    "noPrivateKeyShared": true,
+    "seedPhraseShared": false,
+    "privateKeyStoredInRepo": false,
+    "actionTimeApprovalRequired": true
+  },
+  "xAccount": {
+    "handle": "@allow_protocol",
+    "apiAccessReady": false,
+    "credentialsStoredOutsideRepo": true,
+    "noApiSecretsStored": true,
+    "postingRequiresApproval": true,
+    "automationDisabledUntilApproval": true
+  },
+  "website": {
+    "status": "offered",
+    "url": "",
+    "userCanPublish": true,
+    "publishRequiresApproval": true,
+    "noSecretEnvInRepo": true
+  },
+  "notes": [
+    "Do not paste private keys, seed phrases, API keys, bearer tokens, access tokens, or OAuth secrets into this file.",
+    "Use only public identifiers and boolean readiness flags; keep secrets in the owner's local secret manager or deployment provider."
+  ]
+}

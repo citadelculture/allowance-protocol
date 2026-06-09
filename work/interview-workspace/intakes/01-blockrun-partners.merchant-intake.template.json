@@ -1,0 +1,38 @@
+{
+  "merchantId": "",
+  "name": "Agentic Market: Market Research services",
+  "website": "https://blockrun.ai/",
+  "service": {
+    "category": "",
+    "endpointType": "",
+    "description": "Agentic Market Market Research bundle / Exa Neural Search service wrapper",
+    "pricingModel": "",
+    "examplePriceUsd": null
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": false,
+    "currentX402Support": false,
+    "currentMcpSupport": false,
+    "needsSpendCaps": true,
+    "needsMetadataFilters": true,
+    "needsReplayProtection": true,
+    "needsReceipts": true
+  },
+  "risk": {
+    "sensitiveMetadataClasses": [],
+    "abuseModes": [],
+    "maxSafeTestSpendUsd": null
+  },
+  "integration": {
+    "preferredSurface": "",
+    "canTestThisWeek": false,
+    "testEndpoint": "",
+    "successMetric": ""
+  },
+  "interviewRefs": {
+    "prospectId": "agentic-market-research",
+    "candidateId": "blockrun-partners",
+    "publicEvidence": "BlockRun describes turnkey blockchain products, marketplace infrastructure, and a live products page with marketplace offerings."
+  },
+  "notes": "Template only. Fill from completed merchant interview answers before running npm run validate-merchant."
+}

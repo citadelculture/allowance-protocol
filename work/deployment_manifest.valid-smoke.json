@@ -1,0 +1,59 @@
+{
+  "manifestId": "allow-registry-base-sepolia-valid-smoke",
+  "generatedAt": "2026-06-08",
+  "contract": {
+    "name": "AllowanceRegistry",
+    "path": "contracts/AllowanceRegistry.sol",
+    "sourceSha256": "0x59c437f2a3f3ae194ba71d3902eb7126ea36663b55fc0f56da907ef599b89599"
+  },
+  "target": {
+    "environment": "testnet",
+    "network": "Base Sepolia",
+    "chainId": 84532,
+    "deployer": "0x0000000000000000000000000000000000000001",
+    "controller": "0x0000000000000000000000000000000000000002",
+    "treasuryMultisig": "0x0000000000000000000000000000000000000003"
+  },
+  "checks": {
+    "npmTest": {
+      "status": "passed",
+      "reportRef": "local:npm-test:2026-06-08"
+    },
+    "contractReview": {
+      "status": "passed",
+      "reportRef": "local:npm-run-contract-review:2026-06-08"
+    },
+    "compiler": {
+      "status": "passed",
+      "tool": "solc",
+      "version": "0.8.x",
+      "artifactRef": "artifacts/AllowanceRegistry.json"
+    },
+    "staticAnalysis": {
+      "status": "passed",
+      "tool": "slither",
+      "reportRef": "reports/slither-allowance-registry.md"
+    },
+    "independentReview": {
+      "status": "approved",
+      "reviewer": "external-reviewer-smoke",
+      "reportRef": "reports/independent-review-smoke.md",
+      "reviewedAt": "2026-06-08"
+    }
+  },
+  "custody": {
+    "noPayableEntrypoints": true,
+    "noTransferPrimitives": true,
+    "receiptMetadataHashedOnly": true,
+    "noEscrowOrCustody": true
+  },
+  "token": {
+    "launchEnabled": false,
+    "transferable": false,
+    "gateRef": "docs/TOKEN_PATH.md"
+  },
+  "approvals": {
+    "approvedBy": "security-council-smoke",
+    "approvedAt": "2026-06-08"
+  }
+}

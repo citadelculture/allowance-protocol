@@ -1,0 +1,42 @@
+{
+  "approvalId": "x_post_builder_ask",
+  "actionType": "x_post",
+  "status": "draft",
+  "requestedBy": "allow-operator",
+  "requestedAt": "2026-06-09",
+  "approvedBy": "",
+  "approvedAt": "",
+  "action": {
+    "summary": "Human posts Allow launch draft builder-ask from the approved X account",
+    "channel": "x",
+    "destination": "@allow_protocol",
+    "executionMode": "human_only",
+    "exactText": "x402 makes payment native to HTTP. Allow makes agent spend bounded enough to automate.\n\nToday: no-custody policy engine, preflight middleware, signed-policy path, and merchant intake validator.\n\nLooking for API/MCP builders to test a low-risk paid endpoint.",
+    "automated": false
+  },
+  "approvals": {
+    "humanWillExecute": false,
+    "automationDisabled": false,
+    "exactActionReviewed": false,
+    "externalSideEffectAcknowledged": false,
+    "noPrivateKeys": false,
+    "noCustodyOrEscrow": false,
+    "noTokenPitch": false,
+    "noMarketManipulation": false,
+    "legalEthicsReviewed": false
+  },
+  "payload": {
+    "post": {
+      "id": "builder-ask",
+      "status": "draft_only",
+      "assetPath": "launch/allow-dashboard-rendered.png",
+      "text": "x402 makes payment native to HTTP. Allow makes agent spend bounded enough to automate.\n\nToday: no-custody policy engine, preflight middleware, signed-policy path, and merchant intake validator.\n\nLooking for API/MCP builders to test a low-risk paid endpoint."
+    }
+  },
+  "notes": [
+    "Generated from the launch post pack.",
+    "This packet must remain draft until the X account owner reviews the exact text and sets every approval flag.",
+    "Run npm run external-action-approval on the approved packet before any human posts.",
+    "Do not add token sale, investment, return, partnership, or usage claims without approved evidence."
+  ]
+}

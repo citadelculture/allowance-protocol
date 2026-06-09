@@ -1,0 +1,27 @@
+{
+  "evidenceId": "x-post-execution-template",
+  "generatedAt": "",
+  "executionStatus": "posted",
+  "approvalRef": "external-action:x_post_day_one_thesis",
+  "approvalPacket": {},
+  "posted": {
+    "postedAt": "",
+    "postedBy": "",
+    "accountHandle": "@allow_protocol",
+    "postUrl": "https://x.com/allow_protocol/status/0000000000000000000",
+    "exactText": "",
+    "humanExecuted": false,
+    "accountOwnerApproved": false,
+    "automationUsed": false
+  },
+  "proof": {
+    "type": "post_permalink",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "notes": [
+    "Fill only after a human posts one approved x_post external-action packet.",
+    "Do not include account cookies, private DMs, bearer tokens, API keys, seed phrases, or wallet secrets."
+  ]
+}

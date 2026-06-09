@@ -1,0 +1,42 @@
+{
+  "bindingId": "allow-production-pilot-template",
+  "generatedAt": "2026-06-08",
+  "pilot": {
+    "merchantId": "",
+    "environment": "testnet",
+    "network": "eip155:84532",
+    "approvalRef": "",
+    "approvedBy": "",
+    "approvedAt": ""
+  },
+  "agent": {
+    "agentId": "",
+    "walletType": "eoa",
+    "walletAddress": "0x0000000000000000000000000000000000000000",
+    "controlEvidenceRef": "",
+    "controlChallenge": "",
+    "controlSignature": "",
+    "approvedBy": "",
+    "approvedAt": ""
+  },
+  "policy": {
+    "policyId": "",
+    "policyPath": "ops/signed-policy.local.json",
+    "policyFingerprint": "",
+    "requireAgentIntentSignature": true
+  },
+  "runtime": {
+    "allowProduction": true,
+    "requireAgentSignature": true,
+    "allowAgentAddress": "0x0000000000000000000000000000000000000000",
+    "fixtureEnabled": false,
+    "agentPrivateKeyExposed": false,
+    "controllerPrivateKeyExposed": false
+  },
+  "safety": {
+    "noTradingAuthority": true,
+    "merchantScoped": true,
+    "spendCapsReviewed": true,
+    "metadataPolicyReviewed": true
+  }
+}

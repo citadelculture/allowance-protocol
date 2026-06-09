@@ -1,0 +1,20 @@
+{
+  "disputeId": "disp_example_001",
+  "merchantId": "mcp_search",
+  "category": "incorrect_denial",
+  "status": "draft",
+  "severity": "medium",
+  "openedAt": "2026-06-08",
+  "requester": {
+    "role": "agent_operator",
+    "contact": "pilot-contact-handle"
+  },
+  "receiptIds": ["allow_receipt_id"],
+  "evidenceRefs": ["receipt-log:ops/gateway-receipts.local.jsonl#allow_receipt_id"],
+  "requestedOutcome": "explain_receipt",
+  "summary": "The pilot operator is asking the merchant to review a denied receipt reason. Keep raw request metadata out of this packet.",
+  "notes": [
+    "Use metadata hashes, receipt ids, and approved merchant references instead of raw prompts or personal data."
+  ],
+  "resolution": ""
+}

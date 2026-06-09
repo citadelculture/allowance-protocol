@@ -1,0 +1,38 @@
+{
+  "merchantId": "",
+  "name": "Base agent wallet and x402 service builders",
+  "website": "https://the402.ai/contact/",
+  "service": {
+    "category": "",
+    "endpointType": "",
+    "description": "Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+    "pricingModel": "",
+    "examplePriceUsd": null
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": false,
+    "currentX402Support": false,
+    "currentMcpSupport": false,
+    "needsSpendCaps": true,
+    "needsMetadataFilters": true,
+    "needsReplayProtection": true,
+    "needsReceipts": true
+  },
+  "risk": {
+    "sensitiveMetadataClasses": [],
+    "abuseModes": [],
+    "maxSafeTestSpendUsd": null
+  },
+  "integration": {
+    "preferredSurface": "",
+    "canTestThisWeek": false,
+    "testEndpoint": "",
+    "successMetric": ""
+  },
+  "interviewRefs": {
+    "prospectId": "base-agent-wallet-builders",
+    "candidateId": "the402-contact",
+    "publicEvidence": "the402 describes an open marketplace for AI agents to buy data APIs, automated services, human services, subscriptions, and digital products using USDC via x402 on Base, with MCP catalog access and provider onboarding."
+  },
+  "notes": "Template only. Fill from completed merchant interview answers before running npm run validate-merchant."
+}

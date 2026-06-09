@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+coverage/
+ops/signed-policy*.json
+ops/signed-agent-intent*.json
+ops/*agent-intent*.local.json
+ops/signed-merchant-profile*.json
+ops/*merchant-profile*.local.json
+ops/*.local.json
+ops/*.local.jsonl
+ops/gateway-receipts*.jsonl

@@ -1,0 +1,75 @@
+{
+  "evidenceId": "x_post_day_one_thesis_execution",
+  "generatedAt": "",
+  "executionStatus": "posted",
+  "approvalRef": "external-action:x_post_day_one_thesis",
+  "approvalPacket": {
+    "approvalId": "x_post_day_one_thesis",
+    "actionType": "x_post",
+    "status": "draft",
+    "requestedBy": "allow-operator",
+    "requestedAt": "2026-06-09",
+    "approvedBy": "",
+    "approvedAt": "",
+    "action": {
+      "summary": "Human posts Allow launch draft day-one-thesis from the approved X account",
+      "channel": "x",
+      "destination": "@allow_protocol",
+      "executionMode": "human_only",
+      "exactText": "AI agents should not get blank-check wallets.\n\nAllow Protocol is building the allowance layer for autonomous payments: merchant allowlists, per-tx caps, daily budgets, metadata filters, route blocks, and receipt proofs.\n\nDay 1: policy engine, dashboard, x402-style preflight.",
+      "automated": false
+    },
+    "approvals": {
+      "humanWillExecute": false,
+      "automationDisabled": false,
+      "exactActionReviewed": false,
+      "externalSideEffectAcknowledged": false,
+      "noPrivateKeys": false,
+      "noCustodyOrEscrow": false,
+      "noTokenPitch": false,
+      "noMarketManipulation": false,
+      "legalEthicsReviewed": false
+    },
+    "payload": {
+      "post": {
+        "id": "day-one-thesis",
+        "status": "draft_only",
+        "assetPath": "launch/allow-dashboard-rendered.png",
+        "text": "AI agents should not get blank-check wallets.\n\nAllow Protocol is building the allowance layer for autonomous payments: merchant allowlists, per-tx caps, daily budgets, metadata filters, route blocks, and receipt proofs.\n\nDay 1: policy engine, dashboard, x402-style preflight."
+      }
+    },
+    "notes": [
+      "Generated from the launch post pack.",
+      "This packet must remain draft until the X account owner reviews the exact text and sets every approval flag.",
+      "Run npm run external-action-approval on the approved packet before any human posts.",
+      "Do not add token sale, investment, return, partnership, or usage claims without approved evidence."
+    ]
+  },
+  "post": {
+    "id": "day-one-thesis",
+    "status": "draft_only",
+    "assetPath": "launch/allow-dashboard-rendered.png",
+    "text": "AI agents should not get blank-check wallets.\n\nAllow Protocol is building the allowance layer for autonomous payments: merchant allowlists, per-tx caps, daily budgets, metadata filters, route blocks, and receipt proofs.\n\nDay 1: policy engine, dashboard, x402-style preflight."
+  },
+  "posted": {
+    "postedAt": "",
+    "postedBy": "",
+    "accountHandle": "@allow_protocol",
+    "postUrl": "",
+    "exactText": "AI agents should not get blank-check wallets.\n\nAllow Protocol is building the allowance layer for autonomous payments: merchant allowlists, per-tx caps, daily budgets, metadata filters, route blocks, and receipt proofs.\n\nDay 1: policy engine, dashboard, x402-style preflight.",
+    "humanExecuted": false,
+    "accountOwnerApproved": false,
+    "automationUsed": false
+  },
+  "proof": {
+    "type": "post_permalink",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "notes": [
+    "Template only. Fill after a human posts the final approved x_post packet.",
+    "This must fail until approvalPacket is final approved and posted/proof fields are complete.",
+    "Do not include account cookies, private DMs, bearer tokens, API keys, seed phrases, or wallet secrets."
+  ]
+}

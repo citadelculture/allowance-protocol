@@ -1,0 +1,61 @@
+{
+  "manifestId": "allow-registry-base-sepolia-template",
+  "generatedAt": "2026-06-08",
+  "contract": {
+    "name": "AllowanceRegistry",
+    "path": "contracts/AllowanceRegistry.sol",
+    "sourceSha256": "0x59c437f2a3f3ae194ba71d3902eb7126ea36663b55fc0f56da907ef599b89599"
+  },
+  "target": {
+    "environment": "testnet",
+    "network": "Base Sepolia",
+    "chainId": 84532,
+    "deployer": "0x0000000000000000000000000000000000000000",
+    "controller": "0x0000000000000000000000000000000000000000",
+    "treasuryMultisig": "0x0000000000000000000000000000000000000000"
+  },
+  "checks": {
+    "npmTest": {
+      "status": "pending",
+      "reportRef": ""
+    },
+    "contractReview": {
+      "status": "pending",
+      "reportRef": ""
+    },
+    "compiler": {
+      "status": "missing",
+      "tool": "",
+      "version": "",
+      "artifactRef": ""
+    },
+    "staticAnalysis": {
+      "status": "missing",
+      "tool": "",
+      "reportRef": ""
+    },
+    "independentReview": {
+      "status": "missing",
+      "reviewer": "",
+      "reportRef": "",
+      "evidenceRef": "",
+      "sourceSha256": "",
+      "reviewedAt": ""
+    }
+  },
+  "custody": {
+    "noPayableEntrypoints": true,
+    "noTransferPrimitives": true,
+    "receiptMetadataHashedOnly": true,
+    "noEscrowOrCustody": true
+  },
+  "token": {
+    "launchEnabled": false,
+    "transferable": false,
+    "gateRef": "docs/TOKEN_PATH.md"
+  },
+  "approvals": {
+    "approvedBy": "",
+    "approvedAt": ""
+  }
+}

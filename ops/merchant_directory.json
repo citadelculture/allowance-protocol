@@ -1,0 +1,111 @@
+{
+  "version": "0.1",
+  "generatedAt": "2026-06-08",
+  "merchants": [
+    {
+      "id": "mcp_search",
+      "name": "MCP Search Index",
+      "status": "candidate",
+      "surfaces": ["x402_preflight", "mcp_guard", "wallet_policy_hook"],
+      "endpoint": {
+        "type": "api",
+        "baseUrl": "https://search.allow.dev",
+        "testPath": "/v1/search"
+      },
+      "pricing": {
+        "model": "per_request",
+        "unitUsd": 0.018,
+        "currency": "USD"
+      },
+      "payment": {
+        "protocol": "x402",
+        "asset": "USDC",
+        "chain": "Base"
+      },
+      "risk": {
+        "dataHandlingClass": "low",
+        "sensitiveMetadataClasses": [],
+        "riskTags": ["metered", "low-latency"]
+      },
+      "receipts": {
+        "supported": true,
+        "fields": ["policyId", "merchantId", "amountUsd", "intentHash", "intentNonce", "metadataHash"]
+      },
+      "refundRules": "Pilot refunds and disputes are handled by written merchant agreement.",
+      "disputeContact": "pilot-contact-required",
+      "publicProof": "",
+      "lastReviewedAt": "2026-06-08",
+      "notes": "Demo candidate for x402, MCP, and wallet-hook integration paths."
+    },
+    {
+      "id": "vector_cloud",
+      "name": "Vector Cloud",
+      "status": "candidate",
+      "surfaces": ["x402_preflight", "allow_gateway"],
+      "endpoint": {
+        "type": "api",
+        "baseUrl": "https://vectors.allow.dev",
+        "testPath": "/v1/embed"
+      },
+      "pricing": {
+        "model": "per_request",
+        "unitUsd": 0.11,
+        "currency": "USD"
+      },
+      "payment": {
+        "protocol": "allow_gateway",
+        "asset": "USDC",
+        "chain": "Base"
+      },
+      "risk": {
+        "dataHandlingClass": "low",
+        "sensitiveMetadataClasses": [],
+        "riskTags": ["compute", "variable-cost"]
+      },
+      "receipts": {
+        "supported": true,
+        "fields": ["policyId", "merchantId", "amountUsd", "intentHash", "intentNonce", "metadataHash"]
+      },
+      "refundRules": "Pilot refunds and disputes are handled by written merchant agreement.",
+      "disputeContact": "pilot-contact-required",
+      "publicProof": "",
+      "lastReviewedAt": "2026-06-08",
+      "notes": "Candidate for gateway protection and variable-cost receipt reconciliation."
+    },
+    {
+      "id": "research_api",
+      "name": "Research API",
+      "status": "pilot_ready",
+      "surfaces": ["x402_preflight"],
+      "endpoint": {
+        "type": "api",
+        "baseUrl": "https://research.example",
+        "testPath": "/v1/search"
+      },
+      "pricing": {
+        "model": "per_request",
+        "unitUsd": 0.25,
+        "currency": "USD"
+      },
+      "payment": {
+        "protocol": "x402",
+        "asset": "USDC",
+        "chain": "Base"
+      },
+      "risk": {
+        "dataHandlingClass": "sensitive",
+        "sensitiveMetadataClasses": ["query_text"],
+        "riskTags": ["query_text", "looped_agent_calls"]
+      },
+      "receipts": {
+        "supported": true,
+        "fields": ["policyId", "merchantId", "amountUsd", "intentHash", "intentNonce", "metadataHash"]
+      },
+      "refundRules": "Pilot refunds and disputes are handled by written merchant agreement.",
+      "disputeContact": "@casey",
+      "publicProof": "",
+      "lastReviewedAt": "2026-06-08",
+      "notes": "Derived from the merchant intake example for local pilot-kit testing."
+    }
+  ]
+}

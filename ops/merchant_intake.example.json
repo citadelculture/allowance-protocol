@@ -1,0 +1,46 @@
+{
+  "merchantId": "research_api",
+  "name": "Research API",
+  "website": "https://research.example",
+  "contact": {
+    "name": "Casey",
+    "role": "Founder",
+    "emailOrHandle": "@casey"
+  },
+  "service": {
+    "category": "research",
+    "endpointType": "api",
+    "description": "Metered research endpoint for agents.",
+    "pricingModel": "per_request",
+    "examplePriceUsd": 0.25
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": true,
+    "currentX402Support": true,
+    "currentMcpSupport": false,
+    "needsSpendCaps": true,
+    "needsMetadataFilters": true,
+    "needsReplayProtection": true,
+    "needsReceipts": true
+  },
+  "risk": {
+    "sensitiveMetadataClasses": ["query_text"],
+    "abuseModes": ["looped_agent_calls"],
+    "maxSafeTestSpendUsd": 2
+  },
+  "integration": {
+    "preferredSurface": "server_middleware",
+    "canTestThisWeek": true,
+    "testEndpoint": "https://research.example/v1/search",
+    "successMetric": "public demo with one allowed receipt and one denied receipt"
+  },
+  "score": {
+    "existingEndpoint": 2,
+    "usageBasedPricing": 2,
+    "agentUsersLikely": 2,
+    "metadataOrAbuseRisk": 2,
+    "canTestWithinWeek": 2,
+    "publicProofPotential": 2
+  },
+  "notes": "Potential public case study."
+}

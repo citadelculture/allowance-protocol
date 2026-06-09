@@ -1,0 +1,39 @@
+{
+  "approvalId": "external_action_example_001",
+  "actionType": "x_post",
+  "status": "draft",
+  "requestedBy": "allow-operator",
+  "requestedAt": "2026-06-08",
+  "approvedBy": "",
+  "approvedAt": "",
+  "action": {
+    "summary": "Human posts the day-one Allow Protocol thesis from the approved X account.",
+    "channel": "x",
+    "destination": "@allow_protocol",
+    "executionMode": "human_only",
+    "exactText": "AI agents need allowances, not blank checks.",
+    "automated": false
+  },
+  "approvals": {
+    "humanWillExecute": false,
+    "automationDisabled": false,
+    "exactActionReviewed": false,
+    "externalSideEffectAcknowledged": false,
+    "noPrivateKeys": false,
+    "noCustodyOrEscrow": false,
+    "noTokenPitch": false,
+    "noMarketManipulation": false,
+    "legalEthicsReviewed": false
+  },
+  "payload": {
+    "post": {
+      "id": "external-action-template-post",
+      "status": "draft_only",
+      "text": "AI agents need allowances, not blank checks."
+    }
+  },
+  "notes": [
+    "This template must fail until a real account owner approves the exact action.",
+    "This validator does not post, sign, deploy, send outreach, start traffic, or move funds."
+  ]
+}

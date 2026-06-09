@@ -1,0 +1,42 @@
+{
+  "bindingId": "allow-pilot-alpha-binding-smoke",
+  "generatedAt": "2026-06-08",
+  "pilot": {
+    "merchantId": "mcp_search",
+    "environment": "testnet",
+    "network": "eip155:84532",
+    "approvalRef": "merchant-email:2026-06-08",
+    "approvedBy": "merchant-operator-smoke",
+    "approvedAt": "2026-06-08"
+  },
+  "agent": {
+    "agentId": "agent-alpha",
+    "walletType": "eoa",
+    "walletAddress": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+    "controlEvidenceRef": "wallet-signed-message:2026-06-08",
+    "controlChallenge": "Allow Protocol pilot wallet binding\nbindingId: allow-pilot-alpha-binding-smoke\nmerchantId: mcp_search\nenvironment: testnet\nnetwork: eip155:84532\nagentId: agent-alpha\nwalletAddress: 0x7e5f4552091a69125d5dfcb7b8c2659029395bdf\npolicyId: allow_policy_pilot_alpha\npolicyFingerprint: 2ba1d438",
+    "controlSignature": "0x597c296df15ff6b320b686b44eae7605becb006721b6c743b43bd1b4541f7116625c607eaeb4249608d2387261ddc814de6cd41304475d2225294956ad8fb5fd1b",
+    "approvedBy": "pilot-operator-smoke",
+    "approvedAt": "2026-06-08"
+  },
+  "policy": {
+    "policyId": "allow_policy_pilot_alpha",
+    "policyPath": "work/pilot_policy.valid-smoke.json",
+    "policyFingerprint": "2ba1d438",
+    "requireAgentIntentSignature": true
+  },
+  "runtime": {
+    "allowProduction": true,
+    "requireAgentSignature": true,
+    "allowAgentAddress": "0x7E5F4552091A69125d5DfCb7b8C2659029395Bdf",
+    "fixtureEnabled": false,
+    "agentPrivateKeyExposed": false,
+    "controllerPrivateKeyExposed": false
+  },
+  "safety": {
+    "noTradingAuthority": true,
+    "merchantScoped": true,
+    "spendCapsReviewed": true,
+    "metadataPolicyReviewed": true
+  }
+}

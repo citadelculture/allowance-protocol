@@ -1,0 +1,77 @@
+[
+  {
+    "priority": 1,
+    "segment": "x402 sellers on Agentic Market",
+    "source": "https://agentic.market/",
+    "sourceSignal": "Agentic Market describes discoverable x402 services that agents can pay without accounts or API keys.",
+    "whyAllowFits": "Sellers need buyer-side spend limits, metadata filters, replay protection, and receipt trails before agent payments scale.",
+    "targetExamples": [
+      "market research services",
+      "daily briefing services",
+      "company filing analysis services",
+      "talent and job market scanners"
+    ],
+    "firstAsk": "Would you test Allow on one low-risk paid endpoint and share whether the preflight decision shape fits your service?",
+    "status": "next"
+  },
+  {
+    "priority": 2,
+    "segment": "Public MCP server developers",
+    "source": "https://modelcontextprotocol.io/registry/about",
+    "sourceSignal": "The official MCP Registry gives public server creators a discovery and metadata surface.",
+    "whyAllowFits": "MCP tools can become paid agent-callable services, but need policy checks before monetized tool calls.",
+    "targetExamples": [
+      "remote MCP servers",
+      "research MCP servers",
+      "data access MCP servers",
+      "tool aggregators consuming registry metadata"
+    ],
+    "firstAsk": "Where would an allowance check fit best for a paid MCP tool: client, gateway, server, or wallet hook?",
+    "status": "next"
+  },
+  {
+    "priority": 3,
+    "segment": "Base agent ecosystem builders",
+    "source": "https://www.base.org/agents",
+    "sourceSignal": "Base highlights agent wallets, x402 services, and spend guardrails as part of the agent ecosystem.",
+    "whyAllowFits": "Wallet-bearing agents need explicit spend envelopes before paying services autonomously.",
+    "targetExamples": [
+      "Base MCP users",
+      "agent wallet teams",
+      "x402 service builders on Base",
+      "agent identity and reputation builders"
+    ],
+    "firstAsk": "Can Allow provide the policy receipt layer between your agent wallet and paid service calls?",
+    "status": "next"
+  },
+  {
+    "priority": 4,
+    "segment": "x402 resource-server developers using facilitator APIs",
+    "source": "https://docs.cdp.coinbase.com/api-reference/v2/rest-api/x402-facilitator/x402-facilitator",
+    "sourceSignal": "The facilitator exposes payment verify and settle APIs for resource servers.",
+    "whyAllowFits": "Allow can run before verify/settle to block requests that should never reach payment settlement.",
+    "targetExamples": [
+      "paid data APIs",
+      "paid inference routes",
+      "paid content endpoints",
+      "API gateways adding x402"
+    ],
+    "firstAsk": "Would you add Allow as a pre-settlement guard before calling the facilitator verify endpoint?",
+    "status": "queued"
+  },
+  {
+    "priority": 5,
+    "segment": "Search, data, and research APIs",
+    "source": "https://docs.cdp.coinbase.com/x402/welcome",
+    "sourceSignal": "x402 explicitly includes API services paid per request, AI agents paying for API access, and proxy services.",
+    "whyAllowFits": "These endpoints are frequent, low-ticket, and agent-friendly, making spend caps and denied receipts highly visible.",
+    "targetExamples": [
+      "web search APIs",
+      "market data APIs",
+      "company research APIs",
+      "document analysis APIs"
+    ],
+    "firstAsk": "What would make you comfortable letting autonomous agents pay for individual calls?",
+    "status": "queued"
+  }
+]

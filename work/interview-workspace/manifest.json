@@ -1,0 +1,220 @@
+{
+  "artifact": "allow_interview_workspace",
+  "generatedAt": "2026-06-09T04:40:49.046Z",
+  "outputDir": "work/interview-workspace",
+  "campaign": {
+    "status": "ready_for_human_review",
+    "valid": true,
+    "target": {
+      "minimumCompleted": 5,
+      "recordedCompletedCount": 0,
+      "scheduledCount": 0,
+      "shortfall": 5,
+      "plannedActionCount": 5,
+      "shortfallAfterPlan": 0
+    },
+    "nextAction": "Review 5 interview packet(s), starting with BlockRun Labs; 0 more candidate(s) remain after this batch",
+    "reasons": [],
+    "warnings": []
+  },
+  "interviewPackets": [
+    {
+      "kind": "interview_packet",
+      "path": "packets/01-blockrun-partners.interview-packet.json",
+      "actionId": "interview-review-blockrun-partners",
+      "candidateId": "blockrun-partners",
+      "candidateName": "BlockRun Labs",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x8586134b70fe36ff43ccdeb3c1b7fe90b51ed2cdf71d3ca768635ed0485015d4",
+      "bytes": 3645
+    },
+    {
+      "kind": "interview_packet",
+      "path": "packets/02-blockrun-github-franklin.interview-packet.json",
+      "actionId": "interview-review-blockrun-github-franklin",
+      "candidateId": "blockrun-github-franklin",
+      "candidateName": "BlockRun Franklin maintainers",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0xc8e3e68008ca1d4df49e4fea034b34aca049e7b5d4e9b9ee92a82b189e0db16d",
+      "bytes": 3618
+    },
+    {
+      "kind": "interview_packet",
+      "path": "packets/03-parallel-contact.interview-packet.json",
+      "actionId": "interview-review-parallel-contact",
+      "candidateId": "parallel-contact",
+      "candidateName": "Parallel",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0xdbe7a27df6e95d690033c4897c6bd7f51a54a9d606c0a74cb312d03fa5f48b33",
+      "bytes": 3502
+    },
+    {
+      "kind": "interview_packet",
+      "path": "packets/04-agentic-market-seller-tools.interview-packet.json",
+      "actionId": "interview-review-agentic-market-seller-tools",
+      "candidateId": "agentic-market-seller-tools",
+      "candidateName": "Agentic Market seller tooling",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x850642a77ee4b3bfd67d5b26947bcf49cd5526e457fc2845aecd0f6a19c09ce0",
+      "bytes": 3618
+    },
+    {
+      "kind": "interview_packet",
+      "path": "packets/05-the402-contact.interview-packet.json",
+      "actionId": "interview-review-the402-contact",
+      "candidateId": "the402-contact",
+      "candidateName": "the402",
+      "prospectId": "base-agent-wallet-builders",
+      "prospectName": "Base agent wallet and x402 service builders",
+      "sha256": "0x1883ee6a6daa89acce139681bae48617d1b81c3820baa57b4e09f2ffc88ba936",
+      "bytes": 3726
+    }
+  ],
+  "interviewRecordTemplates": [
+    {
+      "kind": "interview_record_template",
+      "path": "records/01-blockrun-partners.completed-interview.template.json",
+      "actionId": "interview-review-blockrun-partners",
+      "candidateId": "blockrun-partners",
+      "candidateName": "BlockRun Labs",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x0a5e362ce65741e6d4d2213f6bd67838fe4b7c76e990f9a89389940cfec4d8e4",
+      "bytes": 2976
+    },
+    {
+      "kind": "interview_record_template",
+      "path": "records/02-blockrun-github-franklin.completed-interview.template.json",
+      "actionId": "interview-review-blockrun-github-franklin",
+      "candidateId": "blockrun-github-franklin",
+      "candidateName": "BlockRun Franklin maintainers",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x525614cc4deb26a6b8914fdf025a7723008d4d57998a5281cd3deeb70c3adf6a",
+      "bytes": 2972
+    },
+    {
+      "kind": "interview_record_template",
+      "path": "records/03-parallel-contact.completed-interview.template.json",
+      "actionId": "interview-review-parallel-contact",
+      "candidateId": "parallel-contact",
+      "candidateName": "Parallel",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0xce14d7b134d37cb48d2a1eddc18bf58dd9c8bd59fe2d904d1d15cf958307a3e7",
+      "bytes": 2887
+    },
+    {
+      "kind": "interview_record_template",
+      "path": "records/04-agentic-market-seller-tools.completed-interview.template.json",
+      "actionId": "interview-review-agentic-market-seller-tools",
+      "candidateId": "agentic-market-seller-tools",
+      "candidateName": "Agentic Market seller tooling",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x96e439470174059529b0a51edaeea4bad82fc191f007c9a28aa38a03339f56e4",
+      "bytes": 2976
+    },
+    {
+      "kind": "interview_record_template",
+      "path": "records/05-the402-contact.completed-interview.template.json",
+      "actionId": "interview-review-the402-contact",
+      "candidateId": "the402-contact",
+      "candidateName": "the402",
+      "prospectId": "base-agent-wallet-builders",
+      "prospectName": "Base agent wallet and x402 service builders",
+      "sha256": "0x6e4395c893f5ff3b9336199c1160d0cbefa61f74f916cdd5167ec9538da83d2a",
+      "bytes": 3057
+    }
+  ],
+  "merchantIntakeTemplates": [
+    {
+      "kind": "merchant_intake_template",
+      "path": "intakes/01-blockrun-partners.merchant-intake.template.json",
+      "actionId": "interview-review-blockrun-partners",
+      "candidateId": "blockrun-partners",
+      "candidateName": "BlockRun Labs",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x7c23ff647685a508be181d7c39cd0e2629c9194f030f9d32cdc8fa23998e17e3",
+      "bytes": 1193
+    },
+    {
+      "kind": "merchant_intake_template",
+      "path": "intakes/02-blockrun-github-franklin.merchant-intake.template.json",
+      "actionId": "interview-review-blockrun-github-franklin",
+      "candidateId": "blockrun-github-franklin",
+      "candidateName": "BlockRun Franklin maintainers",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0xd54181bbe615bcacfda7518ff58e9951892ddc7969f1b56d20c6a9381441d10b",
+      "bytes": 1151
+    },
+    {
+      "kind": "merchant_intake_template",
+      "path": "intakes/03-parallel-contact.merchant-intake.template.json",
+      "actionId": "interview-review-parallel-contact",
+      "candidateId": "parallel-contact",
+      "candidateName": "Parallel",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0x2bd6098bb5c56aa56d7e57e2cf7793994132dd70f9f7eab8adec476874438cc2",
+      "bytes": 1115
+    },
+    {
+      "kind": "merchant_intake_template",
+      "path": "intakes/04-agentic-market-seller-tools.merchant-intake.template.json",
+      "actionId": "interview-review-agentic-market-seller-tools",
+      "candidateId": "agentic-market-seller-tools",
+      "candidateName": "Agentic Market seller tooling",
+      "prospectId": "agentic-market-research",
+      "prospectName": "Agentic Market: Market Research services",
+      "sha256": "0xe9cee568f3594d4850d6e4735f2d873f76a2fd2e975ef0783e464ecbbcbf33af",
+      "bytes": 1150
+    },
+    {
+      "kind": "merchant_intake_template",
+      "path": "intakes/05-the402-contact.merchant-intake.template.json",
+      "actionId": "interview-review-the402-contact",
+      "candidateId": "the402-contact",
+      "candidateName": "the402",
+      "prospectId": "base-agent-wallet-builders",
+      "prospectName": "Base agent wallet and x402 service builders",
+      "sha256": "0xf6bd682f787b964bedbb95f3ede7a3dcdc6ce0beb1e06599bdcedc95e2f6b4db",
+      "bytes": 1294
+    }
+  ],
+  "blockedCandidates": [
+    {
+      "candidateId": "toon-haus-finance",
+      "candidateName": "toon.haus finance endpoint operator",
+      "prospectId": "agentic-market-research",
+      "status": "needs_contact_discovery",
+      "priorityScore": 1154,
+      "blockers": [
+        "Candidate is not draft_ready"
+      ],
+      "warnings": [],
+      "usedByInterview": false
+    }
+  ],
+  "instructions": [
+    "Use these files as local interview preparation only.",
+    "Do not send outreach, schedule calls, or claim interviews from this workspace.",
+    "After a human-run interview, copy the record template into ops/interviews.json and fill all required evidence.",
+    "Create a completed merchant intake in ops/intakes/ and set the interview intakePath to that file.",
+    "Run npm run interview-report before any interview counts toward launch readiness."
+  ],
+  "evidenceBoundary": {
+    "writesLocalInterviewPrepFiles": true,
+    "sendsOutreach": false,
+    "schedulesInterviews": false,
+    "countsAsCompletedInterview": false,
+    "requestsSecrets": false,
+    "tokenPitch": false
+  }
+}

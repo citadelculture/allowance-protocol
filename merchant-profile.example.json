@@ -1,0 +1,34 @@
+{
+  "id": "mcp_search",
+  "name": "MCP Search Index",
+  "status": "candidate",
+  "surfaces": ["x402_preflight", "mcp_guard", "wallet_policy_hook"],
+  "endpoint": {
+    "type": "api",
+    "baseUrl": "https://search.allow.dev",
+    "testPath": "/v1/search"
+  },
+  "pricing": {
+    "model": "per_request",
+    "unitUsd": 0.018,
+    "currency": "USD"
+  },
+  "payment": {
+    "protocol": "x402",
+    "asset": "USDC",
+    "chain": "Base"
+  },
+  "risk": {
+    "dataHandlingClass": "low",
+    "sensitiveMetadataClasses": [],
+    "riskTags": ["metered", "low-latency"]
+  },
+  "receipts": {
+    "supported": true,
+    "fields": ["policyId", "merchantId", "amountUsd", "intentHash", "intentNonce", "metadataHash"]
+  },
+  "refundRules": "Pilot refunds and disputes are handled by written merchant agreement.",
+  "disputeContact": "pilot-contact-required",
+  "publicProof": "",
+  "lastReviewedAt": "2026-06-08"
+}

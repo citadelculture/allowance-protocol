@@ -1,0 +1,644 @@
+[
+  {
+    "priority": 1,
+    "status": "done",
+    "track": "integration",
+    "task": "Build x402 middleware package shape and example paid API route"
+  },
+  {
+    "priority": 2,
+    "status": "done",
+    "track": "distribution",
+    "task": "Prepare the day-one Allow thesis and rendered dashboard screenshot"
+  },
+  {
+    "priority": 3,
+    "status": "done",
+    "track": "protocol",
+    "task": "Add replay protection and receipt nonce tests to AllowanceRegistry"
+  },
+  {
+    "priority": 4,
+    "status": "next",
+    "track": "growth",
+    "task": "Recruit five paid API or MCP builders for merchant profile interviews"
+  },
+  {
+    "priority": 5,
+    "status": "done",
+    "track": "security",
+    "task": "Write threat model for free-riding, metadata leakage, and policy spoofing"
+  },
+  {
+    "priority": 6,
+    "status": "done",
+    "track": "integration",
+    "task": "Add signed-policy envelope and replay-resistant receipt nonces"
+  },
+  {
+    "priority": 7,
+    "status": "done",
+    "track": "growth",
+    "task": "Package a merchant interview script and outreach list for API builders"
+  },
+  {
+    "priority": 8,
+    "status": "done",
+    "track": "security",
+    "task": "Install audited EIP-712 recovery library and disable demo signatures in production mode"
+  },
+  {
+    "priority": 9,
+    "status": "done",
+    "track": "growth",
+    "task": "Build merchant prospect pipeline, scoring, and interview log"
+  },
+  {
+    "priority": 10,
+    "status": "done",
+    "track": "growth",
+    "task": "Prepare public contact candidates and review-only outreach drafts for first prospect slot"
+  },
+  {
+    "priority": 11,
+    "status": "done",
+    "track": "security",
+    "task": "Add policy typed-data generation and injected EIP-712 verifier boundary"
+  },
+  {
+    "priority": 12,
+    "status": "done",
+    "track": "security",
+    "task": "Add production configuration that forces EIP-712 mode and rejects demo policies by default"
+  },
+  {
+    "priority": 13,
+    "status": "done",
+    "track": "security",
+    "task": "Replace demo default policy in server runtime with a generated EIP-712 policy fixture for production smoke tests"
+  },
+  {
+    "priority": 14,
+    "status": "done",
+    "track": "security",
+    "task": "Add controller policy signing CLI and require signed policy config for production runtime"
+  },
+  {
+    "priority": 15,
+    "status": "done",
+    "track": "security",
+    "task": "Add controller signing ceremony checklist and production signed-policy verifier"
+  },
+  {
+    "priority": 16,
+    "status": "done",
+    "track": "growth",
+    "task": "Add merchant intake validator, readiness scoring, and policy patch generator"
+  },
+  {
+    "priority": 17,
+    "status": "next",
+    "track": "security",
+    "task": "Run controller signing ceremony with real wallet and store signed policy outside the repository"
+  },
+  {
+    "priority": 18,
+    "status": "done",
+    "track": "distribution",
+    "task": "Prepare X launch screenshot, post variants, and launch-pack validator"
+  },
+  {
+    "priority": 19,
+    "status": "done",
+    "track": "integration",
+    "task": "Build config-driven Allow gateway for existing paid APIs"
+  },
+  {
+    "priority": 20,
+    "status": "done",
+    "track": "growth",
+    "task": "Add merchant pilot-kit generator for gateway config, smoke tests, and acceptance criteria"
+  },
+  {
+    "priority": 21,
+    "status": "done",
+    "track": "integration",
+    "task": "Add plain upstream demo, gateway receipt logging, and pilot report"
+  },
+  {
+    "priority": 22,
+    "status": "done",
+    "track": "integration",
+    "task": "Add gateway health checks, upstream timeout handling, and failure receipts"
+  },
+  {
+    "priority": 23,
+    "status": "done",
+    "track": "growth",
+    "task": "Add receipt-driven launch metrics rollup and operator integration"
+  },
+  {
+    "priority": 24,
+    "status": "done",
+    "track": "operations",
+    "task": "Add launch readiness audit for product, security, growth, pilot, and token gates"
+  },
+  {
+    "priority": 25,
+    "status": "done",
+    "track": "integration",
+    "task": "Build dependency-free MCP tools/call payment guard and example"
+  },
+  {
+    "priority": 26,
+    "status": "next",
+    "track": "growth",
+    "task": "Run the first five merchant interviews and validate each intake before integration"
+  },
+  {
+    "priority": 27,
+    "status": "next",
+    "track": "distribution",
+    "task": "Post the approved day-one launch thread from the X account"
+  },
+  {
+    "priority": 28,
+    "status": "next",
+    "track": "integration",
+    "task": "Run a live gateway pilot against one external merchant-approved test endpoint"
+  },
+  {
+    "priority": 29,
+    "status": "done",
+    "track": "integration",
+    "task": "Build AgentKit wallet policy hook prototype"
+  },
+  {
+    "priority": 30,
+    "status": "done",
+    "track": "integration",
+    "task": "Validate wallet hook against a real AgentKit or Base wallet client integration"
+  },
+  {
+    "priority": 31,
+    "status": "next",
+    "track": "integration",
+    "task": "Run wallet hook against a merchant-approved live Base Sepolia wallet flow"
+  },
+  {
+    "priority": 32,
+    "status": "done",
+    "track": "distribution",
+    "task": "Build merchant directory validator and sample candidate registry"
+  },
+  {
+    "priority": 33,
+    "status": "next",
+    "track": "distribution",
+    "task": "Replace demo merchant directory entries with approved pilot listings and receipt evidence"
+  },
+  {
+    "priority": 34,
+    "status": "done",
+    "track": "security",
+    "task": "Add automated pre-deploy review gate for AllowanceRegistry"
+  },
+  {
+    "priority": 35,
+    "status": "next",
+    "track": "security",
+    "task": "Run independent smart contract review before Base Sepolia deployment"
+  },
+  {
+    "priority": 36,
+    "status": "done",
+    "track": "security",
+    "task": "Add EIP-712 merchant profile signing for live directory listings"
+  },
+  {
+    "priority": 37,
+    "status": "next",
+    "track": "distribution",
+    "task": "Collect first merchant-approved signed profile before marking any directory listing live"
+  },
+  {
+    "priority": 38,
+    "status": "done",
+    "track": "security",
+    "task": "Add fixed-window rate limits for paid routes and gateway traffic"
+  },
+  {
+    "priority": 39,
+    "status": "next",
+    "track": "security",
+    "task": "Tune production rate limits with first merchant pilot traffic"
+  },
+  {
+    "priority": 40,
+    "status": "done",
+    "track": "security",
+    "task": "Add EIP-712 agent payment intent signatures and runtime enforcement switch"
+  },
+  {
+    "priority": 41,
+    "status": "next",
+    "track": "security",
+    "task": "Require signed agent intents in first production pilot once agent wallet is approved"
+  },
+  {
+    "priority": 42,
+    "status": "done",
+    "track": "integration",
+    "task": "Add fail-closed settlement proof verification boundary for paid delivery"
+  },
+  {
+    "priority": 43,
+    "status": "done",
+    "track": "integration",
+    "task": "Add x402 facilitator verifier adapter and gateway environment injection"
+  },
+  {
+    "priority": 44,
+    "status": "done",
+    "track": "integration",
+    "task": "Add dry-run/live x402 facilitator smoke harness for pilot readiness"
+  },
+  {
+    "priority": 45,
+    "status": "done",
+    "track": "operations",
+    "task": "Add receipt evidence provenance so local demos cannot unlock pilot or token readiness"
+  },
+  {
+    "priority": 46,
+    "status": "done",
+    "track": "security",
+    "task": "Add controller signing ceremony audit CLI before production runtime"
+  },
+  {
+    "priority": 47,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add launch claims guard against token hype, return promises, and unsupported metrics"
+  },
+  {
+    "priority": 48,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add cryptographic live-merchant directory gate for signed profile integrity"
+  },
+  {
+    "priority": 49,
+    "status": "done",
+    "track": "integration",
+    "task": "Add fail-closed live x402 readiness gate for merchant-approved payment requirements"
+  },
+  {
+    "priority": 50,
+    "status": "done",
+    "track": "operations",
+    "task": "Add fail-closed pilot evidence report gate for credible merchant-approved receipts"
+  },
+  {
+    "priority": 51,
+    "status": "done",
+    "track": "security",
+    "task": "Add production runtime startup guard requiring signed agent intents"
+  },
+  {
+    "priority": 52,
+    "status": "done",
+    "track": "operations",
+    "task": "Add receipt-bound merchant dispute process and redaction validator"
+  },
+  {
+    "priority": 53,
+    "status": "done",
+    "track": "security",
+    "task": "Add fail-closed deployment manifest validator before contract deployment"
+  },
+  {
+    "priority": 54,
+    "status": "next",
+    "track": "security",
+    "task": "Bind first approved production pilot to a real agent wallet address"
+  },
+  {
+    "priority": 55,
+    "status": "next",
+    "track": "integration",
+    "task": "Run live x402 facilitator smoke with merchant-approved payment requirements before public paid delivery"
+  },
+  {
+    "priority": 56,
+    "status": "done",
+    "track": "security",
+    "task": "Add production pilot agent wallet binding validator"
+  },
+  {
+    "priority": 57,
+    "status": "done",
+    "track": "integration",
+    "task": "Add local gateway smoke harness for builder onboarding"
+  },
+  {
+    "priority": 58,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add outbound outreach approval validator before external sending"
+  },
+  {
+    "priority": 59,
+    "status": "done",
+    "track": "integration",
+    "task": "Add review-only merchant pilot packet generator"
+  },
+  {
+    "priority": 60,
+    "status": "done",
+    "track": "integration",
+    "task": "Support server-side pilot merchant catalogs in gateway, smoke, and packet flows"
+  },
+  {
+    "priority": 61,
+    "status": "done",
+    "track": "growth",
+    "task": "Add review-only merchant interview packet generator"
+  },
+  {
+    "priority": 62,
+    "status": "done",
+    "track": "growth",
+    "task": "Add fail-closed merchant interview evidence report"
+  },
+  {
+    "priority": 63,
+    "status": "done",
+    "track": "security",
+    "task": "Add no-secret controller policy signing packet"
+  },
+  {
+    "priority": 64,
+    "status": "done",
+    "track": "integration",
+    "task": "Add fail-closed live pilot preflight validator"
+  },
+  {
+    "priority": 65,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add merchant-approved pilot disclosure gate for public usage claims"
+  },
+  {
+    "priority": 66,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add live merchant promotion gate binding signed profiles to disclosure evidence"
+  },
+  {
+    "priority": 67,
+    "status": "done",
+    "track": "operations",
+    "task": "Add unified external-action approval packet validator"
+  },
+  {
+    "priority": 68,
+    "status": "done",
+    "track": "operations",
+    "task": "Add hash-checked evidence bundle manifest validator"
+  },
+  {
+    "priority": 69,
+    "status": "done",
+    "track": "legal",
+    "task": "Add fail-closed token governance lock and legal-review readiness gate"
+  },
+  {
+    "priority": 70,
+    "status": "done",
+    "track": "security",
+    "task": "Add no-broadcast receipt registry write-intent builder"
+  },
+  {
+    "priority": 71,
+    "status": "done",
+    "track": "security",
+    "task": "Add no-broadcast registry policy create-intent builder"
+  },
+  {
+    "priority": 72,
+    "status": "done",
+    "track": "security",
+    "task": "Add no-broadcast registry lifecycle update-intent builder"
+  },
+  {
+    "priority": 73,
+    "status": "done",
+    "track": "security",
+    "task": "Add post-execution registry transaction evidence validator"
+  },
+  {
+    "priority": 74,
+    "status": "done",
+    "track": "growth",
+    "task": "Add review-only interview campaign planner for the five-interview gate"
+  },
+  {
+    "priority": 75,
+    "status": "done",
+    "track": "growth",
+    "task": "Close first interview campaign contact shortfall with a fifth public review-only candidate"
+  },
+  {
+    "priority": 76,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add draft external-action packet generator for merchant outreach"
+  },
+  {
+    "priority": 77,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add post-send merchant outreach execution evidence validator"
+  },
+  {
+    "priority": 78,
+    "status": "done",
+    "track": "growth",
+    "task": "Add evidence-backed outreach state reconciliation"
+  },
+  {
+    "priority": 79,
+    "status": "done",
+    "track": "growth",
+    "task": "Tighten scheduled interview evidence requirements"
+  },
+  {
+    "priority": 80,
+    "status": "done",
+    "track": "integration",
+    "task": "Add merchant-approved pilot authorization validator before live preflight"
+  },
+  {
+    "priority": 81,
+    "status": "done",
+    "track": "security",
+    "task": "Add deployment compiler and static-analysis evidence validator"
+  },
+  {
+    "priority": 82,
+    "status": "done",
+    "track": "operations",
+    "task": "Add launch critical-path sequencer for human-approved actions"
+  },
+  {
+    "priority": 83,
+    "status": "done",
+    "track": "operations",
+    "task": "Add external action queue for ready and blocked approval packets"
+  },
+  {
+    "priority": 84,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local external action review workspace for draft approval packets"
+  },
+  {
+    "priority": 85,
+    "status": "done",
+    "track": "operations",
+    "task": "Add prefilled post-execution evidence templates to the external action workspace"
+  },
+  {
+    "priority": 86,
+    "status": "done",
+    "track": "operations",
+    "task": "Add read-only external action workspace audit for local review files"
+  },
+  {
+    "priority": 87,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local external action review brief for audited approval workspaces"
+  },
+  {
+    "priority": 88,
+    "status": "done",
+    "track": "growth",
+    "task": "Add local merchant interview workspace for review-only prep files"
+  },
+  {
+    "priority": 89,
+    "status": "done",
+    "track": "growth",
+    "task": "Add read-only audit for local merchant interview prep workspace"
+  },
+  {
+    "priority": 90,
+    "status": "done",
+    "track": "growth",
+    "task": "Add local review brief for audited merchant interview prep workspace"
+  },
+  {
+    "priority": 91,
+    "status": "done",
+    "track": "operations",
+    "task": "Route launch sequencer merchant-interview stage through audited prep workspace and review brief"
+  },
+  {
+    "priority": 92,
+    "status": "done",
+    "track": "operations",
+    "task": "Add concise local launch handoff brief for current human-approved stage and blockers"
+  },
+  {
+    "priority": 93,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local approval runbook for one-at-a-time human execution and evidence validation"
+  },
+  {
+    "priority": 94,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local execution evidence ledger-entry preview for X posts and outreach"
+  },
+  {
+    "priority": 95,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local state update preview for evidence-backed X and outreach state changes"
+  },
+  {
+    "priority": 96,
+    "status": "done",
+    "track": "operations",
+    "task": "Add local canonical update set for reviewed ledger and state JSON edits"
+  },
+  {
+    "priority": 97,
+    "status": "done",
+    "track": "operations",
+    "task": "Route approval runbook post-execution steps through ledger, state, and canonical update previews"
+  },
+  {
+    "priority": 98,
+    "status": "done",
+    "track": "operations",
+    "task": "Add read-only approval preflight for current external-action packet, runbook, and post-evidence path"
+  },
+  {
+    "priority": 99,
+    "status": "done",
+    "track": "operations",
+    "task": "Add action-time approval request artifact for the current draft external action"
+  },
+  {
+    "priority": 100,
+    "status": "done",
+    "track": "operations",
+    "task": "Add packet-hash-bound approval decision template for action-time approvals"
+  },
+  {
+    "priority": 101,
+    "status": "done",
+    "track": "operations",
+    "task": "Add approval decision validator before packet edits and external-action approval"
+  },
+  {
+    "priority": 102,
+    "status": "done",
+    "track": "operations",
+    "task": "Add approved packet preview derivation from validated action-time decisions"
+  },
+  {
+    "priority": 103,
+    "status": "done",
+    "track": "operations",
+    "task": "Add secret-free live resource handoff for wallet, X, and website readiness"
+  },
+  {
+    "priority": 104,
+    "status": "done",
+    "track": "distribution",
+    "task": "Add public site publication safety check and launch disclosures"
+  },
+  {
+    "priority": 105,
+    "status": "done",
+    "track": "security",
+    "task": "Add secret exposure incident response for leaked wallet and X credentials"
+  },
+  {
+    "priority": 106,
+    "status": "done",
+    "track": "operations",
+    "task": "Block launch sequencing and external-action queue while leaked credentials remain unresolved"
+  },
+  {
+    "priority": 107,
+    "status": "done",
+    "track": "security",
+    "task": "Add owner-only credential rotation action pack for leaked wallet and X credentials"
+  }
+]

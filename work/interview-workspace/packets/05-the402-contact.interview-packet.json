@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-06-09T04:40:49.047Z",
+  "valid": true,
+  "status": "ready_for_human_review",
+  "prospectId": "base-agent-wallet-builders",
+  "prospectName": "Base agent wallet and x402 service builders",
+  "candidateId": "the402-contact",
+  "candidateName": "the402",
+  "channel": "contact form",
+  "destination": "https://the402.ai/contact/",
+  "relevantSurface": "Base mainnet x402 service marketplace, MCP catalog, and provider onboarding",
+  "publicEvidence": "the402 describes an open marketplace for AI agents to buy data APIs, automated services, human services, subscriptions, and digital products using USDC via x402 on Base, with MCP catalog access and provider onboarding.",
+  "reasons": [],
+  "warnings": [],
+  "opening": "We are building Allow Protocol, a no-custody allowance layer for agent payments. It sits before x402-style settlement and answers: can this agent spend this amount with this merchant for this resource right now?",
+  "questions": [
+    "Do you expect AI agents to call or pay for your API/MCP server directly?",
+    "Do you already price per request, per result, per token, per job, or per bundle?",
+    "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+    "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+    "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+    "Where would Allow sit best: client middleware, server middleware, MCP gateway, or wallet policy hook?",
+    "What metadata should never be included in a paid request?",
+    "What would make this integration too risky or annoying to try?",
+    "Would you test Allow on one low-risk Base mainnet x402 service marketplace, MCP catalog, and provider onboarding path if the first pass takes less than one hour?"
+  ],
+  "close": "If we send you a 20-line middleware example, would you try it on one low-risk endpoint? We are not pitching a token. We need product feedback from builders who actually handle paid agent requests.",
+  "intakeFieldsToFill": [
+    "merchantId",
+    "name",
+    "website",
+    "service.category",
+    "service.endpointType",
+    "service.pricingModel",
+    "service.examplePriceUsd",
+    "agentPaymentFit.expectsAgentUsers",
+    "agentPaymentFit.currentX402Support",
+    "agentPaymentFit.currentMcpSupport",
+    "risk.sensitiveMetadataClasses",
+    "risk.abuseModes",
+    "risk.maxSafeTestSpendUsd",
+    "integration.preferredSurface",
+    "integration.canTestThisWeek",
+    "integration.testEndpoint",
+    "integration.successMetric"
+  ],
+  "qualificationSignals": {
+    "existingEndpoint": 1,
+    "usageBasedPricing": 1,
+    "agentUsersLikely": 2,
+    "metadataOrAbuseRisk": 2,
+    "canTestWithinWeek": 1,
+    "publicProofPotential": 2
+  },
+  "humanApprovalChecklist": [
+    "Account owner confirms destination and channel before outreach",
+    "Message remains a product-feedback or integration ask, not a token pitch",
+    "Interviewer records answers into a merchant intake file before any pilot claim",
+    "Merchant explicitly approves a low-risk test endpoint before pilot traffic",
+    "No private keys, seed phrases, API secrets, or settlement credentials are requested"
+  ],
+  "evidenceBoundary": {
+    "outreachSentByThisPacket": false,
+    "merchantApprovedByThisPacket": false,
+    "countsAsCompletedInterview": false,
+    "completedInterviewRequires": [
+      "merchant identity and contact path confirmed",
+      "questions answered or explicitly skipped by merchant",
+      "merchant intake JSON created and validates",
+      "test endpoint approval captured before any traffic"
+    ]
+  },
+  "nextAction": "Review interview packet, then ask the402 for product feedback"
+}

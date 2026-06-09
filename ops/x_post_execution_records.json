@@ -1,0 +1,8 @@
+{
+  "records": [],
+  "notes": [
+    "Append post-publication X execution evidence records here after npm run x-post-execution-evidence passes for each human-posted launch post.",
+    "This ledger starts empty because no public X post has been made from this workspace.",
+    "The X post state validator will fail if launch posts are marked posted without matching valid evidence."
+  ]
+}

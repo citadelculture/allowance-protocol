@@ -1,0 +1,22 @@
+{
+  "intentId": "registry-lifecycle-intent-template",
+  "deploymentManifestPath": "",
+  "requireDeployedRegistry": true,
+  "registry": {
+    "contractAddress": "",
+    "chainId": 84532,
+    "network": "Base Sepolia",
+    "environment": "testnet",
+    "controller": ""
+  },
+  "lifecycle": {
+    "action": "set_policy_active",
+    "policyId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "active": false
+  },
+  "notes": [
+    "Allowed actions are set_policy_active and set_merchant_allowed.",
+    "For set_merchant_allowed, include either merchantId or registryMerchantId plus allowed=true/false.",
+    "This packet only generates calldata and hash material. It must not contain private keys, seed phrases, or signed transaction bytes."
+  ]
+}

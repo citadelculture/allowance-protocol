@@ -1,0 +1,47 @@
+{
+  "evidenceId": "",
+  "generatedAt": "",
+  "executionStatus": "signed_policy_stored",
+  "approvalRef": "",
+  "approvalPacket": {},
+  "signedPolicy": {},
+  "signing": {
+    "signedAt": "",
+    "signedBy": "",
+    "walletAddress": "",
+    "method": "",
+    "humanExecuted": false,
+    "walletOwnerApproved": false,
+    "automationUsed": false,
+    "privateKeyMaterialExposed": false,
+    "privateKeyInRuntimeEnv": false,
+    "policyFingerprint": ""
+  },
+  "storage": {
+    "type": "",
+    "path": "",
+    "storedAt": "",
+    "storedBy": "",
+    "repoCommitted": false,
+    "accessLimited": false,
+    "noPrivateKeyMaterial": false,
+    "runtimeSourceConfigured": false
+  },
+  "ceremony": {
+    "env": {
+      "ALLOW_PRODUCTION": "1",
+      "ALLOW_REQUIRE_AGENT_SIGNATURE": "1",
+      "ALLOW_POLICY_PATH": ""
+    }
+  },
+  "proof": {
+    "type": "",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "notes": [
+    "Fill this only after the controller wallet owner approves the exact controller_policy_signature packet and signs typed data.",
+    "Do not paste private keys, seed phrases, bearer tokens, API keys, or raw wallet secrets into this evidence."
+  ]
+}

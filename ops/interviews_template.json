@@ -1,0 +1,59 @@
+[
+  {
+    "id": "interview-merchant-scheduled-001",
+    "prospectId": "agentic-market-research",
+    "candidateId": "blockrun-partners",
+    "status": "scheduled",
+    "scheduledAt": "YYYY-MM-DDTHH:mm:ss.sssZ",
+    "scheduledBy": "account-owner",
+    "channel": "contact form",
+    "outreachEvidenceRef": "outreach-execution-evidence-id",
+    "approvals": {
+      "productFeedbackOnly": true,
+      "noTokenPitch": true,
+      "noSecretsRequested": true,
+      "merchantUnderstandsPrototype": true
+    }
+  },
+  {
+    "id": "interview-merchant-001",
+    "prospectId": "agentic-market-research",
+    "candidateId": "blockrun-partners",
+    "status": "completed",
+    "completedAt": "YYYY-MM-DD",
+    "summary": "",
+    "intakePath": "ops/intakes/merchant-001.json",
+    "answers": [
+      {
+        "question": "Do you expect AI agents to call or pay for your API/MCP server directly?",
+        "answer": ""
+      },
+      {
+        "question": "Do you already price per request, per result, per token, per job, or per bundle?",
+        "answer": ""
+      },
+      {
+        "question": "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+        "answer": ""
+      },
+      {
+        "question": "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+        "answer": ""
+      },
+      {
+        "question": "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+        "answer": ""
+      }
+    ],
+    "approvals": {
+      "productFeedbackOnly": true,
+      "noTokenPitch": true,
+      "noSecretsRequested": true,
+      "merchantUnderstandsPrototype": true
+    },
+    "pilotApproval": {
+      "merchantApprovedTestEndpoint": false,
+      "testEndpoint": ""
+    }
+  }
+]

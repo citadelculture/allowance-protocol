@@ -1,0 +1,56 @@
+{
+  "promotionId": "merchant_promotion_example_001",
+  "merchantId": "research_api",
+  "targetStatus": "live",
+  "approvedAt": "",
+  "approverRef": "",
+  "publicProof": "",
+  "evidenceRef": "pilot-disclosure:pilot_disclosure_example_001",
+  "approvals": {
+    "merchantApprovedLiveListing": false,
+    "operatorReviewedNoTokenClaims": false,
+    "publicProofReviewed": false,
+    "profileSignatureReviewed": false
+  },
+  "merchantProfile": {
+    "id": "research_api",
+    "name": "Research API",
+    "status": "live",
+    "surfaces": ["x402_preflight"],
+    "endpoint": {
+      "type": "api",
+      "baseUrl": "https://research.example",
+      "testPath": "/v1/search"
+    },
+    "pricing": {
+      "model": "per_request",
+      "unitUsd": 0.25,
+      "currency": "USD"
+    },
+    "payment": {
+      "protocol": "x402",
+      "asset": "USDC",
+      "chain": "Base"
+    },
+    "risk": {
+      "dataHandlingClass": "sensitive",
+      "sensitiveMetadataClasses": ["query_text"],
+      "riskTags": ["query_text", "looped_agent_calls"]
+    },
+    "receipts": {
+      "supported": true,
+      "fields": ["policyId", "merchantId", "amountUsd", "intentHash", "intentNonce", "metadataHash"]
+    },
+    "refundRules": "Pilot refunds and disputes are handled by written merchant agreement.",
+    "disputeContact": "@casey",
+    "publicProof": "",
+    "lastReviewedAt": "2026-06-08",
+    "signer": "",
+    "merchantSignature": "",
+    "signatureMode": "eip712"
+  },
+  "notes": [
+    "This template must fail until the merchant-approved disclosure, signed live profile, and public proof URL are attached.",
+    "The command validates readiness only; it does not update the merchant directory."
+  ]
+}

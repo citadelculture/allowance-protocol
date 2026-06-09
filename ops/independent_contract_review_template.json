@@ -1,0 +1,71 @@
+{
+  "evidenceId": "",
+  "status": "draft",
+  "generatedAt": "",
+  "deploymentManifestRef": "ops/deployment_manifest.template.json",
+  "deploymentManifestPath": "ops/deployment_manifest.template.json",
+  "reviewer": {
+    "name": "",
+    "organization": "",
+    "contactRef": "",
+    "independent": false,
+    "notProjectOperator": false,
+    "noFinancialInterest": false,
+    "notPaidInTokenOrContingentUpside": false,
+    "conflictDisclosure": ""
+  },
+  "contract": {
+    "name": "AllowanceRegistry",
+    "path": "contracts/AllowanceRegistry.sol",
+    "sourceSha256": "0x59c437f2a3f3ae194ba71d3902eb7126ea36663b55fc0f56da907ef599b89599",
+    "commitRef": ""
+  },
+  "scope": {
+    "reviewedBehaviors": [
+      "authorization",
+      "replay_protection",
+      "spend_caps",
+      "merchant_allowlist",
+      "metadata_hashing",
+      "no_custody",
+      "policy_lifecycle"
+    ],
+    "excludedBehaviors": []
+  },
+  "review": {
+    "reportRef": "",
+    "reviewedAt": "",
+    "summary": "",
+    "conclusion": "",
+    "methodology": [
+      "manual_source_review",
+      "threat_model_review",
+      "test_review"
+    ],
+    "approvedForDeployment": false,
+    "remediationReviewed": false
+  },
+  "findings": {
+    "open": [],
+    "resolved": []
+  },
+  "proof": {
+    "type": "",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "safety": {
+    "noPrivateKeys": false,
+    "noCustodyOrEscrow": false,
+    "noTokenPitch": false,
+    "noMarketManipulation": false,
+    "noDeploymentExecution": false,
+    "noFundsMoved": false,
+    "noReviewerCustody": false
+  },
+  "notes": [
+    "Fill this only after an independent reviewer has checked the exact AllowanceRegistry source hash.",
+    "Do not paste private keys, seed phrases, bearer tokens, API keys, raw transactions, signed transactions, or confidential report text into this evidence."
+  ]
+}

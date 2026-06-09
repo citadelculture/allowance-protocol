@@ -1,0 +1,66 @@
+{
+  "evidenceId": "",
+  "status": "draft",
+  "generatedAt": "",
+  "deploymentManifestRef": "ops/deployment_manifest.template.json",
+  "deploymentManifestPath": "ops/deployment_manifest.template.json",
+  "contract": {
+    "name": "AllowanceRegistry",
+    "path": "contracts/AllowanceRegistry.sol",
+    "sourceSha256": "0x59c437f2a3f3ae194ba71d3902eb7126ea36663b55fc0f56da907ef599b89599",
+    "commitRef": ""
+  },
+  "checks": {
+    "npmTest": {
+      "status": "pending",
+      "command": "npm test",
+      "reportRef": "",
+      "completedAt": ""
+    },
+    "contractReview": {
+      "status": "pending",
+      "command": "npm run contract-review",
+      "reportRef": "",
+      "completedAt": ""
+    },
+    "compiler": {
+      "status": "missing",
+      "tool": "",
+      "version": "",
+      "command": "",
+      "artifactRef": "",
+      "artifactSha256": "",
+      "sourceSha256": "",
+      "completedAt": ""
+    },
+    "staticAnalysis": {
+      "status": "missing",
+      "tool": "",
+      "version": "",
+      "command": "",
+      "reportRef": "",
+      "reportSha256": "",
+      "sourceSha256": "",
+      "completedAt": "",
+      "findings": {
+        "openCritical": 0,
+        "openHigh": 0,
+        "openMedium": 0,
+        "openLow": 0
+      }
+    }
+  },
+  "safety": {
+    "noPrivateKeys": false,
+    "noWalletSigning": false,
+    "noDeploymentExecution": false,
+    "noFundsMoved": false,
+    "noTokenChanges": false,
+    "noCustodyOrEscrow": false,
+    "artifactsDoNotContainSecrets": false
+  },
+  "notes": [
+    "Fill this only after npm test, contract review, compiler output, and static-analysis report exist for the exact source hash.",
+    "Do not paste private keys, seed phrases, bearer tokens, API keys, raw transactions, signed transactions, or wallet secrets into this evidence."
+  ]
+}

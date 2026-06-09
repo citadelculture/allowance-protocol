@@ -1,0 +1,8 @@
+{
+  "records": [],
+  "notes": [
+    "Append post-send outreach execution evidence records here after npm run outreach-execution-evidence passes for each human-sent message.",
+    "This ledger starts empty because no external outreach has been sent in this workspace.",
+    "The outreach state validator will fail if prospect statuses advance without matching valid evidence."
+  ]
+}

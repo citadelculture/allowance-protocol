@@ -1,0 +1,53 @@
+{
+  "name": "allow-x402-gateway",
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 4190
+  },
+  "upstream": {
+    "baseUrl": "http://127.0.0.1:4181",
+    "timeoutMs": 10000
+  },
+  "receipts": {
+    "path": "ops/gateway-receipts.local.jsonl"
+  },
+  "evidence": {
+    "environment": "local",
+    "merchantApproved": false,
+    "rail": "x402",
+    "network": "eip155:84532",
+    "label": "local-x402-dry-run"
+  },
+  "rateLimit": {
+    "max": 60,
+    "windowMs": 60000
+  },
+  "settlement": {
+    "required": true,
+    "chain": "Base Sepolia",
+    "asset": "USDC",
+    "proofType": "x402-facilitator",
+    "paymentRequirements": {
+      "scheme": "exact",
+      "network": "eip155:84532",
+      "asset": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+      "amount": "1000",
+      "payTo": "0x122F8Fcaf2152420445Aa424E1D8C0306935B5c9",
+      "maxTimeoutSeconds": 60,
+      "extra": {
+        "name": "USDC",
+        "version": "2"
+      }
+    }
+  },
+  "forwardHeaders": ["accept", "content-type", "user-agent", "x-allow-nonce", "x-intent-nonce", "x-allow-metadata"],
+  "routes": [
+    {
+      "pathPrefix": "/paid-search",
+      "merchantId": "mcp_search",
+      "amountUsd": 0.001,
+      "metadataHeader": "x-allow-metadata",
+      "resourceTemplate": "path_and_query"
+    }
+  ]
+}

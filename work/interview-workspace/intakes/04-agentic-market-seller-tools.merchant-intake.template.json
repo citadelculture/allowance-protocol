@@ -1,0 +1,38 @@
+{
+  "merchantId": "",
+  "name": "Agentic Market: Market Research services",
+  "website": "https://agentic.market/tools/sellers",
+  "service": {
+    "category": "",
+    "endpointType": "",
+    "description": "x402 service discovery and seller validation",
+    "pricingModel": "",
+    "examplePriceUsd": null
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": false,
+    "currentX402Support": false,
+    "currentMcpSupport": false,
+    "needsSpendCaps": true,
+    "needsMetadataFilters": true,
+    "needsReplayProtection": true,
+    "needsReceipts": true
+  },
+  "risk": {
+    "sensitiveMetadataClasses": [],
+    "abuseModes": [],
+    "maxSafeTestSpendUsd": null
+  },
+  "integration": {
+    "preferredSurface": "",
+    "canTestThisWeek": false,
+    "testEndpoint": "",
+    "successMetric": ""
+  },
+  "interviewRefs": {
+    "prospectId": "agentic-market-research",
+    "candidateId": "agentic-market-seller-tools",
+    "publicEvidence": "Agentic Market exposes seller tools for validating endpoints and building service cards."
+  },
+  "notes": "Template only. Fill from completed merchant interview answers before running npm run validate-merchant."
+}

@@ -1,0 +1,42 @@
+{
+  "evidenceId": "pilot-traffic-execution-template",
+  "generatedAt": "2026-06-08",
+  "status": "executed",
+  "pilotStep": "allowed_delivery",
+  "merchantId": "",
+  "approvalRef": "",
+  "approvalPacket": {},
+  "execution": {
+    "executedAt": "",
+    "executedBy": "",
+    "humanExecuted": false,
+    "automationUsed": true,
+    "noExtraRequests": false,
+    "paymentPayloadRedacted": false,
+    "commandTemplate": "",
+    "redactedCommand": ""
+  },
+  "receipts": {
+    "receiptLogPath": "",
+    "receiptIds": []
+  },
+  "proof": {
+    "type": "receipt_log",
+    "ref": "",
+    "capturedAt": "",
+    "redacted": false
+  },
+  "safety": {
+    "merchantApprovedRun": false,
+    "noExtraRequests": false,
+    "noSecretsStored": false,
+    "noCustodyOrEscrow": false,
+    "receiptLogPrivate": false,
+    "noPublicClaims": false
+  },
+  "notes": [
+    "Fill only after a human executes one approved live_pilot external-action packet.",
+    "This record must include the approved packet, the approved command template, redacted execution proof, receipt ids, and a private receipt log path.",
+    "This validator does not start traffic, approve public claims, mark a merchant live, move funds, store secrets, or unlock token work."
+  ]
+}

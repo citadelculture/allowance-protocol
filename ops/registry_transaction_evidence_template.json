@@ -1,0 +1,34 @@
+{
+  "evidenceId": "registry-transaction-evidence-template",
+  "actionType": "registry_policy_create",
+  "status": "pending",
+  "generatedAt": "2026-06-08",
+  "approvalRef": "",
+  "network": "Base Sepolia",
+  "chainId": 84532,
+  "registryAddress": "",
+  "transaction": {
+    "txHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "status": "pending",
+    "from": "",
+    "to": "",
+    "blockNumber": null,
+    "blockTimestamp": "",
+    "explorerUrl": ""
+  },
+  "intent": {
+    "writeIntentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "functionName": "createPolicy",
+    "calldataSha256": ""
+  },
+  "result": {
+    "eventName": "PolicyCreated",
+    "expectedPolicyId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "policyId": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "notes": [
+    "Fill this only after a human sends an approved registry transaction.",
+    "Do not include private keys, seed phrases, raw transaction bytes, or signed transaction bytes.",
+    "For set_merchant_allowed, include result.stateCheckRef because the registry does not emit an event for that setter."
+  ]
+}

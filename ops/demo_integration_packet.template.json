@@ -1,0 +1,26 @@
+{
+  "intent": {
+    "merchantId": "mcp_search",
+    "amountUsd": 0.018,
+    "resource": "/v1/search?q=agent+payments",
+    "intentNonce": "demo-search-003",
+    "metadata": "agent-alpha requesting public search context for launch analysis"
+  },
+  "receipts": [
+    {
+      "id": "allow_demo_01",
+      "createdAt": "2026-06-09T10:40:00.000Z",
+      "agentId": "agent-alpha",
+      "policyId": "allow_policy_demo_alpha",
+      "merchantId": "mcp_search",
+      "merchantName": "MCP Search Index",
+      "amountUsd": 0.018,
+      "decision": "allow",
+      "riskScore": 8,
+      "intentNonce": "demo-search-001",
+      "intentHash": "b9db1aac",
+      "metadataHash": "8109d99a",
+      "resource": "/v1/search?q=base"
+    }
+  ]
+}

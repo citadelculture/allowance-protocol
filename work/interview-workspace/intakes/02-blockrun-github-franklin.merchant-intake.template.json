@@ -1,0 +1,38 @@
+{
+  "merchantId": "",
+  "name": "Agentic Market: Market Research services",
+  "website": "https://github.com/BlockRunAI/Franklin",
+  "service": {
+    "category": "",
+    "endpointType": "",
+    "description": "x402-enabled API marketplace repository",
+    "pricingModel": "",
+    "examplePriceUsd": null
+  },
+  "agentPaymentFit": {
+    "expectsAgentUsers": false,
+    "currentX402Support": false,
+    "currentMcpSupport": false,
+    "needsSpendCaps": true,
+    "needsMetadataFilters": true,
+    "needsReplayProtection": true,
+    "needsReceipts": true
+  },
+  "risk": {
+    "sensitiveMetadataClasses": [],
+    "abuseModes": [],
+    "maxSafeTestSpendUsd": null
+  },
+  "integration": {
+    "preferredSurface": "",
+    "canTestThisWeek": false,
+    "testEndpoint": "",
+    "successMetric": ""
+  },
+  "interviewRefs": {
+    "prospectId": "agentic-market-research",
+    "candidateId": "blockrun-github-franklin",
+    "publicEvidence": "BlockRunAI/Franklin is public code for an x402-enabled API marketplace and serverless platform."
+  },
+  "notes": "Template only. Fill from completed merchant interview answers before running npm run validate-merchant."
+}

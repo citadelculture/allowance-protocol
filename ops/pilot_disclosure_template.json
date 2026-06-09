@@ -1,0 +1,51 @@
+{
+  "disclosureId": "pilot_disclosure_example_001",
+  "status": "draft",
+  "generatedAt": "2026-06-08",
+  "merchantId": "mcp_search",
+  "evidenceRef": "pilot-disclosure:pilot_disclosure_example_001",
+  "publicSummary": "Draft only: Allow completed a merchant-approved testnet pilot with one allowed delivery and one denied unsafe payment intent.",
+  "receiptIds": ["allow_receipt_id", "deny_receipt_id"],
+  "metrics": {
+    "environment": "testnet",
+    "policyDecisions": 2,
+    "crediblePolicyDecisions": 2,
+    "allowedReceipts": 1,
+    "deniedReceipts": 1,
+    "activeAgents": 1,
+    "blockedValueUsd": 0
+  },
+  "merchantApproval": {
+    "approved": false,
+    "merchantId": "mcp_search",
+    "approvedAt": "",
+    "approverRef": "",
+    "scope": ["public_metrics"],
+    "partnerClaimApproved": false,
+    "statement": ""
+  },
+  "redaction": {
+    "rawMetadataRemoved": true,
+    "personalDataRemoved": true,
+    "secretsRemoved": true,
+    "receiptIdsOnly": true
+  },
+  "redactedReceipts": [
+    {
+      "id": "allow_receipt_id",
+      "decision": "allow",
+      "upstreamStatus": 200,
+      "reasonCategory": "policy_allowed"
+    },
+    {
+      "id": "deny_receipt_id",
+      "decision": "deny",
+      "upstreamStatus": null,
+      "reasonCategory": "metadata_risk_blocked"
+    }
+  ],
+  "notes": [
+    "Do not publish raw prompts, headers, payment payloads, private contact details, or full request metadata.",
+    "This packet is not proof until the merchant approval fields are complete and npm run pilot-disclosure passes."
+  ]
+}

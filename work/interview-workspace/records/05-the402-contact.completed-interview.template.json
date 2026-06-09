@@ -1,0 +1,92 @@
+{
+  "id": "interview-the402-contact",
+  "prospectId": "base-agent-wallet-builders",
+  "candidateId": "the402-contact",
+  "status": "completed",
+  "completedAt": "",
+  "completedBy": "",
+  "channel": "contact form",
+  "destination": "https://the402.ai/contact/",
+  "summary": "",
+  "intakePath": "",
+  "suggestedIntakePath": "ops/intakes/the402-contact.json",
+  "answers": [
+    {
+      "id": "q1",
+      "question": "Do you expect AI agents to call or pay for your API/MCP server directly?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q2",
+      "question": "Do you already price per request, per result, per token, per job, or per bundle?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q3",
+      "question": "What can go wrong if an agent calls your endpoint too often or with bad metadata?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q4",
+      "question": "Do you need buyer-side spend limits, merchant allowlists, or nonce/replay protection?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q5",
+      "question": "Would a denied-payment receipt help you debug abuse or failed agent workflows?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q6",
+      "question": "Where would Allow sit best: client middleware, server middleware, MCP gateway, or wallet policy hook?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q7",
+      "question": "What metadata should never be included in a paid request?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q8",
+      "question": "What would make this integration too risky or annoying to try?",
+      "answer": "",
+      "skipped": false
+    },
+    {
+      "id": "q9",
+      "question": "Would you test Allow on one low-risk Base mainnet x402 service marketplace, MCP catalog, and provider onboarding path if the first pass takes less than one hour?",
+      "answer": "",
+      "skipped": false
+    }
+  ],
+  "approvals": {
+    "productFeedbackOnly": false,
+    "noTokenPitch": false,
+    "noSecretsRequested": false,
+    "merchantUnderstandsPrototype": false
+  },
+  "pilotApproval": {
+    "merchantApprovedTestEndpoint": false,
+    "testEndpoint": "",
+    "maxTestSpendUsd": null,
+    "approvedAt": "",
+    "approvedBy": ""
+  },
+  "source": {
+    "workspace": "work/interview-workspace",
+    "packetPath": "packets/the402-contact.interview-packet.json",
+    "publicEvidence": "the402 describes an open marketplace for AI agents to buy data APIs, automated services, human services, subscriptions, and digital products using USDC via x402 on Base, with MCP catalog access and provider onboarding."
+  },
+  "notes": [
+    "Template only. This must fail interview-report until a real interview is completed and approvals are true.",
+    "Do not record private keys, seed phrases, API secrets, bearer tokens, passwords, or settlement credentials.",
+    "A pilot endpoint requires separate explicit merchant approval and live-pilot preflight."
+  ]
+}

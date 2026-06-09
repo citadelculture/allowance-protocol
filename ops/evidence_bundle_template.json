@@ -1,0 +1,33 @@
+{
+  "bundleId": "evidence_bundle_example_001",
+  "purpose": "launch_claim",
+  "generatedAt": "2026-06-08",
+  "owner": "allow-operator",
+  "approvalRef": "external-action:external_action_example_001",
+  "artifacts": [
+    {
+      "id": "approved-disclosure",
+      "type": "approved_disclosure_packet",
+      "path": "ops/pilot_disclosure_template.json",
+      "sha256": "",
+      "visibility": "redacted",
+      "redacted": true,
+      "ownerApprovedForPublicUse": false,
+      "sourceRef": "npm run pilot-disclosure"
+    },
+    {
+      "id": "external-approval",
+      "type": "external_action_approval",
+      "path": "ops/external_action_template.json",
+      "sha256": "",
+      "visibility": "redacted",
+      "redacted": true,
+      "ownerApprovedForPublicUse": false,
+      "sourceRef": "npm run external-action-approval"
+    }
+  ],
+  "notes": [
+    "This template must fail until real artifact SHA-256 hashes and approvals are filled in.",
+    "The bundle references files by hash; it does not copy or publish evidence."
+  ]
+}

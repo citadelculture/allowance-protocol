@@ -1,0 +1,49 @@
+{
+  "intentId": "receipt-registry-intent-template",
+  "receiptLogPath": "",
+  "receiptId": "",
+  "receiptRecord": {
+    "recordedAt": "2026-06-08T00:00:00.000Z",
+    "source": "allow-template",
+    "merchantId": "mcp_search",
+    "decision": "allow",
+    "evidence": {
+      "environment": "local",
+      "merchantApproved": false,
+      "rail": "unknown",
+      "network": "",
+      "settlement": "",
+      "label": "template only"
+    },
+    "receipt": {
+      "id": "allow_template_receipt",
+      "createdAt": "2026-06-08T00:00:00.000Z",
+      "policyId": "allow_policy_template",
+      "agentId": "agent-template",
+      "merchantId": "mcp_search",
+      "amountUsd": 0.018,
+      "decision": "allow",
+      "intentNonce": "template-nonce",
+      "intentHash": "template-intent-hash",
+      "metadataHash": "template-metadata-hash",
+      "resource": "template-resource"
+    }
+  },
+  "requireAllowedDecision": true,
+  "requireCredibleEvidence": true,
+  "requireMerchantApproval": true,
+  "requireDeployedRegistry": true,
+  "registry": {
+    "registryPolicyId": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "contractAddress": "",
+    "chainId": 84532,
+    "network": "Base Sepolia",
+    "environment": "testnet",
+    "recorder": "",
+    "amountDecimals": 6
+  },
+  "notes": [
+    "Use the bytes32 policy id returned by AllowanceRegistry.createPolicy, not the offchain Allow policy id.",
+    "This packet only generates calldata and hashes. It must not contain private keys, seed phrases, raw metadata, or signed transaction bytes."
+  ]
+}

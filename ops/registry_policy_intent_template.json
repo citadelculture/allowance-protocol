@@ -1,0 +1,25 @@
+{
+  "intentId": "registry-policy-intent-template",
+  "policyPath": "allow-policy.example.json",
+  "deploymentManifestPath": "",
+  "requireDeployedRegistry": true,
+  "registry": {
+    "contractAddress": "",
+    "chainId": 84532,
+    "network": "Base Sepolia",
+    "environment": "testnet",
+    "controller": "",
+    "agentAddress": "",
+    "settlementToken": "",
+    "controllerNonce": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "epochCapUsd": 25,
+    "perTxCapUsd": 1.5,
+    "epochSeconds": 86400,
+    "amountDecimals": 6
+  },
+  "notes": [
+    "Use the real controller wallet address. It becomes msg.sender for AllowanceRegistry.createPolicy.",
+    "Use a public, nonsecret, nonzero bytes32 controllerNonce from the signing/deployment ceremony.",
+    "This packet only generates calldata, merchant id hashes, and the expected policy id. It must not contain private keys, seed phrases, or signed transaction bytes."
+  ]
+}
