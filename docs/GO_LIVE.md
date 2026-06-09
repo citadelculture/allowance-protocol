@@ -42,7 +42,12 @@ policy changes only apply to new sessions.
 
 Docs: https://code.claude.com/docs/en/claude-code-on-the-web (Network access)
 
-## 1. Deploy the no-custody registry to Base
+## 1. Deploy the no-custody registry to Base — DONE (mainnet, 2026-06-09)
+
+`AllowanceRegistry` is live at `0x047B375f044B76efBdCE655Ab6b7EE142129c266`
+on Base mainnet (see `deployments/base.json` and the README "Live deployment"
+section). The Sepolia deployer was unfunded, so the owner authorized mainnet
+directly. Basescan source verification is still pending.
 
 ```bash
 # testnet first

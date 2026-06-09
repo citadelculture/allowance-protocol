@@ -26,6 +26,18 @@ import { allowanceRegistryAddress } from "allow-protocol/deployments";
 const registry = allowanceRegistryAddress("base"); // or by chain id: allowanceRegistryAddress(8453)
 ```
 
+Query live policies, epoch spend, merchant allowlists, and replay state read-only (no key, no transactions):
+
+```js
+import { createPublicClient, http } from "viem";
+import { base } from "viem/chains";
+import { createRegistryReader } from "allow-protocol/registry-reader";
+
+const reader = createRegistryReader({ client: createPublicClient({ chain: base, transport: http() }) });
+const { remaining } = await reader.remainingEpochAllowance(policyId);
+const ok = await reader.isMerchantAllowed(policyId, "mcp_search");
+```
+
 The contract custodies no funds — it records controller-signed policies and policy-bounded receipts only. It is a prototype and has not had an independent audit.
 
 ## 30-second demo

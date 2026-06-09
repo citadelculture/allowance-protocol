@@ -257,6 +257,12 @@ export {
 } from "./deployments.mjs";
 
 export {
+  ALLOWANCE_REGISTRY_READ_ABI,
+  createRegistryReader,
+  normalizeRegistryMerchantId
+} from "./registryReader.mjs";
+
+export {
   createAllowGatewayHandler,
   gatewayHealth,
   intentFromGatewayRequest,
