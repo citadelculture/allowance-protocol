@@ -4,6 +4,23 @@ Everything below is built and verified locally. The only missing ingredient is
 real-world access (network + credentials + funds). When those are provided, each
 step is one command.
 
+## Current owner checklist (2026-06-09)
+
+1. **X API credits** — posting returns HTTP 402 `CreditsDepleted` for enrolled
+   account `2064326404553027584`. Add credits in the developer portal; the
+   session loop retries the approved launch text automatically and records
+   evidence once it posts.
+2. **Basescan source verification** — one paste: follow
+   `work/verification/INSTRUCTIONS.md` (recompiled bytecode already matches
+   the chain byte-for-byte).
+3. **First onchain policy** — send the prepared `createPolicy` calldata from
+   the deployer/controller wallet: see
+   `work/registry/first-policy-intent.report.json` (expected policyId
+   `0xf0215a33…16c6`). Then the first `recordReceipt` makes the registry
+   non-empty and `npm run registry-status` shows real usage.
+4. **npm publish** (optional) — needs an npm token, `private: false`, and a
+   final package name.
+
 ## 0. Prerequisite: an open network session
 
 The default build environment is firewalled to GitHub + npm. To let the agent
