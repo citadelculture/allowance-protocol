@@ -9,7 +9,7 @@
 // Nothing is signed or sent; sending stays with the controller wallet owner
 // (npm run send-registry-intent -- <report>).
 
-import { writeFileSync } from "node:fs";
+import { writeFileSync, mkdirSync } from "node:fs";
 import { keccak256, stringToHex } from "viem";
 import { allowanceRegistryDeployment } from "../src/deployments.mjs";
 import { buildRegistryPolicyIntent } from "../src/registryPolicyIntent.mjs";
@@ -66,15 +66,22 @@ const intent = {
 const outPath = args.out || `ops/policy_intent_${controller.slice(2, 8).toLowerCase()}.local.json`;
 writeFileSync(outPath, JSON.stringify(intent, null, 2) + "\n");
 
+// The report written here is the single source of truth for sending: it is
+// built from the SAME merchants/caps as the intent file, so the expected
+// policyId and the sent calldata cannot drift apart.
 const policy = { allowedMerchants: merchants, perTxCapUsd: registry.perTxCapUsd, dailyCapUsd: registry.epochCapUsd };
 const report = buildRegistryPolicyIntent(policy, { ...registry, requireDeployedRegistry: true });
 
+mkdirSync("work/registry", { recursive: true });
+const reportPath = args["report-out"] || "work/registry/my-policy.report.json";
+writeFileSync(reportPath, JSON.stringify({ intentPath: outPath, ...report }, null, 2) + "\n");
+
 console.log(`Intent written: ${outPath}`);
+console.log(`Report written: ${reportPath}`);
 console.log(`  valid:            ${report.valid}${report.valid ? "" : " — " + JSON.stringify(report.reasons)}`);
 console.log(`  expected policyId: ${report.registry.expectedPolicyId}`);
 console.log(`  caps:             $${registry.perTxCapUsd}/tx, $${registry.epochCapUsd}/${registry.epochSeconds / 3600}h`);
 console.log(`  merchants:        ${merchants.join(", ")}`);
-console.log(`\nNext:`);
-console.log(`  node scripts/registry-policy-intent.mjs ${outPath} > work/registry/my-policy.report.json`);
-console.log(`  npm run send-registry-intent -- work/registry/my-policy.report.json   (from the controller wallet)`);
+console.log(`\nNext (from the controller wallet):`);
+console.log(`  npm run send-registry-intent -- ${reportPath}`);
 process.exit(report.valid ? 0 : 1);
