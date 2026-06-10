@@ -1,4 +1,4 @@
-import { mkdir, readFile, appendFile } from "node:fs/promises";
+import { mkdir, readFile, appendFile, stat, rename } from "node:fs/promises";
 import { dirname } from "node:path";
 
 export const RECEIPT_EVIDENCE_ENVIRONMENTS = ["local", "testnet", "mainnet"];
@@ -14,13 +14,26 @@ export function createMemoryReceiptStore(initialRecords = []) {
   };
 }
 
-export function createJsonlReceiptStore(path) {
+export function createJsonlReceiptStore(path, { maxBytes = null } = {}) {
   if (!path) throw new Error("createJsonlReceiptStore requires a path");
 
   return {
     path,
     async record(entry) {
       await mkdir(dirname(path), { recursive: true });
+      // Size-capped rotation: when the log exceeds maxBytes, the current file
+      // moves aside with a timestamp suffix and a fresh log starts. Old
+      // receipts are never deleted — they are evidence.
+      if (maxBytes != null) {
+        try {
+          const { size } = await stat(path);
+          if (size >= maxBytes) {
+            await rename(path, `${path}.${new Date().toISOString().replace(/[:.]/g, "-")}`);
+          }
+        } catch {
+          // first write: no file to rotate
+        }
+      }
       await appendFile(path, `${JSON.stringify(normalizeReceiptRecord(entry))}\n`, "utf8");
     }
   };

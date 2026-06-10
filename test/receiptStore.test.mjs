@@ -98,4 +98,27 @@ assert.equal(summary.merchantApprovedReceipts, 1);
 assert.equal(summary.crediblePilotReceipts, 1);
 assert.equal(summary.blockedValueUsd, 0.35);
 
+// --- jsonl rotation caps the active log without deleting evidence ------------
+{
+  const { mkdtemp, readdir, readFile: readF } = await import("node:fs/promises");
+  const { tmpdir } = await import("node:os");
+  const { join } = await import("node:path");
+  const { createJsonlReceiptStore } = await import("../src/receiptStore.mjs");
+
+  const dir = await mkdtemp(join(tmpdir(), "allow-receipts-"));
+  const path = join(dir, "receipts.jsonl");
+  const store = createJsonlReceiptStore(path, { maxBytes: 400 });
+  for (let i = 0; i < 10; i++) {
+    await store.record({ decision: "allow", merchantId: "mcp_search", receipt: { id: `r${i}`, amountUsd: 0.01 } });
+  }
+  const files = await readdir(dir);
+  const rotated = files.filter((f) => f.startsWith("receipts.jsonl."));
+  assert.ok(rotated.length >= 1, "log rotated at the size cap");
+  const activeLines = (await readF(path, "utf8")).trim().split("\n").length;
+  const rotatedLines = (
+    await Promise.all(rotated.map((f) => readF(join(dir, f), "utf8")))
+  ).map((c) => c.trim().split("\n").length);
+  assert.equal(activeLines + rotatedLines.reduce((a, b) => a + b, 0), 10, "no receipt was lost in rotation");
+}
+
 console.log("receiptStore tests passed");
