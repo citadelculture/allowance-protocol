@@ -30,8 +30,10 @@ step is one command.
    simulation (replay/over-cap/unknown-merchant all revert). See
    `ops/registry_live_usage.json`. Remaining: create real policies from a
    fresh (non-exposed) controller wallet for production agents.
-4. **npm publish** (optional) — needs an npm token, `private: false`, and a
-   final package name.
+4. **npm publish — DONE (2026-06-10).** `allow-protocol@0.1.0` is live:
+   https://www.npmjs.com/package/allow-protocol — 113-file SDK package
+   (src, contracts, deployments, examples, quickstart), full suite gated
+   via prepublishOnly. Builders integrate with `npm install allow-protocol`.
 5. **Funded live settlement — DONE (2026-06-10).** Owner funded the wallet
    with 20 testnet USDC; the full flow settled for real against
    https://www.x402.org/protected: policy allowed, signer signed, the

@@ -5,13 +5,11 @@ protocol on Base mainnet today.
 
 ## 1. Install
 
-Not yet on npm — install from git:
-
 ```bash
-npm install github:citadelculture/allowance-protocol
+npm install allow-protocol
 ```
 
-(Or clone and `npm install` to run the examples in this repo.)
+(Or clone the repo and `npm install` to run the examples.)
 
 ## 2. Wrap your agent's fetch
 
