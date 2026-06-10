@@ -12,6 +12,13 @@
   "engines": {
     "node": ">=18.17"
   },
+  "files": [
+    "src",
+    "contracts",
+    "deployments",
+    "examples",
+    "docs/QUICKSTART.md"
+  ],
   "exports": {
     ".": "./src/index.mjs",
     "./policy": "./src/policyEngine.mjs",
