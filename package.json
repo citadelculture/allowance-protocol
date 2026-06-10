@@ -1,7 +1,7 @@
 {
   "name": "allow-protocol",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "type": "module",
   "description": "Allowance layer and payment guardrails for autonomous AI agents.",
   "repository": {
