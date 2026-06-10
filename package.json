@@ -118,6 +118,7 @@
   },
   "scripts": {
     "start": "node server.mjs",
+    "prepublishOnly": "npm test",
     "demo": "node demo.mjs",
     "compile-registry": "node scripts/compile-registry.mjs",
     "verification-input": "node scripts/verification-input.mjs",
