@@ -249,9 +249,36 @@ export function createAllowFetch(options = {}) {
     };
     const settled = await fetchImpl(url, retryInit);
 
+    // v2 servers return the settlement result (tx hash, payer) base64-encoded
+    // in the PAYMENT-RESPONSE header; v1 servers use X-PAYMENT-RESPONSE.
+    // Decode it so receipts carry settlement proof, never just "we paid".
+    const settlementResult = decodeSettlementResponse(
+      settled.headers?.get?.(PAYMENT_RESPONSE_HEADER_V2) || settled.headers?.get?.(PAYMENT_RESPONSE_HEADER)
+    );
+    if (settlementResult && (options.receiptStore?.record || typeof options.onReceipt === "function")) {
+      const entry = {
+        source: "allow-fetch",
+        decision: "settled",
+        reasons: [],
+        warnings: [],
+        receipt: { ...evaluation.receipt, settlement: settlementResult },
+        intent,
+        requirements
+      };
+      try {
+        if (typeof options.onReceipt === "function") options.onReceipt(entry);
+        if (options.receiptStore?.record) await options.receiptStore.record(entry);
+      } catch (err) {
+        if (typeof options.onReceiptError === "function") options.onReceiptError(err, entry);
+      }
+    }
+
     // Expose the receipt to callers without mutating the upstream response body.
     try {
       Object.defineProperty(settled, "allowReceipt", { value: evaluation.receipt, enumerable: false });
+      if (settlementResult) {
+        Object.defineProperty(settled, "allowSettlement", { value: settlementResult, enumerable: false });
+      }
     } catch {
       // Some response objects are frozen; receipts are still in the array.
     }
@@ -261,6 +288,28 @@ export function createAllowFetch(options = {}) {
   wrapped.receipts = receipts;
   wrapped.policy = policy;
   return wrapped;
+}
+
+// Decode a base64-JSON settlement response header (v1 or v2). Returns null
+// for missing or unparseable values — settlement capture must never break
+// the payment flow.
+function decodeSettlementResponse(headerValue) {
+  const raw = String(headerValue || "").trim();
+  if (!raw) return null;
+  try {
+    const decoded = typeof atob === "function" && typeof Buffer === "undefined"
+      ? atob(raw)
+      : Buffer.from(raw, "base64").toString("utf8");
+    const parsed = JSON.parse(decoded);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    try {
+      const parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" ? parsed : null;
+    } catch {
+      return null;
+    }
+  }
 }
 
 // Re-wrap a v1 payer envelope ({x402Version, scheme, network, payload}) into

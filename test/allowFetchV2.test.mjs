@@ -98,4 +98,35 @@ const LIVE_CHALLENGE_HEADER =
   assert.equal(valid, true, "CAIP-2 network produced the correct chain domain");
 }
 
+// --- settlement responses are decoded and persisted -----------------------------
+{
+  const account = privateKeyToAccount("0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d");
+  const settlement = { success: true, transaction: "0x" + "ab".repeat(32), network: "eip155:84532", payer: account.address };
+  const stored = [];
+  const fetchImpl = async (url, init = {}) => {
+    if (!init.headers?.[PAYMENT_SIGNATURE_HEADER_V2]) {
+      return new Response("{}", { status: 402, headers: { [PAYMENT_REQUIRED_HEADER_V2]: LIVE_CHALLENGE_HEADER } });
+    }
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { "payment-response": Buffer.from(JSON.stringify(settlement)).toString("base64") }
+    });
+  };
+  const af = createAllowFetch({
+    fetchImpl,
+    policy: { spentTodayUsd: 0 },
+    resolveMerchant: () => "mcp_search",
+    intentNonce: "v2-settle-1",
+    receiptStore: { record: async (entry) => stored.push(entry) },
+    pay: createX402Payer({ account })
+  });
+
+  const res = await af("https://www.x402.org/protected");
+  assert.equal(res.status, 200);
+  assert.deepEqual(res.allowSettlement, settlement, "settlement surfaced on the response");
+  const settledEntry = stored.find((e) => e.decision === "settled");
+  assert.ok(settledEntry, "a settled record was persisted");
+  assert.equal(settledEntry.receipt.settlement.transaction, settlement.transaction, "receipt carries the tx hash");
+}
+
 console.log("allowFetchV2 tests passed");
