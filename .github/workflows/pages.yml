@@ -17,11 +17,20 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Pages may not be enabled on this repo yet. Never fail the run (and
+    # spam failure emails) — deploy when possible, no-op otherwise.
+    continue-on-error: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Try to enable Pages automatically; tolerate repos where that is not
+      # permitted (private repo on a free plan, restricted token).
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+        continue-on-error: true
       # The dashboard is fully static: index.html + app.js import the policy
       # engine as browser ESM, and live registry status queries Base directly.
       - name: Stage static site
@@ -34,3 +43,4 @@ jobs:
           path: _site
       - uses: actions/deploy-pages@v4
         id: deployment
+        continue-on-error: true
