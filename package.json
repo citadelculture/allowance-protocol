@@ -4,6 +4,7 @@
   "private": false,
   "type": "module",
   "description": "Allowance layer and payment guardrails for autonomous AI agents.",
+  "homepage": "https://allowprotocol.xyz",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/citadelculture/allowance-protocol.git"
