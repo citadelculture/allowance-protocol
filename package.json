@@ -128,6 +128,7 @@
     "new-policy-intent": "node scripts/new-policy-intent.mjs",
     "registry-enforcement-proof": "node scripts/registry-enforcement-proof.mjs",
     "live-proof": "node scripts/registry-status.mjs && node scripts/registry-enforcement-proof.mjs && node scripts/verification-input.mjs",
+    "build-site": "node scripts/build-site.mjs",
     "deploy-registry": "node scripts/compile-registry.mjs && node scripts/deploy-registry.mjs",
     "x-post": "node scripts/x-post.mjs",
     "x-launch-retry": "node scripts/x-launch-retry.mjs",

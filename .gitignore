@@ -11,3 +11,4 @@ ops/*merchant-profile*.local.json
 ops/*.local.json
 ops/*.local.jsonl
 ops/gateway-receipts*.jsonl
+dist/
