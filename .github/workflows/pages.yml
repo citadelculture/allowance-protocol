@@ -1,8 +1,8 @@
 name: pages
 
+# Owner self-hosts the site (npm run build-site); keep this workflow as a
+# manual fallback only.
 on:
-  push:
-    branches: [main, claude/allow-protocol-launch-9jlxgz]
   workflow_dispatch:
 
 permissions:
