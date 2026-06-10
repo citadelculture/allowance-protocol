@@ -1,0 +1,28 @@
+{
+  "milestone": "first fully settled, policy-governed x402 payment",
+  "executedAt": "2026-06-10",
+  "endpoint": "https://www.x402.org/protected",
+  "x402Version": 2,
+  "flow": [
+    "real PAYMENT-REQUIRED header challenge parsed (CAIP-2 network eip155:84532)",
+    "allowance policy evaluated and allowed the $0.01 ask (merchant mcp_search, within $1.50/tx and $25/day caps)",
+    "EIP-3009 USDC transferWithAuthorization signed offline under the signer-level 50000-unit hard cap",
+    "submitted as PAYMENT-SIGNATURE; the x402.org facilitator broadcast the transfer onchain",
+    "HTTP 200 with paid content; PAYMENT-RESPONSE settlement captured automatically into the receipt log"
+  ],
+  "settlement": {
+    "success": true,
+    "payer": "0xFB7F313f9C7b129a6744Bc8866518F5040337BdF",
+    "transaction": "0xefa429cb2469f354c4ce7b1718745695e0e8808baa56bb548841fd148a7b74dc",
+    "network": "eip155:84532",
+    "blockNumber": 42657315,
+    "explorer": "https://sepolia.basescan.org/tx/0xefa429cb2469f354c4ce7b1718745695e0e8808baa56bb548841fd148a7b74dc"
+  },
+  "balanceProof": "wallet USDC moved exactly 20.00 -> 19.99 (one cent, the approved amount)",
+  "receiptLog": "ops/live-settlement-receipts.local.jsonl (allow + settled records, settled record carries the tx hash)",
+  "ownerAuthorizationRef": "docs/EXTERNAL_ACTION_APPROVAL.md#owner-authorization-amendment-2026-06-09",
+  "notes": [
+    "Every protocol layer is now live-proven: policy gate, signer guards, both x402 transports, facilitator settlement, settlement-receipt capture, and the onchain registry (separate evidence: ops/registry_live_usage.json).",
+    "Testnet USDC funded by the owner; the facilitator pays broadcast gas, so the agent wallet needs no Sepolia ETH."
+  ]
+}
