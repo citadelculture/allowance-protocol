@@ -112,6 +112,15 @@ block required); validated launch post packet at ops/launch_post_packet.json
 posts from the gate-validated packet and prefills execution evidence on
 success (exit 2 while credit-blocked).
 
+LIVE MILESTONE 3 (funded settlement, 2026-06-10): owner funded the deployer
+wallet with 20 Base Sepolia USDC and declined credential rotation (owner
+decision — do not raise again; credentials stay in use until public launch).
+The full flow settled for real against https://www.x402.org/protected:
+policy allowed $0.01, EIP-3009 signed under the signer cap, facilitator
+broadcast tx 0xefa429cb…74dc (block 42657315, balance moved exactly one
+cent), settlement receipt auto-captured. Evidence:
+ops/live_settlement_evidence.json. Every protocol layer is now live-proven.
+
 LIVE MILESTONE 2 (x402 v2 interop): https://www.x402.org/protected is
 reachable from this environment and speaks x402 v2. Added v2 support
 (PAYMENT-REQUIRED header challenges, CAIP-2 networks, PAYMENT-SIGNATURE

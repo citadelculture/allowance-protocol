@@ -95,9 +95,11 @@ const fetch = createAllowFetch({
         <p class="eyebrow">Don't trust — verify</p>
         <h2>The registry is live with real usage</h2>
         <p class="proof-sub">
-          Policy #1 enforces a $1.50 per-transaction cap and $25/day budget onchain. The first real
-          agent payment is anchored, the deployed bytecode matches the source byte-for-byte, and
-          enforcement is one command away from your own terminal.
+          Policy #1 enforces a $1.50 per-transaction cap and $25/day budget onchain, with the first
+          receipt anchored and the deployed bytecode matching the source byte-for-byte. The full
+          payment path is settlement-proven too: a real x402 payment — policy-approved, signed under
+          the signer cap, broadcast by the facilitator, settlement receipt captured — has cleared
+          end to end against the x402.org reference server.
         </p>
         <pre class="landing-pre slim"><code>npm run live-proof   # usage + enforcement + bytecode match, verified against Base mainnet</code></pre>
       </section>
